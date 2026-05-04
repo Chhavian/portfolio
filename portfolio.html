@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chhavi — Product Manager</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300;1,9..40,400&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="main-nav">
+    <a class="nav-name" href="#hero" id="nav-name"></a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#writing">Writing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-status reveal">
+        <span class="blink"></span>
+        <span id="hero-status"></span>
+      </div>
+      <h1 class="hero-display reveal">
+        <div><span class="light" id="hero-top"></span></div>
+        <div><span class="bold"><span class="highlighted" id="hero-mid"></span></span></div>
+        <div><span class="light" id="hero-bot"></span></div>
+      </h1>
+      <p class="hero-tagline reveal" id="hero-tagline"></p>
+      <div class="hero-cta-row reveal">
+        <a href="#work" class="btn-outline">See my work</a>
+        <span class="hero-scroll-hint">&#8595;&nbsp; Scroll</span>
+      </div>
+    </div>
+    <div class="hero-rule"></div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-num">01</span>
+        <h2 class="section-title">Work</h2>
+      </div>
+      <div class="work-grid" id="work-grid"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-num">02</span>
+        <h2 class="section-title">About</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-body reveal" id="about-body"></div>
+        <div class="about-sidebar reveal" id="about-sidebar"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PULL QUOTE -->
+  <section id="pull-quote">
+    <div class="pull-quote-inner reveal">
+      <p class="pull-quote-text" id="pull-quote-text"></p>
+      <p class="pull-quote-attr" id="pull-quote-attr"></p>
+    </div>
+  </section>
+
+  <!-- WRITING -->
+  <section id="writing">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-num">03</span>
+        <h2 class="section-title">Writing</h2>
+      </div>
+      <div class="writing-list" id="writing-list"></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-num">04</span>
+        <h2 class="section-title">Contact</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-left reveal">
+          <h2 class="contact-display"><em>Let's</em><br/>talk<span id="contact-dot" style="color:var(--accent)">.</span></h2>
+          <a id="contact-email" class="contact-email"></a>
+          <div class="contact-links" id="contact-links"></div>
+        </div>
+        <div class="contact-right reveal">
+          <p class="contact-right-head">Current status</p>
+          <p class="contact-availability">
+            <span class="availability-dot"></span>
+            <span id="contact-availability"></span>
+          </p>
+          <a id="contact-cta" class="btn-outline">Send a message</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-copy" id="footer-copy"></span>
+    <span class="footer-copy" id="footer-tagline"></span>
+  </footer>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close">✕</button>
+      <div id="modal-inner"></div>
+    </div>
+  </div>
+
+  <!-- Content data -->
+  <script src="content.js"></script>
+
+  <!-- Renderer — reads from PORTFOLIO, never needs editing -->
+  <script>
+    const P = PORTFOLIO;
+
+    // ── IDENTITY ──
+    document.title = P.name + ' — Product Manager';
+    document.getElementById('nav-name').textContent = P.name;
+
+    // ── HERO ──
+    document.getElementById('hero-status').textContent  = P.hero.status;
+    document.getElementById('hero-top').textContent     = P.hero.headlineTop;
+    document.getElementById('hero-mid').textContent     = P.hero.headlineMiddle;
+    document.getElementById('hero-bot').textContent     = P.hero.headlineBottom;
+    document.getElementById('hero-tagline').textContent = P.hero.tagline;
+
+    // ── WORK CARDS ──
+    const workGrid = document.getElementById('work-grid');
+    P.work.forEach((c, i) => {
+      const card = document.createElement('div');
+      card.className = 'case-card reveal';
+      card.dataset.case = i;
+      card.innerHTML = `
+        <div class="case-body">
+          <div class="case-tags">${c.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+          <h3 class="case-title">${c.title}</h3>
+          <p class="case-desc">${c.desc}</p>
+        </div>
+        <div class="case-meta">
+          <div>
+            <div class="case-meta-item">
+              <div class="case-meta-label">${c.metaLabel1}</div>
+              <div class="case-meta-value">${c.metaValue1}</div>
+            </div>
+            <br/>
+            <div class="case-meta-item">
+              <div class="case-meta-label">${c.metaLabel2}</div>
+              <div class="case-meta-value">${c.metaValue2}</div>
+            </div>
+          </div>
+          <div class="case-arrow">→</div>
+        </div>`;
+      workGrid.appendChild(card);
+    });
+
+    // ── ABOUT ──
+    const aboutBody = document.getElementById('about-body');
+    P.about.paragraphs.forEach(p => {
+      const el = document.createElement('p');
+      el.innerHTML = p;
+      aboutBody.appendChild(el);
+    });
+
+    const aboutSidebar = document.getElementById('about-sidebar');
+    P.about.sidebar.forEach(block => {
+      const div = document.createElement('div');
+      div.className = 'sidebar-block';
+      div.innerHTML = `
+        <div class="sidebar-label">${block.label}</div>
+        <ul class="sidebar-list">${block.items.map(i => `<li>${i}</li>`).join('')}</ul>`;
+      aboutSidebar.appendChild(div);
+    });
+
+    // ── PULL QUOTE ──
+    const pq = P.pullQuote;
+    document.getElementById('pull-quote-text').innerHTML =
+      `"${pq.before}<span class="pq-accent">${pq.accent}</span>${pq.after}"`;
+    document.getElementById('pull-quote-attr').textContent = '— ' + pq.attr;
+
+    // ── WRITING ──
+    const writingList = document.getElementById('writing-list');
+    P.writing.forEach(w => {
+      const a = document.createElement('a');
+      a.href = w.href;
+      a.className = 'writing-item reveal';
+      a.innerHTML = `
+        <span class="writing-title">${w.title}</span>
+        <span class="writing-date">${w.date}</span>
+        <span class="writing-arrow">→</span>`;
+      writingList.appendChild(a);
+    });
+
+    // ── CONTACT ──
+    const emailEl  = document.getElementById('contact-email');
+    const ctaEl    = document.getElementById('contact-cta');
+    emailEl.textContent = P.contact.email;
+    emailEl.href        = 'mailto:' + P.contact.email;
+    ctaEl.href          = 'mailto:' + P.contact.email;
+    document.getElementById('contact-availability').textContent = P.contact.availability;
+
+    const linksEl = document.getElementById('contact-links');
+    P.contact.links.forEach(l => {
+      const a = document.createElement('a');
+      a.href = l.href;
+      a.className = 'contact-link';
+      a.innerHTML = `<span class="contact-link-label">${l.label}</span><span>${l.text}</span>`;
+      linksEl.appendChild(a);
+    });
+
+    // ── FOOTER ──
+    document.getElementById('footer-copy').textContent    = P.footer.copy;
+    document.getElementById('footer-tagline').textContent = P.footer.tagline;
+
+    // ── MODAL ──
+    const overlay    = document.getElementById('modal-overlay');
+    const modalInner = document.getElementById('modal-inner');
+
+    function openModal(idx) {
+      const d = P.work[idx].modal;
+      const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
+      modalInner.innerHTML = `
+        <div class="modal-tag-row">${P.work[idx].tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+        <h2 class="modal-title">${P.work[idx].title}</h2>
+        <div class="modal-rule" style="background:${accentColor}"></div>
+        <div class="modal-section">
+          <p class="modal-section-label">The Problem</p>
+          <p class="modal-body">${d.problem}</p>
+        </div>
+        <div class="modal-section">
+          <p class="modal-section-label">The Approach</p>
+          <p class="modal-body">${d.approach}</p>
+        </div>
+        <div class="modal-section">
+          <p class="modal-section-label">Outcome</p>
+          <p class="modal-body">${d.outcome}</p>
+        </div>
+        <div class="modal-stats">
+          ${d.stats.map(s => `<div><div class="stat-num">${s.num}</div><div class="stat-label">${s.label}</div></div>`).join('')}
+        </div>`;
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('work-grid').addEventListener('click', e => {
+      const card = e.target.closest('.case-card');
+      if (card) openModal(parseInt(card.dataset.case));
+    });
+    document.getElementById('modal-close').addEventListener('click', closeModal);
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    // ── NAV HIDE / SHOW ──
+    let lastScroll = 0;
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      nav.classList.toggle('hidden', y > lastScroll && y > 80);
+      lastScroll = y;
+    }, { passive: true });
+
+    // ── SCROLL REVEAL ──
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const siblings = [...entry.target.parentElement.querySelectorAll('.reveal:not(.visible)')];
+        setTimeout(() => entry.target.classList.add('visible'), siblings.indexOf(entry.target) * 60);
+        revealObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  </script>
+
+</body>
+</html>
