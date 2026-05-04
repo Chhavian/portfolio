@@ -237,11 +237,15 @@
     const modalInner = document.getElementById('modal-inner');
 
     function openModal(idx) {
-      const d = P.work[idx].modal;
+      const w = P.work[idx];
+      const d = w.modal;
       const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
+      const pdfLink = w.pdfUrl
+        ? `<a href="${w.pdfUrl}" target="_blank" rel="noopener" class="btn-outline" style="display:inline-block;margin-top:40px;">View full case study →</a>`
+        : '';
       modalInner.innerHTML = `
-        <div class="modal-tag-row">${P.work[idx].tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
-        <h2 class="modal-title">${P.work[idx].title}</h2>
+        <div class="modal-tag-row">${w.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+        <h2 class="modal-title">${w.title}</h2>
         <div class="modal-rule" style="background:${accentColor}"></div>
         <div class="modal-section">
           <p class="modal-section-label">The Problem</p>
@@ -257,7 +261,8 @@
         </div>
         <div class="modal-stats">
           ${d.stats.map(s => `<div><div class="stat-num">${s.num}</div><div class="stat-label">${s.label}</div></div>`).join('')}
-        </div>`;
+        </div>
+        ${pdfLink}`;
       overlay.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
