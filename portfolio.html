@@ -53,10 +53,10 @@
       </div>
       <div class="work-grid" id="work-grid"></div>
 
-      <!-- PM EXERCISES -->
+      <!-- CASE STUDIES -->
       <div class="section-header reveal" style="margin-top:80px;">
-        <span class="section-num">Ex</span>
-        <h2 class="section-title" style="font-size:1.4rem;">PM Exercises</h2>
+        <span class="section-num">CS</span>
+        <h2 class="section-title" style="font-size:1.4rem;">Case Studies</h2>
       </div>
       <div class="work-grid" id="exercises-grid"></div>
     </div>
@@ -268,22 +268,16 @@
       const pdfLink = w.pdfUrl
         ? `<a href="${w.pdfUrl}" target="_blank" rel="noopener" class="btn-outline" style="display:inline-block;margin-top:40px;">View full case study →</a>`
         : '';
+      const bodySections = d.sections
+        ? d.sections.map(s => `<div class="modal-section"><p class="modal-section-label">${s.label}</p><p class="modal-body">${s.body}</p></div>`).join('')
+        : `<div class="modal-section"><p class="modal-section-label">The Problem</p><p class="modal-body">${d.problem}</p></div>
+           <div class="modal-section"><p class="modal-section-label">The Approach</p><p class="modal-body">${d.approach}</p></div>
+           <div class="modal-section"><p class="modal-section-label">Outcome</p><p class="modal-body">${d.outcome}</p></div>`;
       modalInner.innerHTML = `
         <div class="modal-tag-row">${w.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
         <h2 class="modal-title">${w.title}</h2>
         <div class="modal-rule" style="background:${accentColor}"></div>
-        <div class="modal-section">
-          <p class="modal-section-label">The Problem</p>
-          <p class="modal-body">${d.problem}</p>
-        </div>
-        <div class="modal-section">
-          <p class="modal-section-label">The Approach</p>
-          <p class="modal-body">${d.approach}</p>
-        </div>
-        <div class="modal-section">
-          <p class="modal-section-label">Outcome</p>
-          <p class="modal-body">${d.outcome}</p>
-        </div>
+        ${bodySections}
         <div class="modal-stats">
           ${d.stats.map(s => `<div><div class="stat-num">${s.num}</div><div class="stat-label">${s.label}</div></div>`).join('')}
         </div>

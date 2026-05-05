@@ -72,13 +72,36 @@ experiences when something goes wrong.`,
     },
 
     {
-      // Card — no modal, intro only
-      noModal:    true,
+      // Card
       tags:       ["Engineering", "Site Reliability", "American Express"],
       title:      "Engineer & SRE — American Express",
       desc:       "Five years building and keeping systems alive. Wrote code that processed millions of transactions, ran incident response for critical financial infrastructure, and developed the instinct for reliability that now shapes how I think about product.",
       metaLabel1: "Company",  metaValue1: "American Express",
       metaLabel2: "Period",   metaValue2: "Jul 2019 – Dec 2023",
+
+      // Modal — split by role progression
+      modal: {
+        sections: [
+          {
+            label: "SRE",
+            body:  `Owned monitoring and alerting across critical payment processing infrastructure — the systems that kept millions of daily transactions running. Designed the alerting architecture that reduced incident response time by 22%. Maintained 99.9% uptime on payment processing — not as a target, as an operational standard. Incident response at this level means understanding failure modes before they propagate, not reacting after the fact.`,
+          },
+          {
+            label: "Cloud Engineer — SRE I & II",
+            body:  `Built and maintained RESTful APIs integrating HR systems with analytics platforms — real-time data access across enterprise-scale org infrastructure. These APIs handled 10,000+ daily requests at sub-200ms response times with 99.8% reliability. Introduced to distributed systems at the level that matters: not textbook CAP theorem, but actual decisions about what degrades gracefully and what doesn't.`,
+          },
+          {
+            label: "Engineer III",
+            body:  `Joined as a graduate engineer and built internal tooling from first principles. Delivered the employee onboarding system that improved user satisfaction scores by 30%. Built system health metrics into user-facing dashboards — an early version of the instinct that would later define the product work: making complexity legible to the people who depend on it.`,
+          },
+        ],
+        stats: [
+          { num: "22%",    label: "Reduction in incident response time" },
+          { num: "99.9%",  label: "Uptime on payment processing" },
+          { num: "10K+",   label: "Daily API requests at sub-200ms" },
+          { num: "5 yrs",  label: "Engineering tenure" },
+        ],
+      },
     },
   ],
 
