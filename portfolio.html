@@ -126,12 +126,21 @@
     <span class="footer-copy" id="footer-tagline"></span>
   </footer>
 
-  <!-- MODAL -->
+  <!-- CASE STUDY MODAL -->
   <div class="modal-overlay" id="modal-overlay">
     <div class="modal-content">
       <button class="modal-close" id="modal-close">✕</button>
       <div id="modal-inner"></div>
     </div>
+  </div>
+
+  <!-- PDF VIEWER MODAL -->
+  <div class="pdf-overlay" id="pdf-overlay">
+    <div class="pdf-header">
+      <span class="pdf-title" id="pdf-title"></span>
+      <button class="pdf-close" id="pdf-close">✕</button>
+    </div>
+    <iframe class="pdf-frame" id="pdf-frame" src="" title="Case study PDF"></iframe>
   </div>
 
   <!-- Content data -->
@@ -294,11 +303,31 @@
       openModal(parseInt(card.dataset.case));
     });
 
+    // ── PDF VIEWER ──
+    const pdfOverlay = document.getElementById('pdf-overlay');
+    const pdfFrame   = document.getElementById('pdf-frame');
+    const pdfTitle   = document.getElementById('pdf-title');
+
+    function openPdf(url, title) {
+      pdfFrame.src = url;
+      pdfTitle.textContent = title;
+      pdfOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closePdf() {
+      pdfOverlay.classList.remove('open');
+      pdfFrame.src = '';
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('pdf-close').addEventListener('click', closePdf);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closePdf(); });
+
     document.getElementById('exercises-grid').addEventListener('click', e => {
       const card = e.target.closest('.case-card');
       if (!card) return;
       const ex = P.exercises[parseInt(card.dataset.exercise)];
-      if (ex && ex.pdfUrl) window.open(ex.pdfUrl, '_blank', 'noopener');
+      if (ex && ex.pdfUrl) openPdf(ex.pdfUrl, ex.title);
     });
     document.getElementById('modal-close').addEventListener('click', closeModal);
     overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
