@@ -11,13 +11,13 @@ const PORTFOLIO = {
 
   // ── HERO ──────────────────────────────────
   hero: {
-    status: "Product Manager — Open to new roles",
+    status: "Product Manager. Open to new roles",
     // Three lines of the large display headline.
     // The middle line gets the accent-colour highlight.
     headlineTop:    "Product",
     headlineMiddle: "thinking.",
     headlineBottom: "Built.",
-    tagline: `Engineer. SRE. PM. The arc is a straight line — compounding systems thinking.
+    tagline: `Engineer. SRE. PM. The arc is a straight line: compounding systems thinking.
 I care about how the parts interact, where the failure modes live, and what the user
 experiences when something goes wrong.`,
   },
@@ -30,15 +30,15 @@ experiences when something goes wrong.`,
     {
       // Card
       tags:       ["FinTech", "0→1", "UK Market"],
-      title:      "First PM — Saturn",
-      desc:       "Joined as the first product hire at a UK fintech serving financial advisers. Built the product function from scratch — discovery, prioritisation, roadmap, and shipping — across a platform used by 650+ client firms.",
+      title:      "First PM, Saturn",
+      desc:       "Joined as the first product hire at a UK fintech serving financial advisers. Built the product function from scratch: discovery, prioritisation, roadmap, and shipping. Across a platform used by 650+ client firms.",
       metaLabel1: "Company",  metaValue1: "Saturn",
       metaLabel2: "Period",   metaValue2: "Aug 2025 – Present",
 
       // Modal
       modal: {
-        problem:  `Saturn is a UK fintech platform built for financial advisers. When I joined as the first PM, the product function didn't exist — there was no discovery process, no roadmap discipline, no structured way to decide what to build next. The platform was already live and serving real client firms, but growing without a clear product strategy. The challenge: build the PM function from scratch without slowing down a fast-moving team.`,
-        approach: `Started with discovery — deeply understanding the advisers using the platform, where they were spending time, where the friction was. Established a prioritisation framework the team could actually use. Built the roadmap collaboratively so engineering and leadership were aligned before a single sprint started. Focused early effort on the workflows that consumed the most adviser time, since that was where the pain was clearest and the upside most measurable.`,
+        problem:  `Saturn is a UK fintech platform built for financial advisers. When I joined as the first PM, the product function didn't exist. No discovery process, no roadmap discipline, no structured way to decide what to build next. The platform was already live and serving real client firms, but growing without a clear product strategy. The challenge: build the PM function from scratch without slowing down a fast-moving team.`,
+        approach: `Started with discovery: deeply understanding the advisers using the platform, where they were spending time, where the friction was. Established a prioritisation framework the team could actually use. Built the roadmap collaboratively so engineering and leadership were aligned before a single sprint started. Focused early effort on the workflows that consumed the most adviser time, since that was where the pain was clearest and the upside most measurable.`,
         outcome:  `Platform now contributes £120K+ in annual recurring revenue. 2,000+ monthly active users. Adviser admin time reduced by 60% on key workflows. Serving 650+ client firms across the UK.`,
         stats: [
           { num: "£120K+", label: "Annual revenue contributed" },
@@ -52,16 +52,16 @@ experiences when something goes wrong.`,
     {
       // Card
       tags:       ["Enterprise", "B2B", "Financial Services"],
-      title:      "Product Manager — American Express",
-      desc:       "Sole PM on the co-brand partner data portal — a compliance-critical product serving airline and hotel partners across Amex's global card network. Rebuilt onboarding, automated manual workflows, and renewed Amazon's integration.",
+      title:      "Product Manager, American Express",
+      desc:       "Sole PM on the co-brand partner data portal, a compliance-critical product serving airline and hotel partners across Amex's global card network. Rebuilt onboarding, automated manual workflows, and renewed Amazon's integration.",
       metaLabel1: "Company",  metaValue1: "American Express",
       metaLabel2: "Period",   metaValue2: "Jan 2024 – Jul 2025",
 
       // Modal
       modal: {
-        problem:  `Amex runs co-brand credit cards with airlines, hotel chains, and other global partners. Each partner has a legitimate need to see how their card is performing: spend data, transaction volumes, cardholder behaviour tied to their brand. The portal I inherited was supposed to give them that. It didn't work well enough to be trusted. Two user groups with competing needs: external partners who needed clean, accurate data they could act on, and internal Amex stakeholders who needed to control precisely what left the building. Compliance wasn't a feature — it was the load-bearing wall.`,
-        approach: `First job: understand the damage — what partners had been promised, what the system was delivering, and where the gaps were creating compliance exposure. The hardest design problem was data access controls: each partner should only ever see data scoped to their co-brand relationship, never another partner's numbers or aggregate Amex data. Getting the data model right required working closely with legal, engineering, and Amex's data governance teams simultaneously. Most stakeholder work was internal — aligning people with strong opinions and real authority before a single line of partner-facing UI changed.`,
-        outcome:  `Rebuilt and automated the partner onboarding flow — previously a manual, support-heavy process — and took it from broken to reliable. Onboarded 40+ partners through it, including renewing Amazon's integration. Manual workflows reduced by 40%. Partner support requests dropped significantly as onboarding stopped generating friction that needed human intervention to resolve.`,
+        problem:  `Amex runs co-brand credit cards with airlines, hotel chains, and other global partners. Each partner has a legitimate need to see how their card is performing: spend data, transaction volumes, cardholder behaviour tied to their brand. The portal I inherited was supposed to give them that. It didn't work well enough to be trusted. Two user groups with competing needs: external partners who needed clean, accurate data they could act on, and internal Amex stakeholders who needed to control precisely what left the building. Compliance wasn't a feature. It was the load-bearing wall.`,
+        approach: `First job: understand the damage. What partners had been promised, what the system was delivering, and where the gaps were creating compliance exposure. The hardest design problem was data access controls: each partner should only ever see data scoped to their co-brand relationship, never another partner's numbers or aggregate Amex data. Getting the data model right required working closely with legal, engineering, and Amex's data governance teams simultaneously. Most stakeholder work was internal: aligning people with strong opinions and real authority before a single line of partner-facing UI changed.`,
+        outcome:  `Rebuilt and automated the partner onboarding flow (previously a manual, support-heavy process) and took it from broken to reliable. Onboarded 40+ partners through it, including renewing Amazon's integration. Manual workflows reduced by 40%. Partner support requests dropped significantly as onboarding stopped generating friction that needed human intervention to resolve.`,
         stats: [
           { num: "40%",    label: "Reduction in manual workflows" },
           { num: "40+",    label: "Partners onboarded" },
@@ -74,7 +74,7 @@ experiences when something goes wrong.`,
     {
       // Card
       tags:       ["Engineering", "Site Reliability", "American Express"],
-      title:      "Engineer & SRE — American Express",
+      title:      "Engineer & SRE, American Express",
       desc:       "Five years building and keeping systems alive. Wrote code that processed millions of transactions, ran incident response for critical financial infrastructure, and developed the instinct for reliability that now shapes how I think about product.",
       metaLabel1: "Company",  metaValue1: "American Express",
       metaLabel2: "Period",   metaValue2: "Jul 2019 – Dec 2023",
@@ -84,15 +84,15 @@ experiences when something goes wrong.`,
         sections: [
           {
             label: "SRE",
-            body:  `Owned monitoring and alerting across critical payment processing infrastructure — the systems that kept millions of daily transactions running. Designed the alerting architecture that reduced incident response time by 22%. Maintained 99.9% uptime on payment processing — not as a target, as an operational standard. Incident response at this level means understanding failure modes before they propagate, not reacting after the fact.`,
+            body:  `Owned monitoring and alerting across critical payment processing infrastructure: the systems that kept millions of daily transactions running. Designed the alerting architecture that reduced incident response time by 22%. Maintained 99.9% uptime on payment processing. Not as a target. An operational standard. Incident response at this level means understanding failure modes before they propagate, not reacting after the fact.`,
           },
           {
-            label: "Cloud Engineer — SRE I & II",
-            body:  `Built and maintained RESTful APIs integrating HR systems with analytics platforms — real-time data access across enterprise-scale org infrastructure. These APIs handled 10,000+ daily requests at sub-200ms response times with 99.8% reliability. Introduced to distributed systems at the level that matters: not textbook CAP theorem, but actual decisions about what degrades gracefully and what doesn't.`,
+            label: "Cloud Engineer / SRE I & II",
+            body:  `Built and maintained RESTful APIs integrating HR systems with analytics platforms for real-time data access across enterprise-scale org infrastructure. These APIs handled 10,000+ daily requests at sub-200ms response times with 99.8% reliability. Introduced to distributed systems at the level that matters: not textbook CAP theorem, but actual decisions about what degrades gracefully and what doesn't.`,
           },
           {
             label: "Engineer III",
-            body:  `Joined as a graduate engineer and built internal tooling from first principles. Delivered the employee onboarding system that improved user satisfaction scores by 30%. Built system health metrics into user-facing dashboards — an early version of the instinct that would later define the product work: making complexity legible to the people who depend on it.`,
+            body:  `Joined as a graduate engineer and built internal tooling from first principles. Delivered the employee onboarding system that improved user satisfaction scores by 30%. Built system health metrics into user-facing dashboards, an early version of the instinct that would later define the product work: making complexity legible to the people who depend on it.`,
           },
         ],
         stats: [
@@ -111,14 +111,14 @@ experiences when something goes wrong.`,
   exercises: [
     {
       tags:    ["Consumer", "Mobile", "Growth"],
-      title:   "Increasing Experiences feature awareness — Airbnb",
+      title:   "Increasing Experiences feature awareness, Airbnb",
       desc:    "70% of 100 frequent travellers had never heard of Airbnb Experiences. 5% had ever booked one. A RICE-scored analysis of three solutions led to a single recommendation: surface location-matched Experiences on the listing page, before the booking decision.",
       pdfUrl:  "content/Airbnb_ Increasing Experiences Feature Awareness.pdf",
       date:    "Aug 2025",
     },
     {
       tags:    ["Consumer", "Fintech", "Re-engagement"],
-      title:   "Improving product discoverability for returning users — CRED",
+      title:   "Improving product discoverability for returning users, CRED",
       desc:    "18 of 20 users studied never bought in their first session. There was no way to re-find a product without repeating 8 steps from scratch. A passive 'Explore Again' homepage rail reduced the return journey to 2 steps.",
       pdfUrl:  "content/CRED_ Improving Product Discoverability.pdf",
       date:    "Aug 2025",
@@ -129,10 +129,10 @@ experiences when something goes wrong.`,
   // Each string = one paragraph.
   about: {
     paragraphs: [
-      `Chhavi Chauhan. Product manager with a technical foundation spanning software engineering, site reliability, and product — most recently at Saturn and American Express.`,
-      `The arc from engineer to SRE to PM isn't a pivot — it's compounding. Five years building and keeping Amex systems alive gave me a specific kind of instinct: uptime, latency, and graceful degradation aren't ops concerns, they're product promises. Breaking those promises has costs that compound quietly until they don't. <strong>That instinct shapes every product decision I make.</strong>`,
-      `At Saturn I built the product function from scratch — no playbook, no predecessor, just a fast-moving team and real advisers with real problems. At Amex as PM, the work was translation: between what legal required, what engineering could build, and what partners actually needed to do their jobs. Neither aligned naturally. That's where the interesting work lives.`,
-      `Sharp eye for fashion. Not as a hobby — as a discipline. The instinct that makes a well-cut garment work is the same instinct that makes a well-designed onboarding flow feel inevitable. Proportion, texture, context. These aren't soft skills.`,
+      `Chhavi Chauhan. Product manager with a technical foundation spanning software engineering, site reliability, and product, most recently at Saturn and American Express.`,
+      `The arc from engineer to SRE to PM isn't a pivot. It's compounding. Five years building and keeping Amex systems alive gave me a specific kind of instinct: uptime, latency, and graceful degradation aren't ops concerns, they're product promises. Breaking those promises has costs that compound quietly until they don't. <strong>That instinct shapes every product decision I make.</strong>`,
+      `At Saturn I built the product function from scratch. No playbook, no predecessor. Just a fast-moving team and real advisers with real problems. At Amex as PM, the work was translation: between what legal required, what engineering could build, and what partners actually needed to do their jobs. Neither aligned naturally. That's where the interesting work lives.`,
+      `Sharp eye for fashion. Not as a hobby. As a discipline. The instinct that makes a well-cut garment work is the same instinct that makes a well-designed onboarding flow feel inevitable. Proportion, texture, context. These aren't soft skills.`,
     ],
     sidebar: [
       {
@@ -157,7 +157,7 @@ experiences when something goes wrong.`,
   // ── PULL QUOTE ────────────────────────────
   // `before` + highlighted `accent` + `after` form the full quote.
   pullQuote: {
-    before: "The interface is the product. Most failures aren't engineering failures — they're ",
+    before: "The interface is the product. Most failures aren't engineering failures. They're ",
     accent: "clarity failures.",
     after:  "",
     attr:   "How I think about product craft",
@@ -178,9 +178,9 @@ Legal is in the room. Compliance is in the room. The enterprise partner who cont
 
 None of this makes the user less important. But it does make product management significantly harder than "what does the user want?"
 
-The job is to understand what the user needs, hold that clearly, and then navigate the real constraints — without using those constraints as excuses to build the wrong thing.
+The job is to understand what the user needs, hold that clearly, and then navigate the real constraints, without using them as excuses to build the wrong thing.
 
-At Amex, the hardest design problems weren't about what partners wanted to see. That part was easy — they wanted everything. The hard part was determining what they could legitimately see, given data governance rules that existed for real reasons. The user-centred answer and the compliant answer had to be the same answer. That required actual thinking, not a framework.
+At Amex, the hardest design problems weren't about what partners wanted to see. That part was easy: they wanted everything. The hard part was determining what they could legitimately see, given data governance rules that existed for real reasons. The user-centred answer and the compliant answer had to be the same answer. That required actual thinking, not a framework.
 
 "The user isn't the only one in the room" isn't a pessimistic statement. It's a description of the job. Pretending otherwise doesn't make you more user-centred. It makes you less useful.`,
     },
@@ -188,15 +188,15 @@ At Amex, the hardest design problems weren't about what partners wanted to see. 
       title: "Care is not a soft skill",
       date: "2025",
       href: "#",
-      body: `Somewhere along the way, care got filed under "soft skills" — the category that means important but not really measurable, and therefore not really serious.
+      body: `Somewhere along the way, care got filed under "soft skills," the category that means important but not really measurable, and therefore not really serious.
 
 This is wrong, and it matters that it's wrong.
 
 Care is what separates work that's technically correct from work that's actually good. A spec can be complete and still miss the point. A flow can pass usability testing and still feel like it was built by someone who never intended to use it. The gap between those two states is care.
 
-Care shows up in the things that don't have to be right. The edge case nobody will hit for six months. The error message that most users will never read. The loading state that lasts half a second. These are the places where care is optional — where time pressure and ticket count make it easy to ship the expedient version and move on.
+Care shows up in the things that don't have to be right. The edge case nobody will hit for six months. The error message that most users will never read. The loading state that lasts half a second. These are the places where care is optional: where time pressure and ticket count make it easy to ship the expedient version and move on.
 
-The thing about care is that it compounds. Users don't experience individual features in isolation. They experience the accumulation of every decision — the polished ones and the ones where nobody bothered. The overall quality of a product is the average of those decisions over time, weighted toward the low end.
+The thing about care is that it compounds. Users don't experience individual features in isolation. They experience the accumulation of every decision, the polished ones and the ones where nobody bothered. The overall quality of a product is the average of those decisions over time, weighted toward the low end.
 
 Care is not soft. Care is a multiplier on every other skill you have.`,
     },
@@ -206,7 +206,7 @@ Care is not soft. Care is a multiplier on every other skill you have.`,
       href: "#",
       body: `Most communication in product teams fails for the same reason: the person writing it hasn't finished thinking about what they actually want to say.
 
-Jargon is one symptom. Long sentences are another. Passive voice. Hedge words. The construction that sounds decisive but commits to nothing. These aren't style choices — they're signals that the thinking isn't done.
+Jargon is one symptom. Long sentences are another. Passive voice. Hedge words. The construction that sounds decisive but commits to nothing. These aren't style choices. They're signals that the thinking isn't done.
 
 Clarity requires more work than vagueness, not less. A crisp paragraph takes longer to write than a rambling one because it requires you to decide what matters. That's the uncomfortable part. Deciding that something matters is also deciding that something else doesn't. That's a real decision with real consequences, and it's easier to leave it ambiguous.
 
@@ -214,17 +214,17 @@ But ambiguity doesn't resolve itself. It migrates. A vague requirement becomes a
 
 Say it plainly. Write the hard thing directly. If the sentence can be cut without losing meaning, cut it.
 
-Plain language isn't a tone of voice. It's an act of respect for the person reading — the assertion that their time matters more than your comfort.`,
+Plain language isn't a tone of voice. It's an act of respect for the person reading: the assertion that their time matters more than your comfort.`,
     },
     {
       title: "Actions over words, always",
       date: "2025",
       href: "#",
-      body: `People are better at describing their intentions than predicting their behaviour. This isn't a character flaw — it's a cognitive one. When you ask someone what they would do in a hypothetical, they tell you who they'd like to be. What they actually do under real conditions, with real tradeoffs, is a different dataset entirely.
+      body: `People are better at describing their intentions than predicting their behaviour. This isn't a character flaw. It's a cognitive one. When you ask someone what they would do in a hypothetical, they tell you who they'd like to be. What they actually do under real conditions, with real tradeoffs, is a different dataset entirely.
 
 This matters for product, but it matters more generally.
 
-In product research, it means that self-reported behaviour is a starting point, not evidence. The user who tells you they'd pay for a feature is not lying — they genuinely believe it. They also won't pay. The gap between stated preference and revealed preference is where most product bets go wrong.
+In product research, it means that self-reported behaviour is a starting point, not evidence. The user who tells you they'd pay for a feature is not lying. They genuinely believe it. They also won't pay. The gap between stated preference and revealed preference is where most product bets go wrong.
 
 In teams, it means that culture is what people do when no one is watching, not what gets written in the values doc. The team that says it prioritises quality ships technical debt under deadline pressure. The team that actually prioritises quality pushes back on the deadline.
 
