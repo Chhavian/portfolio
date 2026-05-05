@@ -140,8 +140,10 @@
       <span class="pdf-title" id="pdf-title"></span>
       <button class="pdf-close" id="pdf-close">✕</button>
     </div>
-    <embed class="pdf-frame" id="pdf-frame" src="" type="application/pdf" />
+    <div class="pdf-canvas-scroll" id="pdf-canvas-scroll"></div>
   </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 
   <!-- Content data -->
   <script src="content.js"></script>
@@ -302,15 +304,33 @@
     const pdfFrame   = document.getElementById('pdf-frame');
     const pdfTitle   = document.getElementById('pdf-title');
 
-    function openPdf(url, title) {
-      pdfFrame.src = url;
-      pdfTitle.textContent = title;
+    const pdfScroll = document.getElementById('pdf-canvas-scroll');
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    async function openPdf(url, title) {
+      pdfScroll.innerHTML = '<p style="color:var(--ink-3);padding:40px;text-align:center;">Loading…</p>';
+      document.getElementById('pdf-title').textContent = title;
       pdfOverlay.classList.add('open');
       document.body.style.overflow = 'hidden';
+
+      const pdf = await pdfjsLib.getDocument(url).promise;
+      pdfScroll.innerHTML = '';
+      for (let i = 1; i <= pdf.numPages; i++) {
+        const page = await pdf.getPage(i);
+        const vp = page.getViewport({ scale: window.devicePixelRatio > 1 ? 2 : 1.5 });
+        const canvas = document.createElement('canvas');
+        canvas.width  = vp.width;
+        canvas.height = vp.height;
+        canvas.style.cssText = 'display:block;width:100%;max-width:860px;margin:0 auto 6px;';
+        pdfScroll.appendChild(canvas);
+        await page.render({ canvasContext: canvas.getContext('2d'), viewport: vp }).promise;
+      }
     }
+
     function closePdf() {
       pdfOverlay.classList.remove('open');
-      pdfFrame.src = '';
+      pdfScroll.innerHTML = '';
       document.body.style.overflow = '';
     }
 
