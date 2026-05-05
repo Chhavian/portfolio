@@ -52,6 +52,13 @@
         <h2 class="section-title">Work</h2>
       </div>
       <div class="work-grid" id="work-grid"></div>
+
+      <!-- PM EXERCISES -->
+      <div class="section-header reveal" style="margin-top:80px;">
+        <span class="section-num">Ex</span>
+        <h2 class="section-title" style="font-size:1.4rem;">PM Exercises</h2>
+      </div>
+      <div class="work-grid" id="exercises-grid"></div>
     </div>
   </section>
 
@@ -146,33 +153,42 @@
     document.getElementById('hero-tagline').textContent = P.hero.tagline;
 
     // ── WORK CARDS ──
-    const workGrid = document.getElementById('work-grid');
-    P.work.forEach((c, i) => {
+    function buildCard(c, i, isExercise) {
       const card = document.createElement('div');
-      card.className = 'case-card reveal';
-      card.dataset.case = i;
+      const noModal = c.noModal || isExercise;
+      card.className = 'case-card reveal' + (noModal && !c.pdfUrl ? ' no-modal' : '');
+      if (!noModal) card.dataset.case = i;
+      if (isExercise) card.dataset.exercise = i;
+      if (c.noModal) card.style.cursor = 'default';
+      const arrow = c.noModal ? '' : `<div class="case-arrow">→</div>`;
+      const meta = c.metaLabel1 ? `
+        <div>
+          <div class="case-meta-item">
+            <div class="case-meta-label">${c.metaLabel1}</div>
+            <div class="case-meta-value">${c.metaValue1}</div>
+          </div>
+          <br/>
+          <div class="case-meta-item">
+            <div class="case-meta-label">${c.metaLabel2}</div>
+            <div class="case-meta-value">${c.metaValue2}</div>
+          </div>
+        </div>` : `<div><div class="case-meta-item"><div class="case-meta-label">Date</div><div class="case-meta-value">${c.date}</div></div></div>`;
       card.innerHTML = `
         <div class="case-body">
           <div class="case-tags">${c.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
           <h3 class="case-title">${c.title}</h3>
           <p class="case-desc">${c.desc}</p>
         </div>
-        <div class="case-meta">
-          <div>
-            <div class="case-meta-item">
-              <div class="case-meta-label">${c.metaLabel1}</div>
-              <div class="case-meta-value">${c.metaValue1}</div>
-            </div>
-            <br/>
-            <div class="case-meta-item">
-              <div class="case-meta-label">${c.metaLabel2}</div>
-              <div class="case-meta-value">${c.metaValue2}</div>
-            </div>
-          </div>
-          <div class="case-arrow">→</div>
-        </div>`;
-      workGrid.appendChild(card);
-    });
+        <div class="case-meta">${meta}${arrow}</div>`;
+      return card;
+    }
+
+    const workGrid = document.getElementById('work-grid');
+    P.work.forEach((c, i) => workGrid.appendChild(buildCard(c, i, false)));
+
+    // ── EXERCISES ──
+    const exercisesGrid = document.getElementById('exercises-grid');
+    (P.exercises || []).forEach((c, i) => exercisesGrid.appendChild(buildCard(c, i, true)));
 
     // ── ABOUT ──
     const aboutBody = document.getElementById('about-body');
@@ -274,7 +290,15 @@
 
     document.getElementById('work-grid').addEventListener('click', e => {
       const card = e.target.closest('.case-card');
-      if (card) openModal(parseInt(card.dataset.case));
+      if (!card || card.dataset.case === undefined) return;
+      openModal(parseInt(card.dataset.case));
+    });
+
+    document.getElementById('exercises-grid').addEventListener('click', e => {
+      const card = e.target.closest('.case-card');
+      if (!card) return;
+      const ex = P.exercises[parseInt(card.dataset.exercise)];
+      if (ex && ex.pdfUrl) window.open(ex.pdfUrl, '_blank', 'noopener');
     });
     document.getElementById('modal-close').addEventListener('click', closeModal);
     overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
