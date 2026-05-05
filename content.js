@@ -164,12 +164,74 @@ experiences when something goes wrong.`,
   },
 
   // ── WRITING ───────────────────────────────
-  // Set href to a real URL when published. Leave as "#" until then.
+  // Set href to a real URL when published. Leave as "#" to open in modal.
   writing: [
-    { title: "The user isn't the only one in the room",  date: "2025", href: "#" },
-    { title: "Care is not a soft skill",                 date: "2025", href: "#" },
-    { title: "Say it plainly",                           date: "2025", href: "#" },
-    { title: "Actions over words, always",               date: "2025", href: "#" },
+    {
+      title: "The user isn't the only one in the room",
+      date: "2025",
+      href: "#",
+      body: `Pure user-centricity is the default setting in most product teams. It's taught in courses, repeated in interviews, and treated as the moral anchor of the discipline. The user always comes first.
+
+The problem is that "the user" is rarely the only one in the room when a product decision gets made.
+
+Legal is in the room. Compliance is in the room. The enterprise partner who controls your distribution is in the room. The engineering team that has to live with the decision for three years is in the room. The financial model that determines whether the company exists in eighteen months is in the room.
+
+None of this makes the user less important. But it does make product management significantly harder than "what does the user want?"
+
+The job is to understand what the user needs, hold that clearly, and then navigate the real constraints — without using those constraints as excuses to build the wrong thing.
+
+At Amex, the hardest design problems weren't about what partners wanted to see. That part was easy — they wanted everything. The hard part was determining what they could legitimately see, given data governance rules that existed for real reasons. The user-centred answer and the compliant answer had to be the same answer. That required actual thinking, not a framework.
+
+"The user isn't the only one in the room" isn't a pessimistic statement. It's a description of the job. Pretending otherwise doesn't make you more user-centred. It makes you less useful.`,
+    },
+    {
+      title: "Care is not a soft skill",
+      date: "2025",
+      href: "#",
+      body: `Somewhere along the way, care got filed under "soft skills" — the category that means important but not really measurable, and therefore not really serious.
+
+This is wrong, and it matters that it's wrong.
+
+Care is what separates work that's technically correct from work that's actually good. A spec can be complete and still miss the point. A flow can pass usability testing and still feel like it was built by someone who never intended to use it. The gap between those two states is care.
+
+Care shows up in the things that don't have to be right. The edge case nobody will hit for six months. The error message that most users will never read. The loading state that lasts half a second. These are the places where care is optional — where time pressure and ticket count make it easy to ship the expedient version and move on.
+
+The thing about care is that it compounds. Users don't experience individual features in isolation. They experience the accumulation of every decision — the polished ones and the ones where nobody bothered. The overall quality of a product is the average of those decisions over time, weighted toward the low end.
+
+Care is not soft. Care is a multiplier on every other skill you have.`,
+    },
+    {
+      title: "Say it plainly",
+      date: "2025",
+      href: "#",
+      body: `Most communication in product teams fails for the same reason: the person writing it hasn't finished thinking about what they actually want to say.
+
+Jargon is one symptom. Long sentences are another. Passive voice. Hedge words. The construction that sounds decisive but commits to nothing. These aren't style choices — they're signals that the thinking isn't done.
+
+Clarity requires more work than vagueness, not less. A crisp paragraph takes longer to write than a rambling one because it requires you to decide what matters. That's the uncomfortable part. Deciding that something matters is also deciding that something else doesn't. That's a real decision with real consequences, and it's easier to leave it ambiguous.
+
+But ambiguity doesn't resolve itself. It migrates. A vague requirement becomes a misaligned build. A hedged stakeholder update becomes a surprised executive. A meeting without a clear outcome becomes two more meetings. The fog gets distributed.
+
+Say it plainly. Write the hard thing directly. If the sentence can be cut without losing meaning, cut it.
+
+Plain language isn't a tone of voice. It's an act of respect for the person reading — the assertion that their time matters more than your comfort.`,
+    },
+    {
+      title: "Actions over words, always",
+      date: "2025",
+      href: "#",
+      body: `People are better at describing their intentions than predicting their behaviour. This isn't a character flaw — it's a cognitive one. When you ask someone what they would do in a hypothetical, they tell you who they'd like to be. What they actually do under real conditions, with real tradeoffs, is a different dataset entirely.
+
+This matters for product, but it matters more generally.
+
+In product research, it means that self-reported behaviour is a starting point, not evidence. The user who tells you they'd pay for a feature is not lying — they genuinely believe it. They also won't pay. The gap between stated preference and revealed preference is where most product bets go wrong.
+
+In teams, it means that culture is what people do when no one is watching, not what gets written in the values doc. The team that says it prioritises quality ships technical debt under deadline pressure. The team that actually prioritises quality pushes back on the deadline.
+
+In leadership, credibility is built through behaviour over time. A single inconsistency between what someone says matters and what they actually do creates a hole that takes years to fill.
+
+Pay attention to what people do. Take what people say as one input, weighted accordingly. The signal is in the action.`,
+    },
   ],
 
   // ── CONTACT ───────────────────────────────
@@ -185,7 +247,7 @@ experiences when something goes wrong.`,
   // ── FOOTER ────────────────────────────────
   footer: {
     copy:    "© 2026 Chhavi Chauhan",
-    tagline: "Made with intention.",
+    tagline: "Made with intention. Co-authored with Claude.",
   },
 
 };

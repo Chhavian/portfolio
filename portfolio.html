@@ -227,15 +227,33 @@
 
     // ── WRITING ──
     const writingList = document.getElementById('writing-list');
-    P.writing.forEach(w => {
+    P.writing.forEach((w, i) => {
       const a = document.createElement('a');
       a.href = w.href;
       a.className = 'writing-item reveal';
+      if (w.body) a.dataset.writing = i;
       a.innerHTML = `
         <span class="writing-title">${w.title}</span>
         <span class="writing-date">${w.date}</span>
         <span class="writing-arrow">→</span>`;
       writingList.appendChild(a);
+    });
+
+    writingList.addEventListener('click', e => {
+      const a = e.target.closest('.writing-item');
+      if (!a || a.dataset.writing === undefined) return;
+      e.preventDefault();
+      const w = P.writing[parseInt(a.dataset.writing)];
+      const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
+      modalInner.innerHTML = `
+        <div class="modal-tag-row"><span class="tag">Essay</span><span class="tag">${w.date}</span></div>
+        <h2 class="modal-title">${w.title}</h2>
+        <div class="modal-rule" style="background:${accentColor}"></div>
+        <div class="modal-section">
+          <p class="modal-body writing-body">${w.body.replace(/\n\n/g, '</p><p class="modal-body writing-body">')}</p>
+        </div>`;
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
     });
 
     // ── CONTACT ──
