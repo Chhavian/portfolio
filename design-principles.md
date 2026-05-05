@@ -14,7 +14,7 @@ It should feel like something that was **made**, not assembled. Like someone had
 
 **Ink and Interruption.**
 
-The canvas is white — cold, clean, uncompromising. Black type cuts into it with precision. And then, at deliberate moments, colour arrives like a slap. Not gradient. Not ambient. *Impact.*
+The canvas is warm white — clean, uncompromising. Black type cuts into it with precision. And then, at deliberate moments, colour arrives like a slap. Not gradient. Not ambient. *Impact.*
 
 The palette is restrained in range and aggressive in application:
 
@@ -24,86 +24,71 @@ The palette is restrained in range and aggressive in application:
 | Ink | `#0D0D0D` | Primary text — almost black, not quite |
 | Ink Soft | `#4A4A4A` | Secondary text, captions, metadata |
 | Signal Red | `#E8200C` | Accent 1 — heat, urgency, punctuation |
-| Acid Green | `#B4FF00` | Accent 2 — voltage, the unexpected |
+| Acid Green | `#B4FF00` | Accent 2 — voltage, the unexpected (availability dot) |
 | Burnt Orange | `#F56A00` | Accent 3 — warmth with edge |
-| Chrome Yellow | `#FFD000` | Accent 4 — light, levity, highlight |
+| Chrome Yellow | `#FFD000` | Accent 4 — light, levity (About section border, pull quote) |
 
-**The rule with colour:** Any one of these four accent colours used alone is striking. Two together is intentional. Three is a statement. Four at once is never allowed.
+**The rule with colour:** Any one accent colour used alone is striking. Two together is intentional. Three is a statement. Four at once is never allowed.
 
 Colour appears as:
-- A thick rule or border that bleeds off the page
-- The background fill of a single word in a headline
+- A thick rule that bleeds off the page (hero bottom: Signal Red)
+- The background fill of a word in a headline (hero "thinking.")
 - A hover state that snaps in with no easing
-- A thin underline, 2px, that draws from left to right
-- The background of an entire section — rare, unforgettable
+- A thin underline, 2px, that draws left to right on hover
+- A section border-top (About: Chrome Yellow; Case Studies: Signal Red)
 
-Colour does **not** appear as:
-- Gradients
-- Shadows
-- Rounded pill buttons
-- Background texture fills on body sections
-- Anything that tries to be "subtle"
+Colour does **not** appear as gradients, shadows, rounded pill buttons, or anything that tries to be "subtle."
 
 ---
 
 ## Typography
 
-Typography is the architecture. Everything else is furniture.
+**Implementation uses Google Fonts as close approximations:**
 
-**Display — `Array` / `Druk Wide` / `Editorial New`**
-Big. Structural. Loud when it needs to be, quiet when it's holding space. Headlines should feel like they were *set*, not typed. Alternating weights within a headline (light + bold on the same line) is encouraged. Mix of uppercase and sentence case within the same hierarchy level — not randomly, but with intention.
+- **Display/Body:** `DM Sans` — geometric grotesque, European character
+- **Serif accent:** `DM Serif Display` — for pull quotes and lede text in writing modals
+- **Monospace:** `DM Mono` — for labels, tags, section numbers, dates
 
-**Body — `Suisse Int'l` / `Neue Haas Grotesk` / `ABC Diatype`**
-Not Inter. Not ever. The grotesque here is European, slightly narrow, with enough personality that you notice it if you're looking. 1.8 line-height minimum. The reading experience should feel like a well-set book, not a web app.
-
-**Accent / Callout — `Canela` / `Freight Display`**
-Serif, used sparingly. Pull quotes, single-line case study headers, the occasional sub-heading that needs warmth. This is the texture in an otherwise hard-edged typographic system.
-
-**Monospace — `Berkeley Mono` / `Commit Mono`**
-For technical references, stack callouts, dates. Mono should feel deliberate — like it's making a point about precision — not like it wandered in from a dev blog.
-
-**Scale:**
+**Scale (implemented):**
 ```
-Display:   clamp(4rem, 10vw, 9rem)  — Used for hero text only. One or two words.
-H1:        clamp(2.5rem, 5vw, 4rem)
-H2:        clamp(1.6rem, 3vw, 2.4rem)
-H3:        1.4rem — often in a contrasting weight to H2
-Body:      1.05rem / 1.8 line-height
-Caption:   0.78rem — uppercase, tracked +0.08em
-Label:     0.7rem — uppercase, tracked +0.12em, used for categories/tags
+Hero display:  clamp(4rem, 10vw, 9rem)  — hero only
+H1 (section):  clamp(1.6rem, 3vw, 2.4rem)
+Case title:    clamp(1.4rem, 2.5vw, 2rem)
+Body:          1.05rem / 1.8 line-height
+Caption/label: 0.65–0.7rem, uppercase, tracked +0.10–0.14em
 ```
 
-**Typographic Moves:**
-- A single word in a headline highlighted with an accent colour background (like a marker stroke)
-- Section numbers in tiny monospace, top-left, like a catalogue
-- Running footnotes styled as body text — not superscript
-- Pull quotes that break out of the content column entirely, set in the serif, 2rem+
-- First letter of a case study dropped — large cap, no flourish
+**Typographic moves in use:**
+- Hero headline: light weight + bold weight on adjacent lines
+- "thinking." highlighted with Signal Red background fill
+- Section numbers in tiny monospace, top-left, catalogue style
+- Pull quote in DM Serif Display, italic, 2–3rem
 
 ---
 
 ## Layout
 
-**The Grid is not the law. It is a starting point.**
+Base: 12 columns, max-width 1440px, `max(80px, 6vw)` horizontal margins on desktop.
 
-Base: 12 columns, 24px gutter, max-width 1440px. But the most interesting moments happen when elements escape it.
-
-**Compositional Principles:**
-
-*Mass and void.* The page should have sections of deliberate density (a case study with tight-set text, a skills matrix, a contact section with two options side by side) and sections of deliberate emptiness (a single sentence floating in 200px of vertical padding, a headline that uses only 40% of the viewport width).
-
-*The horizontal rule as a design element.* Not just a separator — a moment. A rule can be 1px ink, or 4px Signal Red, or full-bleed and 8px Chrome Yellow. It marks territory.
-
-*Columns that don't match.* A 70/30 split for case studies (long body text + sidebar metadata). A 50/50 that shifts to 60/40 on scroll. Asymmetry is not disorder — it's visual tension kept on purpose.
-
-*Bleeds.* Colour blocks and images should occasionally run full-width, edge to edge. Not because it's trendy — because it changes the room.
+**Section structure:**
+- Work cards: 70/30 grid (content + meta)
+- Case studies: 3-column body (Problem / Approach / Outcome) with 4-stat grid above
+- About: 7/4 grid (body + sidebar)
+- Contact: 50/50 grid
 
 **Margins:**
 ```
 Mobile:   20px horizontal
 Tablet:   48px horizontal
-Desktop:  max(80px, 6vw) horizontal — breathes properly at any size
+Desktop:  max(80px, 6vw)
 ```
+
+**Horizontal rules as design elements:**
+- `1px` ink-soft: default section separators
+- `1px` ink: section header underlines
+- `6px` Signal Red: hero bottom bleed, case studies section top
+- `6px` Chrome Yellow: about section top
+- `4px` accent colour: modal accent rule, case study section labels
 
 ---
 
@@ -111,63 +96,58 @@ Desktop:  max(80px, 6vw) horizontal — breathes properly at any size
 
 Restraint, then surprise.
 
-Most of the page is still. Elements arrive once (on scroll) and stay. No constant animation. No elements reacting to mouse position on the main content. The site should not feel nervous.
-
 **What moves:**
 
-*Page arrival:* Content fades up, 400ms, `ease-out`. Stagger within sections: 60ms between items. This is the only moment of orchestration.
+*Page arrival:* `.reveal` class — `opacity: 0 → 1`, `translateY(24px → 0)`, 400ms `ease-out`. Stagger: 60ms between siblings.
 
-*Colour hover states:* Snap. Zero easing. A link goes from ink to Signal Red at 0ms — the instantaneous switch is more alive than a 200ms fade.
+*Colour hover states:* Snap. Zero easing (`transition: color 0ms`). Nav links, case cards, writing items all snap to Signal Red at 0ms.
 
-*Underline draw:* On hovered links, an underline grows from left to right over 180ms. `ease-in-out`. The line is 2px, in the current accent colour.
+*Underline draw:* Hovered links grow an underline left to right, 180ms `ease-in-out`, 2px Signal Red.
 
-*Section transitions:* None. The page scrolls. Sections don't slide or fade between each other. Scroll is enough.
+*Nav hide/show:* Hides on scroll down past 80px, returns on scroll up. 300ms ease.
 
-*The one exception:* On the hero, a single text element (a tagline or a status label) may blink — cursor-style, 1s interval — to suggest something live, in-progress. Used once, never repeated elsewhere.
+*Hero blink:* The status dot blinks cursor-style, 1s `step-end`. Used once. Not repeated.
 
----
-
-## Imagery
-
-Photography is optional. Design is not.
-
-If photography is used:
-- High contrast. No soft bokeh portraits. No motivational landscape shots.
-- Black and white preferred, with the option to tint with one accent colour as a duotone
-- Never stock. If it looks like it came from Unsplash, it shouldn't be here.
-- Cropped with intent — faces cut at unexpected points, objects in tight frames
-
-If no photography:
-- The typography and colour system are enough. Don't fill space with imagery out of obligation.
-- Data, if used, can be visualised as pure type (numbers at large scale, not charts)
+*Availability dot:* Green blink at 1.8s interval on contact section.
 
 ---
 
-## Component Reference
+## Components (Implemented)
 
-**Buttons:**
-Two types only. A text link with animated underline. A bordered button with no fill, sharp corners — on hover, background fills with the current accent colour, text inverts to paper. No gradients. No shadows. No rounded corners.
+**Buttons:** Two types only.
+- Text link with animated underline
+- `.btn-outline`: no fill, sharp corners, 1.5px ink border. On hover: background fills with accent, text inverts. Zero easing.
 
-**Cards (for case studies):**
-Flat. Border is 1px ink. On hover: border swaps to accent colour (instant), background shifts to `#F0EDE5`. No elevation. No border-radius.
+**Case Cards:**
+- Flat. `1px solid var(--ink)` border.
+- On hover: border snaps to accent, background shifts to `#F0EDE5`. No elevation, no border-radius.
+- Cards overlap (`margin-bottom: -1px`) so borders collapse cleanly.
 
 **Tags / Labels:**
-Uppercase, tracked, 0.7rem. Bordered rectangle, sharp. Used for: role labels, year ranges, technology stack. Maximum two per card visible before truncation.
+- Uppercase, tracked, 0.7rem monospace. Bordered rectangle, sharp. `1px solid var(--ink-soft)`.
 
 **Navigation:**
-Left: name or wordmark in the body grotesque, medium weight. Right: three or four links, same typeface, no decoration, hover colour snap. On scroll-down: hides. On scroll-up: returns. No hamburger menu on desktop.
+- Left: name in body font, medium weight.
+- Right: four links — Work, Case Studies, About, Writing, Contact.
+- Hides on scroll down, returns on scroll up.
+- No hamburger on desktop.
+
+**Modals (Case Studies + Writing):**
+- Dark overlay `rgba(13,13,13,0.85–0.88)`.
+- White content panel, max-width 760–820px.
+- Slides up 20px on open, 300ms ease.
+- Closes on overlay click or Escape key.
 
 **Dividers:**
-Three weights — `1px` ink soft (default section separator), `2px` ink (heavier emphasis), `6px` accent colour (a moment, used once per page maximum).
-
-**Pull Quote:**
-Full-width, centred, the serif accent font, 2–3rem. Accent colour on first letter or key phrase only. Offset from the content column with significant top/bottom margin. Feels like a poster inside the page.
+- `1px` ink-soft: default
+- `2px` accent: CS section labels (inline, display block)
+- `6px` accent: section top borders
 
 ---
 
 ## What This Site Refuses
 
-No purple. No gradients. No stock photos. No skill percentage bars. No dark-mode toggle as a feature. No emoji in headings. No animated SVG blobs. No glassmorphism. No "Let's build something great together."
+No purple. No gradients. No stock photos. No skill percentage bars. No dark-mode toggle. No emoji in headings. No animated SVG blobs. No glassmorphism. No Twitter/X links. No "Let's build something great together."
 
 No design element that could have been generated by asking an AI for "a modern portfolio website."
 
@@ -179,8 +159,6 @@ Before anything is added, ask two questions:
 
 1. *Does this earn its space?*
 2. *Would a person with taste — real taste — find this interesting or find it predictable?*
-
-If the answer to either is uncertain, the element is not ready.
 
 ---
 
@@ -194,5 +172,3 @@ Not to copy. To feel.
 - **Rick Owens' site** — total commitment to a position
 - **Phaidon monographs** — structure, weight, ink
 - **Virgil Abloh's exhibitions** — the quote on the wall, blown up
-
-The common thread: a clear point of view, held all the way through.

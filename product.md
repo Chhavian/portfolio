@@ -2,9 +2,9 @@
 
 ## How I Think About Building
 
-I came to product management through systems — first as an engineer who cared deeply about how things broke, then as an SRE who became obsessed with reliability at scale, then as a PM at an AI-first company where I learned that the hardest problems are rarely technical.
+I came to product management through systems — first as a software engineer, then as an SRE who became obsessed with reliability at scale, then as a PM at companies where I learned that the hardest problems are rarely technical.
 
-The through-line: I think in systems. I care about how the parts interact, where the failure modes live, and what the user experiences at 2am when something goes wrong. That instinct — shaped by years of being the person who got paged — is what I bring to product.
+The through-line: I think in systems. I care about how the parts interact, where the failure modes live, and what the user experiences when something goes wrong. That instinct — shaped by years of being the person responsible for uptime — is what I bring to product.
 
 ---
 
@@ -16,141 +16,116 @@ Most product failures aren't engineering failures. They're clarity failures — 
 **Reliability is a product feature, not an ops concern.**
 I spent years making sure systems stayed up. That shaped how I approach product: uptime, latency, graceful degradation — these aren't backend concerns, they're promises you're making to users. Breaking those promises has compounding costs.
 
-**AI products require a different kind of honesty.**
-At an AI-first company, I learned that users forgive a lot — except being misled about what the system can and can't do. The best AI product work I've done has been about surfacing uncertainty honestly, not hiding it behind confident-sounding UI.
+**The user isn't the only one in the room.**
+User-centricity is real. But treating it as the end of the conversation is lazy thinking. The honest version of product work is holding the user's needs in one hand and the business's real constraints in the other — and making decisions that don't pretend the second hand doesn't exist.
+
+**Care is not a soft skill.**
+You can replace someone who can write a PRD. You cannot replace someone who writes it like it matters — because to them, it does.
 
 **Taste is a tool.**
-I pay attention to fashion not as a hobby but as a discipline. Knowing what makes something feel right — proportion, material, context — translates directly into product decisions. The instinct that makes a well-tailored jacket work is the same instinct that makes a well-designed onboarding flow feel inevitable.
-
-**Build for the constraint.**
-The best work comes from real constraints, not invented ones. I try to ask: what's the minimum viable version that doesn't accumulate debt?
+The instinct that makes a well-tailored jacket work is the same instinct that makes a well-designed onboarding flow feel inevitable.
 
 ---
 
 ## Work
 
-*Product case studies — the decisions, the tradeoffs, the outcomes.*  
-*For things I built myself (code + design), see [`projects.md`](./projects.md).*
+### Saturn — Product Manager
+**Aug 2025 – Present**
 
-*Each case study follows this structure: context → problem → what I did → what happened → what I learned.*
+Saturn is an AI-powered financial advisory suite built for UK financial firms. I joined as the first PM and own the full product.
+
+**The problem:**
+UK financial advisers operate in a heavily regulated, paper-heavy industry. Meeting notes (fact-finds) are a legal FCA requirement. Client communications are subject to strict compliance standards. The question: how do you make that feel like modern software without cutting corners on what the regulation actually demands?
+
+**What I built:**
+
+*Meeting Intelligence Ecosystem* — Mapped how advisers actually run fact-find sessions and built meeting nodes that fit the real workflow. Includes automated note-taking, speaker identification, and structured fact-finding flows. Reduced adviser administrative time by 60%.
+
+*FCA-Compliant Letter Generation Workflow* — A system processing 1,000+ monthly documents at 95% regulatory accuracy, enabling firms to automate client communications while meeting FCA standards.
+
+*Compliance Suite* — Worked with compliance and engineering to ensure every capability met regulatory requirements before shipping.
+
+*Partner Enablement* — Wrote the pitch guide and onboarding materials that gave the partnerships team what they needed to explain and sell the product to new firms.
+
+**Outcomes:**
+- £120K+ annual revenue contributed across 650+ client firms
+- 2,000+ monthly active users
+- 60% reduction in adviser administrative time
+- 35% improvement in user adoption
+- 30% increase in client firm productivity
 
 ---
 
-### Airbnb — Increasing Experiences Feature Adoption
-
-**Context:** Product management exercise, consumer mobile  
-**Role:** Product Manager  
-**Domain:** Feature discovery, consumer engagement
+### American Express — Product Manager
+**Jan 2024 – Jul 2025**
 
 **The problem:**
-Airbnb's Experiences feature — local activities hosted by people in a destination — had a severe awareness problem. In a survey of frequent travellers who actively used Airbnb, roughly 70% had never heard of Experiences at all. Only 5% had ever booked one. The feature existed; users just never found it. A tab in the navigation, easy to miss, easy to skip. Hosts listing Experiences were taking the hit.
+Global enterprise clients were generating high volumes of feedback with no systematic process for turning it into product decisions. Manual workflows consumed significant time, and there was a persistent gap between what clients needed and what was being built.
 
 **What I did:**
-Started with the user journey, not the UI. The insight that mattered: users are most receptive to discovery at a specific moment — when they're already browsing a listing and the trip is starting to feel real. That's when "what will I actually do there?" kicks in.
 
-I mapped three potential solutions against RICE scores and ruled out the post-booking itinerary builder (high impact, very high effort — not the right first bet) and the interest pop-up flow (too much friction at the top of the funnel). The prioritised solution: surface location-matched Experiences directly on the listing page, as a horizontally scrollable row, visible before a user commits to booking. No new navigation. No opt-in. Just the right content at the right moment.
+*Enterprise Client Analysis* — Built a structured feedback collection process across global enterprise accounts, synthesising client input into prioritised roadmap decisions and feature requirements.
 
-**Success metrics I'd track:**
-The first layer is awareness — unique users scrolling through the Experiences row, clicks, and depth of exploration. The second layer is adoption — saves and bookings. What I'd watch most closely is the drop-off rate between those two stages, since that's where intent converts (or doesn't). The north star: number of Experiences booked per day.
+*Workflow Optimisation* — Systematically analysed user pain points and operational bottlenecks, then designed and implemented process improvements targeting the highest-friction areas.
 
-**What I learned:**
-Feature discoverability isn't a navigation problem — it's a timing problem. Putting Experiences in a tab assumed users were in an exploratory mode. Putting it on the listing page met them where intent was already high. The better intervention is almost always contextual, not structural.
+*Stakeholder Management* — Coordinated requirements gathering and delivery across multiple enterprise accounts simultaneously, maintaining alignment between engineering capability and client expectation.
+
+**Outcomes:**
+- 40% reduction in manual workflows across enterprise accounts
+- Enhanced platform adoption and measurable improvement in client satisfaction
+- Consistent delivery across multiple accounts with no misalignment between technical output and business requirements
 
 ---
 
-### CRED — Improving Product Discoverability for Returning Users
+### American Express — Site Reliability Engineer I, II & III
+**Jul 2019 – Dec 2023**
 
-**Context:** Product management exercise, consumer fintech  
-**Role:** Product Manager  
-**Domain:** Re-engagement, conversion, e-commerce within fintech
+This is where systems thinking became a reflex.
 
-**The problem:**
-CRED's shop — where premium users can redeem coins for discounted products and travel offers — had a drop-off problem that wasn't visible in the obvious places. Users weren't bouncing. They were *leaving to think about it*, then coming back and failing to find what they'd already decided to buy.
+Four and a half years as a software engineer and SRE, progressing from SRE I to SRE III. Built and maintained systems serving millions of daily payment transactions. Designed RESTful APIs handling 10K+ daily requests at sub-200ms response times. Architected monitoring and alerting infrastructure that cut incident response time by 22%. Maintained 99.9% uptime for critical payment processing systems.
 
-The app had no search. No history. No wishlist. So a user who'd seen a product, compared it elsewhere, and come back ready to buy had to scroll the entire catalogue again — only to find the offer had expired, or they just couldn't locate it. The conversion problem was downstream of a memory problem.
-
-A UX study with 20 CRED users confirmed it: all 18 who shopped on the platform said they never bought in their first session. They made the decision elsewhere and returned to complete it. The app wasn't built for that behaviour.
-
-**What I did:**
-Two solutions evaluated. A wishlist/like button feature (user-initiated, explicit save) versus an "Explore Again" widget on the homepage (passive, automatic, zero friction). Both had merit — the wishlist gives users control; the homepage widget requires nothing from them.
-
-RICE scoring favoured the homepage widget: higher reach (it surfaces on landing, no action required), slightly lower effort, and critically — it captures intent that users wouldn't have thought to save. The insight from the data was that the problem wasn't that users forgot to wishlist things. It's that they didn't expect to have to.
-
-The implementation is lightweight: track clicked listings per user, surface them in a horizontally scrollable "Explore Again" row on the homepage, placed above the fold whenever there are no mandatory actions pending. A thumbs feedback nudge to validate usefulness post-launch.
-
-**What I'd track:**
-CTR on the Explore Again widget and conversion rate of returning users who used it. Primary success: if conversion rate climbs as exposure scales. Secondary: products bought per user over time.
-
-**Launch approach:**
-Phase one to high-intent users (2+ app opens per day) — the most likely to be mid-decision and benefit immediately. Phase two scales to daily actives. One month between phases, same metric tracking throughout.
-
-**What I learned:**
-Users will adapt their behaviour to match an app's constraints — and not always in ways that show up as obvious churn. CRED users weren't abandoning the app; they were working around it. The fix was removing the workaround, not adding a new feature. Sometimes the most valuable product decision is making something that already happens invisible.
-
-### American Express — Co-Brand Partner Data Portal
-
-**Context:** American Express, [year range — fill in]
-**Role:** Sole Product Manager
-**Domain:** B2B, financial data, compliance, partner-facing products
-
-**The problem:**
-Amex runs co-brand credit cards with airlines, hotel chains, and other partners — the kind of cards where both logos sit on the front. Each of those partners has a legitimate need to see how their card is performing: spend data, transaction volumes, cardholder behaviour tied to their brand. The portal I inherited was supposed to give them that. It didn't work well enough to be trusted.
-
-The product had two distinct user groups with competing needs: external partners (analysts and compliance teams at airlines and hotel chains) who needed clean, accurate data they could act on — and internal Amex stakeholders who needed to control precisely what left the building. Compliance wasn't a feature; it was the load-bearing wall. What data could be shown, to whom, under what conditions — these weren't product decisions, they were legal and regulatory ones. The product had to enforce them without ever making the external user feel like they were being managed.
-
-**What I did:**
-Took over a product that was incomplete and, in places, wrong. The first job was understanding the damage — what partners had been promised, what the system was actually delivering, and where the gaps were creating compliance exposure.
-
-The hardest design problem was data access controls. Each partner should only ever see data scoped to their co-brand relationship with Amex — not aggregate Amex data, not another partner's numbers. Sounds obvious; the implementation was not. Getting the data model right, and then making sure the UI never accidentally surfaced something it shouldn't, required working closely with legal, engineering, and Amex's data governance teams simultaneously. Most of my stakeholder work was internal — aligning people who had strong opinions and real authority before a single line of partner-facing UI changed.
-
-For external partners, the goal was different: make a compliance-heavy product feel like a professional tool, not a bureaucratic obstacle. The data they needed had to be findable, understandable, and downloadable without requiring them to call Amex every time something was unclear.
-
-**What happened:**
-Rebuilt and automated the partner onboarding flow — previously a manual, support-heavy process — and took it from broken to reliable enough that we onboarded 40+ partners through it, including renewing Amazon's integration. Partner support requests dropped significantly as onboarding stopped generating friction that needed human intervention to resolve.
-
-**What I learned:**
-In regulated environments, the PM's job is partly to be the translator — between what legal requires, what engineering can build, and what users actually need to do their jobs. Those three things rarely align naturally. The product that works is the one that holds all three in tension without collapsing any of them.
-
-Owning a B2B product with external partners as users also taught me that trust is the real product. Data accuracy, access controls, consistent behaviour — these aren't features. They're the reason a partner logs in at all. When those things work invisibly, you've done it right. When onboarding breaks, nothing else matters.
+The PM instinct I carry — the one that asks "what breaks, and what does the user experience when it does?" — was built here.
 
 ---
 
 ## How I Work
 
 **Discovery before solutions.**
-I spend longer in the problem space than most people are comfortable with. I interview users not to validate assumptions but to have mine challenged.
+I spend longer in the problem space than most people are comfortable with.
 
 **Write it down.**
-I believe in written artifacts — PRDs, decision logs, postmortems. Not because process requires it, but because the act of writing forces clarity. If I can't explain a decision in a document, I don't fully understand it.
+PRDs, decision logs, partner guides. If I can't explain a decision in a document, I don't fully understand it.
 
 **Engineering is a first language.**
-I can read code, write simple scripts, and have an informed conversation about system architecture. I don't use this to micromanage engineers — I use it to ask better questions and earn trust.
+I can read code, write simple scripts, and have an informed conversation about system architecture. I use this to ask better questions, not to micromanage.
 
-**Small teams, high trust.**
-I work best in environments where ownership is clear and autonomy is real. I don't need a meeting to make a decision. I need context, a clear problem, and the latitude to solve it.
+**Actions over words.**
+The work is the argument. The decisions are the argument.
 
 ---
 
 ## Skills & Stack
 
-**Product:** Discovery, roadmapping, PRD writing, metrics frameworks, OKR design, user research, A/B testing, go-to-market
+**Product:** Discovery, roadmapping, PRD writing, user research, A/B testing, go-to-market, OKR design, customer journey mapping
 
-**Technical:** Python, SQL, basic infra (k8s, GCP/AWS), incident management, observability tooling, API design patterns
+**Technical:** Python, SQL, basic infra (k8s, GCP/AWS), incident management, observability tooling, RESTful API design, Agile/Scrum
 
-**AI/ML:** Prompt engineering, LLM product integration, RAG architecture tradeoffs, model evaluation, responsible AI practices
+**Compliance & Regulated Domains:** FCA regulations, GDPR, B2B SaaS in financial services, RegTech, audit processes
 
-**Design:** Figma (proficient), design systems thinking, typography and visual hierarchy, brand development
+**AI/ML:** LLM product integration, prompt engineering, compliance-first AI implementation
 
-**Domain:** AI-first SaaS, developer tools, consumer fintech, consumer mobile
+**Design:** Figma (proficient), design systems thinking, typography and visual hierarchy
+
+**Tools:** JIRA, Confluence, Figma, Tableau, Google Analytics, Notion, Miro
 
 ---
 
 ## Things I'm Currently Thinking About
 
 - How AI products should handle epistemic humility in the UI — when should a model say "I don't know"?
-- What makes a brand feel considered vs. constructed
+- What makes a regulated industry product feel trustworthy vs. merely compliant
 - Whether the product manager role as we've defined it will survive the next five years of AI tooling
 
 ---
 
-*Want to talk about any of this? [Get in touch →](/contact)*
+*Want to talk about any of this? [Get in touch →](mailto:chhavi0697@gmail.com)*
