@@ -145,7 +145,7 @@ experiences when something goes wrong.`,
       },
       {
         label: "Stack",
-        items: ["Python, SQL", "k8s, GCP / AWS", "Figma", "LLM product &amp; RAG"],
+        items: ["Python, SQL", "Kubernetes, GCP / AWS", "Figma", "LLM product &amp; RAG"],
       },
       {
         label: "Previously At",
