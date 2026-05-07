@@ -33,7 +33,7 @@ experiences when something goes wrong.`,
       title:      "First PM, Saturn",
       desc:       "Joined as the first product hire at a UK fintech serving financial advisers. Built the product function from scratch: discovery, prioritisation, roadmap, and shipping. Across a platform used by 650+ client firms.",
       metaLabel1: "Company",  metaValue1: "Saturn",
-      metaLabel2: "Period",   metaValue2: "Aug 2025 – Present",
+      metaLabel2: "Period",   metaValue2: "Aug 2025 – Apr 2026",
 
       // Modal
       modal: {
