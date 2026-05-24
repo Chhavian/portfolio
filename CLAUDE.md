@@ -50,69 +50,64 @@ This site speaks directly as Chhavi. When generating or editing content, write i
 
 The portfolio is a **single file: `portfolio.html`**. All CSS and JS are inlined. No framework, no build step. Place `resume.pdf` in the same folder for the download link to work.
 
+PDF case studies live in `content/` and are rendered inline using PDF.js (CDN).
+
 ### Page Sections (in order)
 
-| # | Section ID | Content |
-|---|---|---|
-| — | `#hero` | Name, status, tagline, CTA |
-| 01 | `#work` | Three experience cards: Saturn, Amex PM, Amex SRE/Eng |
-| 02 | `#case-studies` | Full case studies: Saturn + Amex PM |
-| 03 | `#about` | Bio, sidebar (status / craft areas / previously at) |
-| — | `#pull-quote` | Full-bleed dark quote section |
-| 04 | `#writing` | Four essays (clickable, open in modal) |
-| 05 | `#contact` | Email, LinkedIn, resume download, availability status |
+| # | Section ID | Nav Label | Content |
+|---|---|---|---|
+| — | `#hero` | — | Name, status, tagline, CTA |
+| 01 | `#work` | Work | Three experience cards + Case Studies row below |
+| 02 | `#about` | About | Bio, sidebar (status / craft areas / stack / previously at) |
+| — | `#pull-quote` | — | Full-bleed dark quote section |
+| 03 | `#writing` | Beliefs | "Things I believe in" — four essays, each opens in modal |
+| 04 | `#contact` | Contact | Email, LinkedIn, resume download, availability status |
 
 ---
 
 ## Work Section
 
-Three cards, in this order:
+Three cards, in this order. **All three open modals on click.**
 
-### 1. Saturn — First PM (Aug 2025 – Present)
-Tags: FinTech · 0→1 · UK Market · Case Study
-Clicking opens a modal with full case study.
+### 1. Saturn — First PM (Aug 2025 – Apr 2026)
+Tags: FinTech · 0→1 · UK Market
+Modal: Problem / Approach / Outcome + stats (£120K+ ARR · 2,000+ MAU · 60% admin time reduction · 650+ client firms)
 
 ### 2. American Express — Product Manager (Jan 2024 – Jul 2025)
-Tags: Enterprise · Financial Services · Case Study
-Clicking opens a modal with full case study.
+Tags: Enterprise · B2B · Financial Services
+Modal: Problem / Approach / Outcome + stats (40% manual workflow reduction · 40+ partners onboarded · Amazon integration renewed · 18mo tenure)
 
 ### 3. American Express — Engineer & SRE (Jul 2019 – Dec 2023)
 Tags: Engineering · Site Reliability · American Express
-No modal — intro card only. `cursor: default`, `.no-modal` class.
+Modal: **Multi-section** — three labelled sections (SRE / Cloud Engineer & SRE I & II / Engineer III) + stats (22% incident response reduction · 99.9% uptime · 10K+ daily API requests · 5 yrs)
 
 ---
 
-## Case Studies Section
+## Case Studies Sub-section
 
-Full-width blocks immediately after Work, separated by a horizontal rule. Each has:
-- Tags + title + meta row (company / role / period)
-- 4-stat grid
-- Three-column body: Problem → Approach → Outcome
+Immediately below the three work cards, inside `#work`. Labelled "Case Studies" with section num "CS".
 
-### Saturn Stats
-- £120K+ annual revenue contributed
-- 2,000+ monthly active users
-- 60% reduction in adviser admin time
-- 650+ client firms
+Two cards. Clicking opens the PDF in a full-screen overlay (PDF.js renders to canvas):
 
-### Amex PM Stats
-- 40% reduction in manual workflows
-- Global enterprise client base
-- Multiple accounts managed simultaneously
-- 18-month tenure
+| Title | PDF path |
+|---|---|
+| Increasing Experiences feature awareness, Airbnb | `content/Airbnb_ Increasing Experiences Feature Awareness.pdf` |
+| Improving product discoverability for returning users, CRED | `content/CRED_ Improving Product Discoverability.pdf` |
 
 ---
 
-## Writing Section
+## Writing / "Things I believe in" Section
 
-Four essays, each opens in a modal on click.
+Section heading: **"Things I believe in"**. Nav link label: **"Beliefs"**. Section ID: `#writing`.
+
+Four essays, each opens in a modal on click. Click handlers use `data-writing` attributes; `e.preventDefault()` stops scroll-to-top.
 
 | Title | Theme |
 |---|---|
-| The user isn't the only one in the room | Rationality in product vs. pure user-centricity |
-| Care is not a soft skill | Bringing full intent to the work |
-| Say it plainly | Clear communication as an act of respect |
-| Actions over words, always | Actions as the only reliable signal |
+| The user isn't the only one in the room | Navigating real constraints beyond pure user-centricity |
+| Care is not a soft skill | Care as a multiplier on every other skill |
+| Say it plainly | Clarity as an act of respect |
+| Actions over words, always | Revealed preference vs. stated preference |
 
 ---
 
