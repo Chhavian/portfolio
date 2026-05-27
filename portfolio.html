@@ -66,14 +66,14 @@
       transition: transform 280ms ease;
     }
     .masthead.hidden { transform: translateY(-100%); }
-    .masthead-left, .masthead-right {
+    .masthead-right {
       font-family: var(--mono);
       font-size: 0.68rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--ink-soft);
+      text-align: right;
     }
-    .masthead-right { text-align: right; }
     .masthead-mark {
       font-family: var(--grot);
       font-weight: 700;
@@ -131,8 +131,7 @@
     }
     .hero-sigil {
       position: absolute;
-      top: 60px;
-      right: -8vw;
+      top: 60px; right: -8vw;
       width: min(46vw, 540px);
       height: min(46vw, 540px);
       color: var(--blue);
@@ -173,8 +172,7 @@
     .hero-eyebrow::before {
       content: '';
       display: inline-block;
-      width: 28px;
-      height: 1px;
+      width: 28px; height: 1px;
       background: var(--ink);
     }
 
@@ -194,15 +192,10 @@
       font-family: var(--grot);
       font-weight: 400;
       font-size: clamp(1.1rem, 1.8vw, 1.4rem);
-      line-height: 1.45;
-      max-width: 30ch;
+      line-height: 1.5;
+      max-width: 32ch;
       color: var(--ink);
       margin-top: 8px;
-    }
-    .hero-line em {
-      font-family: var(--serif);
-      font-style: italic;
-      color: var(--accent);
     }
 
     .hero-meta {
@@ -215,10 +208,7 @@
       z-index: 2;
       background: linear-gradient(to right, transparent, var(--paper) 12%, var(--paper) 100%);
     }
-    .hero-meta-block {
-      border-top: 1px solid var(--ink);
-      padding-top: 12px;
-    }
+    .hero-meta-block { border-top: 1px solid var(--ink); padding-top: 12px; }
     .hero-meta-label {
       font-family: var(--mono);
       font-size: 0.62rem;
@@ -264,8 +254,6 @@
       width: 24vw;
       background: var(--accent);
       margin-top: -1px;
-      position: relative;
-      z-index: 2;
     }
 
     /* ──────────────────────────────────────────────────────────
@@ -344,12 +332,7 @@
       transition: width 280ms ease;
     }
     .work-row:hover::before { width: 4px; }
-    .work-row-num {
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      letter-spacing: 0.06em;
-      color: var(--ink-soft);
-    }
+    .work-row-num { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.06em; color: var(--ink-soft); }
     .work-row-title {
       font-family: var(--display);
       font-weight: 700;
@@ -360,25 +343,9 @@
       transition: color 0ms;
     }
     .work-row-title .thin { font-weight: 500; }
-    .work-row-company {
-      font-family: var(--grot);
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--ink);
-    }
-    .work-row-year {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      color: var(--ink-soft);
-    }
-    .work-row-arrow {
-      font-family: var(--mono);
-      font-size: 1rem;
-      color: var(--ink);
-      text-align: right;
-      transition: transform 280ms ease, color 0ms;
-    }
+    .work-row-company { font-family: var(--grot); font-size: 0.9rem; font-weight: 500; }
+    .work-row-year { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--ink-soft); }
+    .work-row-arrow { font-family: var(--mono); font-size: 1rem; text-align: right; transition: transform 280ms ease, color 0ms; }
     .work-row-divider {
       display: grid;
       grid-template-columns: 80px 1fr;
@@ -394,12 +361,7 @@
       pointer-events: none;
     }
     @media (max-width: 900px) {
-      .work-row {
-        grid-template-columns: 50px 1fr;
-        grid-template-rows: auto auto;
-        gap: 12px 20px;
-        padding: 24px 0;
-      }
+      .work-row { grid-template-columns: 50px 1fr; grid-template-rows: auto auto; gap: 12px 20px; padding: 24px 0; }
       .work-row-num { grid-row: 1; grid-column: 1; }
       .work-row-title { grid-row: 1; grid-column: 2; font-size: 1.3rem; }
       .work-row-company { grid-row: 2; grid-column: 2; font-size: 0.85rem; }
@@ -428,21 +390,8 @@
       padding-bottom: 24px;
       border-bottom: 1px solid var(--ink);
     }
-    .case-head-num {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.16em;
-      color: var(--ink-soft);
-      text-transform: uppercase;
-    }
-    .case-head-meta {
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.14em;
-      color: var(--ink-soft);
-      text-transform: uppercase;
-      text-align: right;
-    }
+    .case-head-num { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.16em; color: var(--ink-soft); text-transform: uppercase; }
+    .case-head-meta { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.14em; color: var(--ink-soft); text-transform: uppercase; text-align: right; }
     .case-head-meta strong { color: var(--red); font-weight: 500; }
 
     .case-title {
@@ -455,13 +404,7 @@
       margin-bottom: 48px;
     }
     .case-title .thin { font-weight: 500; }
-    .case-title .serif {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-style: italic;
-      text-transform: none;
-      letter-spacing: -0.01em;
-    }
+    .case-title .serif { font-family: var(--serif); font-weight: 400; font-style: italic; text-transform: none; letter-spacing: -0.01em; }
 
     .case-body-grid {
       display: grid;
@@ -475,11 +418,7 @@
       .case-study { padding: 64px var(--mx); }
     }
 
-    .case-tags-col {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+    .case-tags-col { display: flex; flex-direction: column; gap: 8px; }
     .case-tag {
       font-family: var(--mono);
       font-size: 0.62rem;
@@ -490,14 +429,9 @@
       display: inline-block;
       width: fit-content;
     }
-    @media (max-width: 900px) {
-      .case-tags-col { flex-direction: row; flex-wrap: wrap; }
-    }
+    @media (max-width: 900px) { .case-tags-col { flex-direction: row; flex-wrap: wrap; } }
 
-    .case-prose {
-      font-size: 1.02rem;
-      line-height: 1.75;
-    }
+    .case-prose, .case-aside { font-size: 1.02rem; line-height: 1.75; }
     .case-prose-label {
       font-family: var(--mono);
       font-size: 0.62rem;
@@ -517,13 +451,54 @@
       padding: 6px 12px 0 0;
       text-transform: uppercase;
     }
-    .case-prose p + p { margin-top: 18px; }
+    .case-prose p + p, .case-aside p + p { margin-top: 16px; }
 
-    .case-aside {
-      font-size: 1rem;
-      line-height: 1.75;
+    /* Decision blocks — "Why:" / "What got deferred:" etc. */
+    .decision-block {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-left: 3px solid var(--accent);
+      background: var(--paper-2);
     }
-    .case-aside p + p { margin-top: 18px; }
+    .case-study:nth-of-type(even) .decision-block { background: var(--paper); }
+    .decision-block-label {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 6px;
+    }
+    .decision-block-text { font-size: 0.95rem; line-height: 1.65; }
+
+    /* Execution items — plain list */
+    .item-list { list-style: none; margin-top: 12px; display: flex; flex-direction: column; gap: 8px; }
+    .item-list li { font-size: 0.95rem; line-height: 1.6; padding-left: 16px; position: relative; }
+    .item-list li::before { content: '—'; position: absolute; left: 0; color: var(--ink-soft); }
+
+    /* Labeled items — SRE work */
+    .labeled-item { margin-top: 18px; }
+    .labeled-item:first-child { margin-top: 0; }
+    .labeled-item-label {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 4px;
+    }
+    .labeled-item-text { font-size: 0.95rem; line-height: 1.65; }
+
+    /* Metrics list — Results section */
+    .metrics-list { list-style: none; margin-top: 12px; display: flex; flex-direction: column; gap: 6px; }
+    .metrics-list li {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      padding-left: 14px;
+      position: relative;
+    }
+    .metrics-list li::before { content: '→'; position: absolute; left: 0; color: var(--accent); }
 
     .case-stats {
       margin-top: 56px;
@@ -538,18 +513,9 @@
       .case-stats { grid-template-columns: 1fr 1fr; gap: 32px 24px; }
       .case-stats .stats-label { grid-column: 1 / -1; }
     }
-    @media (max-width: 480px) {
-      .case-stats { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 480px) { .case-stats { grid-template-columns: 1fr; } }
 
-    .stats-label {
-      font-family: var(--mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      line-height: 1.6;
-    }
+    .stats-label { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft); line-height: 1.6; }
     .stat { display: flex; flex-direction: column; gap: 6px; }
     .stat-num {
       font-family: var(--display);
@@ -560,97 +526,46 @@
       color: var(--ink);
     }
     .stat-num.red { color: var(--red); }
-    .stat-label {
-      font-family: var(--mono);
-      font-size: 0.66rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      max-width: 22ch;
-    }
+    .stat-label { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); max-width: 22ch; }
 
     /* ──────────────────────────────────────────────────────────
-       MANIFESTO
+       HOW I WORK
        ────────────────────────────────────────────────────────── */
-    #manifesto {
-      background: var(--blue-deep);
-      color: var(--paper);
-      padding: 140px var(--mx) 120px;
-      position: relative;
-      overflow: hidden;
-    }
-    .manifesto-folio {
+    .how-i-work {
       max-width: var(--max-w);
       margin: 0 auto;
+      padding: 0 var(--mx) 96px;
+    }
+    .hiw-grid {
       display: grid;
-      grid-template-columns: 80px 1fr auto;
-      gap: 32px;
-      margin-bottom: 64px;
+      grid-template-columns: 80px repeat(3, 1fr);
+      gap: 0 48px;
+      border-top: 4px solid var(--ink);
+      padding-top: 48px;
     }
-    .manifesto-folio .label {
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--blue-light);
-    }
-    .manifesto-folio .right {
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(242,239,231,0.5);
-      justify-self: end;
-    }
-    .manifesto-text {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      font-family: var(--display);
-      font-weight: 700;
-      font-size: clamp(2.4rem, 6vw, 6rem);
-      line-height: 0.95;
-      letter-spacing: -0.02em;
-      text-transform: uppercase;
-    }
-    .manifesto-text .thin { font-weight: 500; opacity: 0.6; }
-    .manifesto-text .serif {
-      font-family: var(--serif);
-      font-style: italic;
-      font-weight: 400;
-      text-transform: none;
-      letter-spacing: -0.01em;
-      color: var(--blue-light);
-    }
-    .manifesto-text .highlight {
-      background: var(--yellow);
-      color: var(--ink);
-      padding: 0 4px;
-    }
-    .manifesto-foot {
-      max-width: var(--max-w);
-      margin: 80px auto 0;
-      display: grid;
-      grid-template-columns: 80px 1fr 1fr;
-      gap: 32px;
-    }
-    .manifesto-foot .principle-num {
+    .hiw-spacer {}
+    .hiw-item { padding-right: 8px; }
+    .hiw-num {
       font-family: var(--mono);
       font-size: 0.62rem;
       letter-spacing: 0.16em;
-      color: var(--blue-light);
       text-transform: uppercase;
-      line-height: 1.6;
+      color: var(--accent);
+      margin-bottom: 16px;
     }
-    .manifesto-foot .principle-text {
-      font-family: var(--serif);
-      font-size: 1.5rem;
-      line-height: 1.35;
-      font-style: italic;
-      color: var(--paper);
+    .hiw-title {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 20px;
     }
+    .hiw-body { font-size: 1rem; line-height: 1.75; color: var(--ink-soft); }
     @media (max-width: 900px) {
-      .manifesto-foot { grid-template-columns: 1fr; gap: 16px; }
-      #manifesto { padding: 96px var(--mx); }
+      .hiw-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hiw-spacer { display: none; }
     }
 
     /* ──────────────────────────────────────────────────────────
@@ -663,42 +578,30 @@
     }
     .about-grid {
       display: grid;
-      grid-template-columns: 80px 1fr 320px;
+      grid-template-columns: 80px 1fr 300px;
       gap: 64px;
     }
     @media (max-width: 900px) {
-      .about-grid { grid-template-columns: 1fr; gap: 32px; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
       #about { padding-bottom: 64px; }
     }
 
-    .about-prose {
-      font-size: 1.12rem;
-      line-height: 1.75;
-      max-width: 60ch;
-    }
-    .about-prose p + p { margin-top: 20px; }
-    .about-prose .dropcap {
-      float: left;
+    .about-prose { font-size: 1.12rem; line-height: 1.75; }
+    .about-section { margin-bottom: 40px; }
+    .about-section:last-child { margin-bottom: 0; }
+    .about-section-title {
       font-family: var(--display);
-      font-weight: 900;
-      font-size: 5.4rem;
-      line-height: 0.82;
-      padding: 6px 12px 0 0;
+      font-weight: 700;
+      font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+      letter-spacing: -0.01em;
       text-transform: uppercase;
+      margin-bottom: 14px;
+      line-height: 1;
     }
-    .about-prose strong { font-weight: 600; }
-    .about-prose .ink-mark {
-      background: var(--red);
-      color: var(--paper);
-      padding: 0 6px;
-      font-weight: 500;
-    }
+    .about-section-title .thin { font-weight: 500; }
+    .about-section p { font-size: 1.08rem; line-height: 1.75; }
 
-    .about-side {
-      display: flex;
-      flex-direction: column;
-      gap: 36px;
-    }
+    .about-side { display: flex; flex-direction: column; gap: 36px; }
     .side-block-label {
       font-family: var(--mono);
       font-size: 0.62rem;
@@ -709,17 +612,8 @@
       padding-bottom: 8px;
       border-bottom: 1px solid var(--ink);
     }
-    .side-block ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .side-block li {
-      font-family: var(--grot);
-      font-size: 0.95rem;
-      line-height: 1.4;
-    }
+    .side-block ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .side-block li { font-family: var(--grot); font-size: 0.95rem; line-height: 1.4; }
     .side-block li .key {
       font-family: var(--mono);
       font-size: 0.66rem;
@@ -727,135 +621,7 @@
       text-transform: uppercase;
       color: var(--ink-soft);
       display: inline-block;
-      width: 80px;
-    }
-
-    /* ──────────────────────────────────────────────────────────
-       PULL QUOTE
-       ────────────────────────────────────────────────────────── */
-    #pull-quote {
-      position: relative;
-      padding: 96px var(--mx);
-      border-top: 4px solid var(--ink);
-      border-bottom: 4px solid var(--ink);
-      background: var(--paper);
-    }
-    .pull-quote-inner {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 80px 1fr 80px;
-      gap: 32px;
-    }
-    .pull-quote-tag {
-      font-family: var(--mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      line-height: 1.6;
-    }
-    .pull-quote-end {
-      align-self: end;
-      text-align: right;
-      font-family: var(--mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-    }
-    .pull-quote-text {
-      font-family: var(--serif);
-      font-size: clamp(1.8rem, 4.4vw, 3.8rem);
-      line-height: 1.2;
-      font-style: italic;
-      max-width: 22ch;
-    }
-    .pull-quote-text .accent { color: var(--red); }
-    .pull-quote-text::before {
-      content: '\201C';
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: 1.4em;
-      line-height: 0;
-      margin-right: 0.06em;
-      vertical-align: -0.18em;
-      color: var(--red);
-    }
-    @media (max-width: 720px) {
-      .pull-quote-inner { grid-template-columns: 1fr; }
-      .pull-quote-end { text-align: left; }
-    }
-
-    /* ──────────────────────────────────────────────────────────
-       WRITING, catalogue list
-       ────────────────────────────────────────────────────────── */
-    .writing-list {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 var(--mx) 96px;
-    }
-    .writing-item {
-      display: grid;
-      grid-template-columns: 80px 1fr auto 60px;
-      gap: 32px;
-      align-items: baseline;
-      padding: 24px 0;
-      border-bottom: 1px solid var(--ink);
-      position: relative;
-      transition: padding-left 280ms ease;
-      cursor: pointer;
-    }
-    .writing-item:first-child { border-top: 1px solid var(--ink); }
-    .writing-item:hover { padding-left: 16px; }
-    .writing-item:hover .writing-title { color: var(--accent); transition: color 0ms; }
-    .writing-item:hover .writing-arrow { color: var(--accent); transform: translateX(8px); }
-    .writing-item::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 0; bottom: 0;
-      width: 0;
-      background: var(--accent);
-      transition: width 280ms ease;
-    }
-    .writing-item:hover::before { width: 4px; }
-    .writing-num {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.06em;
-      color: var(--ink-soft);
-    }
-    .writing-title {
-      font-family: var(--grot);
-      font-size: 1.15rem;
-      font-weight: 500;
-      line-height: 1.35;
-      transition: color 0ms;
-    }
-    .writing-date {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      color: var(--ink-soft);
-      white-space: nowrap;
-    }
-    .writing-arrow {
-      font-family: var(--mono);
-      font-size: 1rem;
-      text-align: right;
-      transition: transform 280ms ease, color 0ms;
-    }
-    @media (max-width: 720px) {
-      .writing-item {
-        grid-template-columns: 50px 1fr;
-        grid-template-rows: auto auto;
-        gap: 8px 16px;
-        padding: 18px 0;
-      }
-      .writing-num { grid-row: 1; }
-      .writing-title { grid-row: 1; font-size: 1rem; }
-      .writing-date { grid-row: 2; grid-column: 2; font-size: 0.62rem; }
-      .writing-arrow { display: none; }
+      width: 100px;
     }
 
     /* ──────────────────────────────────────────────────────────
@@ -869,9 +635,7 @@
       grid-template-columns: 80px 1fr 1fr;
       gap: 64px;
     }
-    @media (max-width: 900px) {
-      #contact { grid-template-columns: 1fr; gap: 32px; }
-    }
+    @media (max-width: 900px) { #contact { grid-template-columns: 1fr; gap: 32px; } }
 
     .contact-major {
       font-family: var(--display);
@@ -882,21 +646,10 @@
       text-transform: uppercase;
     }
     .contact-major .thin { font-weight: 500; }
-    .contact-major .serif {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-style: italic;
-      text-transform: none;
-      letter-spacing: -0.01em;
-    }
+    .contact-major .serif { font-family: var(--serif); font-weight: 400; font-style: italic; text-transform: none; letter-spacing: -0.01em; }
     .contact-major .punch { color: var(--red); }
 
-    .contact-side {
-      display: flex;
-      flex-direction: column;
-      gap: 36px;
-      padding-top: 12px;
-    }
+    .contact-side { display: flex; flex-direction: column; gap: 36px; padding-top: 12px; }
     .contact-label {
       font-family: var(--mono);
       font-size: 0.62rem;
@@ -906,6 +659,13 @@
       margin-bottom: 10px;
       padding-bottom: 8px;
       border-bottom: 1px solid var(--ink);
+    }
+    .contact-subtitle {
+      font-size: 1rem;
+      line-height: 1.65;
+      color: var(--ink-soft);
+      max-width: 28ch;
+      margin-bottom: 28px;
     }
     .contact-email {
       font-family: var(--display);
@@ -928,11 +688,7 @@
     .contact-email:hover { color: var(--accent); transition: color 0ms; }
     .contact-email:hover::after { width: 100%; }
 
-    .contact-links {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
+    .contact-links { display: flex; flex-direction: column; gap: 4px; }
     .contact-link {
       display: grid;
       grid-template-columns: 100px 1fr;
@@ -944,34 +700,14 @@
       color: var(--ink);
     }
     .contact-link:last-child { border-bottom: none; }
-    .contact-link .k {
-      font-family: var(--mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-    }
-    .contact-link .v {
-      font-family: var(--grot);
-      font-size: 1rem;
-      font-weight: 500;
-      position: relative;
-      display: inline-block;
-      width: fit-content;
-    }
-    .contact-link .v::after {
-      content: '';
-      position: absolute;
-      left: 0; bottom: -1px;
-      width: 0; height: 2px;
-      background: var(--accent);
-      transition: width 180ms ease-in-out;
-    }
+    .contact-link .k { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft); }
+    .contact-link .v { font-family: var(--grot); font-size: 1rem; font-weight: 500; position: relative; display: inline-block; width: fit-content; }
+    .contact-link .v::after { content: ''; position: absolute; left: 0; bottom: -1px; width: 0; height: 2px; background: var(--accent); transition: width 180ms ease-in-out; }
     .contact-link:hover .v { color: var(--accent); transition: color 0ms; }
     .contact-link:hover .v::after { width: 100%; }
 
     /* ──────────────────────────────────────────────────────────
-       COLOPHON / FOOTER
+       FOOTER
        ────────────────────────────────────────────────────────── */
     footer {
       border-top: 1px solid var(--ink);
@@ -998,74 +734,15 @@
     }
 
     /* ──────────────────────────────────────────────────────────
-       WRITING MODAL
-       ────────────────────────────────────────────────────────── */
-    .wmodal-overlay {
-      position: fixed; inset: 0;
-      background: rgba(10,16,36,0.88);
-      z-index: 300;
-      display: flex; align-items: flex-start; justify-content: center;
-      overflow-y: auto; padding: 60px 24px;
-      opacity: 0; pointer-events: none;
-      transition: opacity 300ms ease;
-    }
-    .wmodal-overlay.open { opacity: 1; pointer-events: all; }
-    .wmodal-content {
-      background: var(--paper);
-      width: 100%; max-width: 760px;
-      padding: 72px 64px;
-      position: relative;
-      transform: translateY(20px);
-      transition: transform 300ms ease;
-    }
-    .wmodal-overlay.open .wmodal-content { transform: translateY(0); }
-    .wmodal-close {
-      position: absolute; top: 32px; right: 32px;
-      background: none; border: none;
-      font-size: 1.4rem; cursor: pointer;
-      color: var(--ink); font-family: var(--grot);
-      line-height: 1; padding: 4px 8px;
-      transition: color 0ms;
-    }
-    .wmodal-close:hover { color: var(--accent); }
-    .wmodal-tag {
-      font-family: var(--mono);
-      font-size: 0.65rem; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--ink-soft);
-      margin-bottom: 24px;
-    }
-    .wmodal-title {
-      font-family: var(--display);
-      font-size: clamp(1.6rem, 3vw, 2.4rem);
-      font-weight: 700; letter-spacing: -0.02em;
-      line-height: 1.1; margin-bottom: 16px;
-      text-transform: uppercase;
-    }
-    .wmodal-lede {
-      font-size: 1.12rem; color: var(--ink-soft);
-      line-height: 1.7; margin-bottom: 40px;
-      font-style: italic; font-family: var(--serif);
-    }
-    .wmodal-rule { height: 4px; background: var(--accent); width: 60px; margin-bottom: 40px; }
-    .wmodal-body { font-size: 1.02rem; line-height: 1.85; }
-    .wmodal-body p + p { margin-top: 24px; }
-    .wmodal-body strong { font-weight: 700; }
-
-    /* ──────────────────────────────────────────────────────────
-       MOBILE
+       PDF VIEWER
        ────────────────────────────────────────────────────────── */
     @media (max-width: 480px) {
       :root { --mx: 20px; }
       .hero-main { padding: 48px var(--mx) 32px; }
       .hero-foot { grid-template-columns: 1fr; gap: 8px; }
       .case-stats { margin-top: 36px; padding-top: 24px; }
-      .pull-quote-text::before { font-size: 1.1em; }
       .nav-links { gap: 16px; }
       .nav-links a { font-size: 0.62rem; letter-spacing: 0.1em; }
-      .wmodal-content { padding: 48px 20px 48px; }
-      .wmodal-close { top: 16px; right: 16px; min-width: 44px; min-height: 44px; }
-      .wmodal-overlay { padding: 0; align-items: flex-end; }
-      .wmodal-content { max-height: 92vh; overflow-y: auto; transform: translateY(40px); }
     }
   </style>
 </head>
@@ -1074,14 +751,13 @@
   <!-- MASTHEAD -->
   <header class="masthead" id="masthead">
     <a class="masthead-mark" href="#hero">Chhavi Chauhan</a>
-    <ul class="nav-links" id="nav-links">
+    <ul class="nav-links">
       <li><a href="#work">Work</a></li>
-      <li><a href="#manifesto">Manifesto</a></li>
+      <li><a href="#decision-making">How I Work</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#writing">Beliefs</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <div class="masthead-right">Vol. I / 2026</div>
+    <div class="masthead-right">PM Portfolio</div>
   </header>
 
   <!-- HERO -->
@@ -1113,7 +789,7 @@
           <span class="accent-mark">Chauhan</span>
         </h1>
         <p class="hero-line">
-          Engineer. SRE. PM. The arc is a straight line: <em>compounding</em> systems thinking. I care about how the parts interact, where the failure modes live, and what the user experiences when something goes wrong.
+          Product Manager with engineering and SRE foundation. Based in Bangalore. Open to B2B, FinTech, AI-first roles.
         </p>
       </div>
       <aside class="hero-meta">
@@ -1182,8 +858,8 @@
       <span class="work-row-arrow">&#8599;</span>
     </div>
     <div class="work-row" data-exercise="1">
-      <span class="work-row-num">CS 02</span>
       <span class="work-row-title"><span class="thin">Improving Discoverability,</span> CRED</span>
+      <span class="work-row-num">CS 02</span>
       <span class="work-row-company">CRED</span>
       <span class="work-row-year">Aug 2025</span>
       <span class="work-row-arrow">&#8599;</span>
@@ -1206,15 +882,30 @@
         <span class="case-tag">B2B</span>
       </div>
       <div class="case-prose">
-        <p class="case-prose-label">The problem</p>
-        <p><span class="dropcap">S</span>aturn is a UK fintech platform built for financial advisers. When I joined as the first PM, the product function didn't exist. No discovery process, no roadmap discipline, no structured way to decide what to build next. The platform was already live and serving real client firms, but growing without a clear product strategy.</p>
-        <p>The challenge: build the PM function from scratch without slowing down a fast-moving team.</p>
+        <p class="case-prose-label">The starting point</p>
+        <p><span class="dropcap">S</span>aturn is a fintech platform for UK financial advisers. When I joined, product management didn&rsquo;t exist. No discovery. No roadmap. No structure for prioritization. The platform was live, doing real transactions, but growing reactively.</p>
+        <p class="case-prose-label" style="margin-top:28px;">What I found</p>
+        <p>15 adviser interviews: 60% of platform time went to three tasks (data entry, report generation, compliance submission). All manual. No templating. Month-1 churn was 30%, concentrated in advisers hitting these friction points.</p>
       </div>
       <div class="case-aside">
-        <p class="case-prose-label">Approach</p>
-        <p>Started with discovery: deeply understanding the advisers using the platform, where they were spending time, where the friction was. Established a prioritisation framework the team could actually use. Built the roadmap collaboratively so engineering and leadership were aligned before a single sprint started. Focused early effort on the workflows that consumed the most adviser time, since that was where the pain was clearest and the upside most measurable.</p>
-        <p class="case-prose-label" style="margin-top:28px;">Outcome</p>
-        <p>Platform now contributes £120K+ in annual recurring revenue. 2,000+ monthly active users. Adviser admin time reduced by 60% on key workflows. Serving 650+ client firms across the UK.</p>
+        <p class="case-prose-label">The decision</p>
+        <p>I prioritized these three workflows over growth features because:</p>
+        <div class="decision-block">
+          <div class="decision-block-label">Why:</div>
+          <div class="decision-block-text">They consumed the most time (measurable pain). Fixing them addressed month-1 churn (business impact). They shared the same root cause, so one solution improved all three.</div>
+        </div>
+        <div class="decision-block">
+          <div class="decision-block-label">What got deferred:</div>
+          <div class="decision-block-text">Partner-facing analytics, dashboard optimization, advanced reporting. All legitimate. All less urgent than stopping month-1 churn.</div>
+        </div>
+        <p class="case-prose-label" style="margin-top:28px;">Results</p>
+        <ul class="metrics-list">
+          <li>Month-1 churn: 30% to 18%</li>
+          <li>Time on key workflows: 60% reduction</li>
+          <li>2,100+ monthly active advisers</li>
+          <li>650+ client firms</li>
+          <li>£120K+ ARR</li>
+        </ul>
       </div>
     </div>
     <div class="case-stats">
@@ -1225,11 +916,11 @@
       </div>
       <div class="stat">
         <div class="stat-num">60%</div>
-        <div class="stat-label">Reduction in adviser admin time</div>
+        <div class="stat-label">Reduction in key workflow time</div>
       </div>
       <div class="stat">
-        <div class="stat-num">650+</div>
-        <div class="stat-label">Client firms served</div>
+        <div class="stat-num">30&rarr;18%</div>
+        <div class="stat-label">Month-1 churn improvement</div>
       </div>
     </div>
   </article>
@@ -1246,35 +937,53 @@
       <div class="case-tags-col">
         <span class="case-tag">Enterprise</span>
         <span class="case-tag">B2B</span>
-        <span class="case-tag">Financial Services</span>
         <span class="case-tag">Compliance</span>
+        <span class="case-tag">Scoping</span>
       </div>
       <div class="case-prose">
         <p class="case-prose-label">The problem</p>
-        <p><span class="dropcap">A</span>mex runs co-brand credit cards with airlines, hotel chains, and other global partners. Each partner has a legitimate need to see how their card is performing: spend data, transaction volumes, cardholder behaviour tied to their brand. The portal I inherited was supposed to give them that. It didn't work well enough to be trusted.</p>
-        <p>Two user groups with competing needs: external partners who needed clean, accurate data they could act on, and internal Amex stakeholders who needed to control precisely what left the building. Compliance wasn't a feature. It was the load-bearing wall.</p>
+        <p><span class="dropcap">P</span>artner portal for co-brand credit cards was broken. Legal flagged a data access control risk: partners could potentially see each other&rsquo;s data. Engineering estimated one year to rebuild. Business couldn&rsquo;t wait that long.</p>
+        <p class="case-prose-label" style="margin-top:28px;">Execution</p>
+        <p>Three months instead of one year. Here&rsquo;s what had to align:</p>
+        <ul class="item-list">
+          <li>Engineering had to believe three months was possible (scoped scope helps)</li>
+          <li>Partners had to understand why we were cutting features (transparency)</li>
+          <li>Legal had to accept the three-month timeline over their preferred &ldquo;rebuild it all&rdquo; approach</li>
+        </ul>
       </div>
       <div class="case-aside">
-        <p class="case-prose-label">Approach</p>
-        <p>First job: understand the damage. What partners had been promised, what the system was delivering, and where the gaps were creating compliance exposure. The hardest design problem was data access controls: each partner should only ever see data scoped to their co-brand relationship, never another partner's numbers or aggregate Amex data.</p>
-        <p>Getting the data model right required working closely with legal, engineering, and Amex's data governance teams simultaneously. Most stakeholder work was internal: aligning people with strong opinions and real authority before a single line of partner-facing UI changed.</p>
-        <p class="case-prose-label" style="margin-top:28px;">Outcome</p>
-        <p>Rebuilt and automated the partner onboarding flow (previously a manual, support-heavy process) and took it from broken to reliable. Onboarded 40+ partners through it, including renewing Amazon's integration. Manual workflows reduced by 40%.</p>
+        <p class="case-prose-label">The decision</p>
+        <p>The question wasn&rsquo;t &ldquo;rebuild or don&rsquo;t.&rdquo; It was &ldquo;what&rsquo;s the minimum architecture that eliminates the compliance exposure?&rdquo;</p>
+        <div class="decision-block">
+          <div class="decision-block-label">What had to happen:</div>
+          <div class="decision-block-text">Centralized access control layer so all partner data queries go through one place legal could audit. No more distributed access rules across billing, reporting, and onboarding systems.</div>
+        </div>
+        <div class="decision-block">
+          <div class="decision-block-label">What got cut:</div>
+          <div class="decision-block-text">Custom reporting features partners had requested. Self-service partner onboarding interface. Both were nice to have. Neither blocked the compliance fix. I deferred them explicitly and told partners why.</div>
+        </div>
+        <p class="case-prose-label" style="margin-top:28px;">Results</p>
+        <ul class="metrics-list">
+          <li>Partner onboarding: 4&ndash;6 weeks to 2&ndash;3 days</li>
+          <li>40+ partners through new system</li>
+          <li>Amazon account renewed</li>
+          <li>Zero compliance incidents post-launch</li>
+        </ul>
       </div>
     </div>
     <div class="case-stats">
       <div class="stats-label">Numbers<br/>that shifted</div>
       <div class="stat">
-        <div class="stat-num red">40%</div>
-        <div class="stat-label">Reduction in manual workflows</div>
+        <div class="stat-num red">40+</div>
+        <div class="stat-label">Partners onboarded through new system</div>
       </div>
       <div class="stat">
-        <div class="stat-num">40+</div>
-        <div class="stat-label">Partners onboarded</div>
+        <div class="stat-num">2&ndash;3d</div>
+        <div class="stat-label">Onboarding time (was 4&ndash;6 weeks)</div>
       </div>
       <div class="stat">
-        <div class="stat-num">Amazon</div>
-        <div class="stat-label">Integration renewed</div>
+        <div class="stat-num">0</div>
+        <div class="stat-label">Compliance incidents post-launch</div>
       </div>
     </div>
   </article>
@@ -1295,53 +1004,68 @@
         <span class="case-tag">5 Years</span>
       </div>
       <div class="case-prose">
-        <p class="case-prose-label">SRE</p>
-        <p><span class="dropcap">O</span>wned monitoring and alerting across critical payment processing infrastructure: the systems that kept millions of daily transactions running. Designed the alerting architecture that reduced incident response time by 22%. Maintained 99.9% uptime on payment processing. Not as a target. An operational standard.</p>
-        <p>Incident response at this level means understanding failure modes before they propagate, not reacting after the fact.</p>
+        <p class="case-prose-label">Why this matters for product</p>
+        <p><span class="dropcap">I</span> learned that uptime, latency, and graceful degradation aren&rsquo;t ops problems. They&rsquo;re product decisions. Users don&rsquo;t blame the database when a system is slow. They blame the product. When a system fails hard instead of degrading, they blame the product.</p>
       </div>
       <div class="case-aside">
-        <p class="case-prose-label">Cloud Engineer / SRE</p>
-        <p>Built and maintained RESTful APIs integrating HR systems with analytics platforms for real-time data access across enterprise-scale org infrastructure. These APIs handled 10,000+ daily requests at sub-200ms response times with 99.8% reliability. Introduced to distributed systems at the level that matters: not textbook theory, but actual decisions about what degrades gracefully and what doesn't.</p>
-        <p class="case-prose-label" style="margin-top:28px;">Engineer III</p>
-        <p>Joined as a graduate engineer and built internal tooling from first principles. Delivered the employee onboarding system that improved user satisfaction scores by 30%. Built system health metrics into user-facing dashboards, an early version of the instinct that would later define the product work: making complexity legible to the people who depend on it.</p>
+        <p class="case-prose-label">Specific work</p>
+        <div class="labeled-item">
+          <div class="labeled-item-label">SRE:</div>
+          <div class="labeled-item-text">Designed alerting for millions of daily payment transactions. Reduced false positives by 70% by being ruthless about what deserves human attention vs what&rsquo;s a trend. Incident response time improved 22% (45 min to 35 min).</div>
+        </div>
+        <div class="labeled-item">
+          <div class="labeled-item-label">Cloud Engineer:</div>
+          <div class="labeled-item-text">Built REST APIs handling 10,000+ daily requests at sub-200ms response times. The key decision: accept 200ms as the constraint upfront, design for it, don&rsquo;t hope for 100ms and fail under load.</div>
+        </div>
+        <div class="labeled-item">
+          <div class="labeled-item-label">Product impact:</div>
+          <div class="labeled-item-text">Built employee onboarding system. Satisfaction scores improved 30%. The real work wasn&rsquo;t the form flow. It was making system health visible in the UI so users could see where things were breaking for them. Making complexity legible is half the product work.</div>
+        </div>
       </div>
     </div>
     <div class="case-stats">
       <div class="stats-label">Numbers<br/>that held</div>
       <div class="stat">
         <div class="stat-num red">22%</div>
-        <div class="stat-label">Reduction in incident response time</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">99.9%</div>
-        <div class="stat-label">Uptime on payment processing</div>
+        <div class="stat-label">Incident response time improvement</div>
       </div>
       <div class="stat">
         <div class="stat-num">10K+</div>
         <div class="stat-label">Daily API requests at sub-200ms</div>
       </div>
+      <div class="stat">
+        <div class="stat-num">30%</div>
+        <div class="stat-label">Onboarding satisfaction improvement</div>
+      </div>
     </div>
   </article>
 
-  <!-- MANIFESTO -->
-  <section id="manifesto">
-    <div class="manifesto-folio">
-      <div class="label">&sect; 002 / Manifesto</div>
-      <div></div>
-      <div class="right">A short list of held opinions</div>
+  <!-- HOW I WORK -->
+  <div class="section-mark" id="decision-making">
+    <div class="section-num">&sect; 002</div>
+    <h2 class="section-title"><span class="thin">How I </span>Work</h2>
+    <div class="section-meta">Three operating principles</div>
+  </div>
+  <div class="how-i-work">
+    <div class="hiw-grid">
+      <div class="hiw-spacer"></div>
+      <div class="hiw-item">
+        <div class="hiw-num">01</div>
+        <div class="hiw-title">Prioritization</div>
+        <p class="hiw-body">Find where users spend the most time that frustrates them. Not feature requests. Not leadership opinions. Time leakage is where pain is legible and upside is measurable.</p>
+      </div>
+      <div class="hiw-item">
+        <div class="hiw-num">02</div>
+        <div class="hiw-title">Stakeholder Alignment</div>
+        <p class="hiw-body">Make the decision criteria explicit first. Most alignment failures aren&rsquo;t communication failures. They&rsquo;re clarity failures. Once the model is visible and people agree on criteria, the decision follows naturally.</p>
+      </div>
+      <div class="hiw-item">
+        <div class="hiw-num">03</div>
+        <div class="hiw-title">Trade&ndash;offs</div>
+        <p class="hiw-body">Every decision is a choice to not do something else. Name it. You&rsquo;re choosing X over Y because of Z. If Z changes, everyone knows we revisit the decision.</p>
+      </div>
     </div>
-    <div class="manifesto-text">
-      The best products<br/>
-      <span class="serif">feel inevitable</span>,<br/>
-      <span class="thin">like they could not have been</span><br/>
-      made any <span class="highlight">other way</span>.
-    </div>
-    <div class="manifesto-foot">
-      <div class="principle-num">Principles<br/>I hold</div>
-      <div class="principle-text">&ldquo;Find the real problem before you solve a smaller one. Most product work is mis-naming.&rdquo;</div>
-      <div class="principle-text">&ldquo;Taste isn&rsquo;t decoration. It&rsquo;s the willingness to remove what doesn&rsquo;t belong.&rdquo;</div>
-    </div>
-  </section>
+  </div>
 
   <!-- ABOUT -->
   <div class="section-mark">
@@ -1353,10 +1077,14 @@
     <div class="about-grid">
       <div></div>
       <div class="about-prose">
-        <p><span class="dropcap">C</span>hhavi Chauhan. Product manager with a technical foundation spanning software engineering, site reliability, and product, most recently at Saturn and American Express.</p>
-        <p>The arc from engineer to SRE to PM isn&rsquo;t a pivot. It&rsquo;s compounding. Five years building and keeping Amex systems alive gave me a specific kind of instinct: uptime, latency, and graceful degradation aren&rsquo;t ops concerns, they&rsquo;re product promises. Breaking those promises has costs that compound quietly until they don&rsquo;t. <span class="ink-mark">That instinct shapes every product decision I make.</span></p>
-        <p>At Saturn I built the product function from scratch. No playbook, no predecessor. Just a fast-moving team and real advisers with real problems. At Amex as PM, the work was translation: between what legal required, what engineering could build, and what partners actually needed to do their jobs. Neither aligned naturally. That&rsquo;s where the interesting work lives.</p>
-        <p>Sharp eye for fashion. Not as a hobby. As a discipline. The instinct that makes a well-cut garment work is the same instinct that makes a well-designed onboarding flow feel inevitable. Proportion, texture, context. These aren&rsquo;t soft skills.</p>
+        <div class="about-section">
+          <div class="about-section-title"><span class="thin">What I </span>Bring</div>
+          <p>I understand how systems fail. I understand why compliance matters. I understand what moves business metrics. And I execute.</p>
+        </div>
+        <div class="about-section">
+          <div class="about-section-title"><span class="thin">What I&rsquo;m </span>Looking For</div>
+          <p>Problems where the user&rsquo;s pain is clear but the solution isn&rsquo;t. Teams that disagree thoughtfully and make decisions anyway. Compensation that reflects responsibility (non-negotiable).</p>
+        </div>
       </div>
       <aside class="about-side">
         <div class="side-block">
@@ -1368,22 +1096,12 @@
           </ul>
         </div>
         <div class="side-block">
-          <div class="side-block-label">Craft Areas</div>
+          <div class="side-block-label">Technical Skills</div>
           <ul>
-            <li><span class="key">01</span>0&rarr;1 product</li>
-            <li><span class="key">02</span>Discovery &amp; user research</li>
-            <li><span class="key">03</span>B2B platforms</li>
-            <li><span class="key">04</span>AI/ML product integration</li>
-            <li><span class="key">05</span>Activation &amp; growth</li>
-          </ul>
-        </div>
-        <div class="side-block">
-          <div class="side-block-label">Stack</div>
-          <ul>
-            <li><span class="key">Lang</span>Python, SQL</li>
-            <li><span class="key">Infra</span>Kubernetes, GCP / AWS</li>
-            <li><span class="key">Design</span>Figma</li>
-            <li><span class="key">AI</span>LLM product &amp; RAG</li>
+            <li><span class="key">Languages</span>Python, SQL</li>
+            <li><span class="key">Infra</span>Kubernetes, GCP, AWS</li>
+            <li><span class="key">Design</span>Figma, Miro</li>
+            <li><span class="key">AI/ML</span>LLM product, RAG systems</li>
           </ul>
         </div>
         <div class="side-block">
@@ -1397,67 +1115,25 @@
     </div>
   </section>
 
-  <!-- PULL QUOTE -->
-  <section id="pull-quote">
-    <div class="pull-quote-inner">
-      <div class="pull-quote-tag">How I think<br/>about product craft</div>
-      <p class="pull-quote-text">The interface is the product. Most failures aren&rsquo;t engineering failures. They&rsquo;re <span class="accent">clarity failures.</span></p>
-      <div class="pull-quote-end">CC<br/>2026</div>
-    </div>
-  </section>
-
-  <!-- WRITING -->
-  <div class="section-mark" id="writing">
-    <div class="section-num">&sect; 004</div>
-    <h2 class="section-title"><span class="thin">Things I </span>Believe</h2>
-    <div class="section-meta">On craft, product, and working</div>
-  </div>
-  <div class="writing-list">
-    <div class="writing-item" data-essay="0">
-      <span class="writing-num">&rarr; 001</span>
-      <span class="writing-title">The user isn&rsquo;t the only one in the room</span>
-      <span class="writing-date">2025</span>
-      <span class="writing-arrow">&rarr;</span>
-    </div>
-    <div class="writing-item" data-essay="1">
-      <span class="writing-num">&rarr; 002</span>
-      <span class="writing-title">Care is not a soft skill</span>
-      <span class="writing-date">2025</span>
-      <span class="writing-arrow">&rarr;</span>
-    </div>
-    <div class="writing-item" data-essay="2">
-      <span class="writing-num">&rarr; 003</span>
-      <span class="writing-title">Say it plainly</span>
-      <span class="writing-date">2025</span>
-      <span class="writing-arrow">&rarr;</span>
-    </div>
-    <div class="writing-item" data-essay="3">
-      <span class="writing-num">&rarr; 004</span>
-      <span class="writing-title">Actions over words, always</span>
-      <span class="writing-date">2025</span>
-      <span class="writing-arrow">&rarr;</span>
-    </div>
-  </div>
-
   <!-- CONTACT -->
   <div class="section-mark">
-    <div class="section-num">&sect; 005</div>
+    <div class="section-num">&sect; 004</div>
     <h2 class="section-title"><span class="thin">Get in </span>Touch</h2>
-    <div class="section-meta">For roles, conversations, or coffee</div>
+    <div class="section-meta">Let&rsquo;s talk</div>
   </div>
   <section id="contact">
     <div></div>
     <div>
       <h2 class="contact-major">
         <span class="thin">Let&rsquo;s</span><br/>
-        <span class="serif">make</span><br/>
-        something<span class="punch">.</span>
+        <span class="serif">talk</span><span class="punch">.</span>
       </h2>
     </div>
     <aside class="contact-side">
       <div>
+        <p class="contact-subtitle">For roles, conversations, or if you&rsquo;re solving a product problem and want to think through it together.</p>
         <div class="contact-label">Email</div>
-        <a class="contact-email" href="mailto:chhavi0697@gmail.com">chhavi0697<br/>@gmail.com</a>
+        <a class="contact-email" href="mailto:chhavi0697@gmail.com">chhavi0697@gmail.com</a>
       </div>
       <div>
         <div class="contact-label">Elsewhere</div>
@@ -1475,22 +1151,14 @@
     </aside>
   </section>
 
-  <!-- FOOTER COLOPHON -->
+  <!-- FOOTER -->
   <footer>
     <div class="colophon">
-      <div><strong>Chhavi Chauhan</strong> &middot; Portfolio Vol. I &middot; &copy; 2026</div>
+      <div><strong>Chhavi Chauhan</strong> &middot; &copy; 2026</div>
       <div class="middle">Set in <strong>Familjen Grotesk</strong>, <strong>Instrument Serif</strong>, <strong>JetBrains Mono</strong></div>
       <div class="right">Made with intention. Co-authored with Claude.</div>
     </div>
   </footer>
-
-  <!-- WRITING MODAL -->
-  <div class="wmodal-overlay" id="wmodal-overlay">
-    <div class="wmodal-content">
-      <button class="wmodal-close" id="wmodal-close">&times;</button>
-      <div id="wmodal-inner"></div>
-    </div>
-  </div>
 
   <!-- PDF VIEWER -->
   <div id="pdf-overlay" style="position:fixed;inset:0;z-index:400;background:#141414;display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity 250ms ease;">
@@ -1503,7 +1171,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 
   <script>
-    // ── MASTHEAD SCROLL HIDE ──
+    // MASTHEAD SCROLL HIDE
     let last = 0;
     const masthead = document.getElementById('masthead');
     window.addEventListener('scroll', () => {
@@ -1513,76 +1181,7 @@
       last = y;
     }, { passive: true });
 
-    // ── WRITING ESSAYS ──
-    const essayData = [
-      {
-        tag: "Principles",
-        title: "The user isn't the only one in the room",
-        lede: "User-centricity is real. But treating it as the end of the conversation is lazy thinking.",
-        body: `<p>Pure user-centricity is the default setting in most product teams. It's taught in courses, repeated in interviews, and treated as the moral anchor of the discipline. The user always comes first.</p>
-<p>The problem is that "the user" is rarely the only one in the room when a product decision gets made.</p>
-<p>Legal is in the room. Compliance is in the room. The enterprise partner who controls your distribution is in the room. The engineering team that has to live with the decision for three years is in the room. The financial model that determines whether the company exists in eighteen months is in the room.</p>
-<p>None of this makes the user less important. But it does make product management significantly harder than "what does the user want?"</p>
-<p>The job is to understand what the user needs, hold that clearly, and then navigate the real constraints, without using them as excuses to build the wrong thing.</p>
-<p>At Amex, the hardest design problems weren't about what partners wanted to see. That part was easy: they wanted everything. The hard part was determining what they could legitimately see, given data governance rules that existed for real reasons. The user-centred answer and the compliant answer had to be the same answer. That required actual thinking, not a framework.</p>
-<p>"The user isn't the only one in the room" isn't a pessimistic statement. It's a description of the job. Pretending otherwise doesn't make you more user-centred. It makes you less useful.</p>`
-      },
-      {
-        tag: "How I Work",
-        title: "Care is not a soft skill",
-        lede: "Most skills can be hired. The thing that can't be replaced is the person who genuinely gives a damn.",
-        body: `<p>Somewhere along the way, care got filed under "soft skills," the category that means important but not really measurable, and therefore not really serious.</p>
-<p>This is wrong, and it matters that it's wrong.</p>
-<p>Care is what separates work that's technically correct from work that's actually good. A spec can be complete and still miss the point. A flow can pass usability testing and still feel like it was built by someone who never intended to use it. The gap between those two states is care.</p>
-<p>Care shows up in the things that don't have to be right. The edge case nobody will hit for six months. The error message that most users will never read. The loading state that lasts half a second. These are the places where care is optional: where time pressure and ticket count make it easy to ship the expedient version and move on.</p>
-<p>The thing about care is that it compounds. Users don't experience individual features in isolation. They experience the accumulation of every decision, the polished ones and the ones where nobody bothered. The overall quality of a product is the average of those decisions over time, weighted toward the low end.</p>
-<p>Care is not soft. Care is a multiplier on every other skill you have.</p>`
-      },
-      {
-        tag: "Communication",
-        title: "Say it plainly",
-        lede: "Clarity is not just a communication style. It's a form of respect.",
-        body: `<p>Most communication in product teams fails for the same reason: the person writing it hasn't finished thinking about what they actually want to say.</p>
-<p>Jargon is one symptom. Long sentences are another. Passive voice. Hedge words. The construction that sounds decisive but commits to nothing. These aren't style choices. They're signals that the thinking isn't done.</p>
-<p>Clarity requires more work than vagueness, not less. A crisp paragraph takes longer to write than a rambling one because it requires you to decide what matters. That's the uncomfortable part. Deciding that something matters is also deciding that something else doesn't. That's a real decision with real consequences, and it's easier to leave it ambiguous.</p>
-<p>But ambiguity doesn't resolve itself. It migrates. A vague requirement becomes a misaligned build. A hedged stakeholder update becomes a surprised executive. A meeting without a clear outcome becomes two more meetings. The fog gets distributed.</p>
-<p>Say it plainly. Write the hard thing directly. If the sentence can be cut without losing meaning, cut it.</p>
-<p>Plain language isn't a tone of voice. It's an act of respect for the person reading: the assertion that their time matters more than your comfort.</p>`
-      },
-      {
-        tag: "Principles",
-        title: "Actions over words, always",
-        lede: "What people say tells you what they want you to think. What they do tells you everything else.",
-        body: `<p>People are better at describing their intentions than predicting their behaviour. This isn't a character flaw. It's a cognitive one. When you ask someone what they would do in a hypothetical, they tell you who they'd like to be. What they actually do under real conditions, with real tradeoffs, is a different dataset entirely.</p>
-<p>This matters for product, but it matters more generally.</p>
-<p>In product research, it means that self-reported behaviour is a starting point, not evidence. The user who tells you they'd pay for a feature is not lying. They genuinely believe it. They also won't pay. The gap between stated preference and revealed preference is where most product bets go wrong.</p>
-<p>In teams, it means that culture is what people do when no one is watching, not what gets written in the values doc. The team that says it prioritises quality ships technical debt under deadline pressure. The team that actually prioritises quality pushes back on the deadline.</p>
-<p>In leadership, credibility is built through behaviour over time. A single inconsistency between what someone says matters and what they actually do creates a hole that takes years to fill.</p>
-<p>Pay attention to what people do. Take what people say as one input, weighted accordingly. The signal is in the action.</p>`
-      }
-    ];
-
-    function buildEssay(d) {
-      return `
-        <div class="wmodal-tag">${d.tag}</div>
-        <h2 class="wmodal-title">${d.title}</h2>
-        <p class="wmodal-lede">${d.lede}</p>
-        <div class="wmodal-rule"></div>
-        <div class="wmodal-body">${d.body}</div>`;
-    }
-
-    const woverlay    = document.getElementById('wmodal-overlay');
-    const wmodalInner = document.getElementById('wmodal-inner');
-    function openWModal(html) { wmodalInner.innerHTML = html; woverlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
-    function closeWModal()    { woverlay.classList.remove('open'); document.body.style.overflow = ''; }
-
-    document.querySelectorAll('.writing-item[data-essay]').forEach(item => {
-      item.addEventListener('click', () => openWModal(buildEssay(essayData[parseInt(item.dataset.essay)])));
-    });
-    document.getElementById('wmodal-close').addEventListener('click', closeWModal);
-    woverlay.addEventListener('click', e => { if (e.target === woverlay) closeWModal(); });
-
-    // ── PDF VIEWER ──
+    // PDF VIEWER
     const pdfOverlay = document.getElementById('pdf-overlay');
     const pdfScroll  = document.getElementById('pdf-canvas-scroll');
     const pdfTitleEl = document.getElementById('pdf-title');
@@ -1627,9 +1226,7 @@
       });
     });
 
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') { closeWModal(); closePdf(); }
-    });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closePdf(); });
   </script>
 </body>
 </html>
