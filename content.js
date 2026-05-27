@@ -2,93 +2,121 @@
 //  PORTFOLIO CONTENT
 //  Edit this file to update the site.
 //  No HTML or CSS knowledge needed.
+//
+//  Usage:
+//    import { portfolioContent } from './content.js';
+//    portfolioContent.header.name        // "Chhavi Chauhan"
+//    portfolioContent.work.cases[0].role // "First PM, Saturn"
 // ─────────────────────────────────────────────
 
-const PORTFOLIO = {
+export const portfolioContent = {
 
-  // ── IDENTITY ──────────────────────────────
-  name: "Chhavi Chauhan",
+  // ── HEADER ────────────────────────────────
+  header: {
+    name:   "Chhavi Chauhan",
+    volume: "Vol. I / 2026",
+    nav: [
+      { label: "Work",      href: "#work" },
+      { label: "Manifesto", href: "#manifesto" },
+      { label: "About",     href: "#about" },
+      { label: "Beliefs",   href: "#writing" },
+      { label: "Contact",   href: "#contact" },
+    ],
+  },
 
   // ── HERO ──────────────────────────────────
   hero: {
-    status: "Product Manager. Open to new roles",
-    // Three lines of the large display headline.
-    // The middle line gets the accent-colour highlight.
-    headlineTop:    "Product",
-    headlineMiddle: "thinking.",
-    headlineBottom: "Built.",
-    tagline: `Engineer. SRE. PM. The arc is a straight line: compounding systems thinking.
-I care about how the parts interact, where the failure modes live, and what the user
-experiences when something goes wrong.`,
+    eyebrow:    "Portfolio, Vol. I / 2026",
+    nameThin:   "Chhavi",
+    nameAccent: "Chauhan",
+    // "compounding" is rendered in italic accent — mark with *word*
+    line: "Engineer. SRE. PM. The arc is a straight line: *compounding* systems thinking. I care about how the parts interact, where the failure modes live, and what the user experiences when something goes wrong.",
+    meta: [
+      { label: "Now",    value: "Open to new roles\nFinTech · B2B · AI-first", dot: true },
+      { label: "Recent", value: "First PM, Saturn\nAug 2025–Apr 2026" },
+      { label: "Based",  value: "Bangalore, India" },
+    ],
+    footRight: "Three roles · Two case studies",
   },
 
-  // ── WORK — CASE STUDY CARDS ───────────────
-  // Each entry = one card on the page + one modal when clicked.
-  // Set noModal: true for cards with no modal (cursor stays default).
-  // pdfUrl: path to the full case study PDF (relative to portfolio.html).
-  work: [
-    {
-      // Card
-      tags:       ["FinTech", "0→1", "UK Market"],
-      title:      "First PM, Saturn",
-      desc:       "Joined as the first product hire at a UK fintech serving financial advisers. Built the product function from scratch: discovery, prioritisation, roadmap, and shipping. Across a platform used by 650+ client firms.",
-      metaLabel1: "Company",  metaValue1: "Saturn",
-      metaLabel2: "Period",   metaValue2: "Aug 2025 – Apr 2026",
+  // ── WORK ──────────────────────────────────
+  work: {
 
-      // Modal
-      modal: {
-        problem:  `Saturn is a UK fintech platform built for financial advisers. When I joined as the first PM, the product function didn't exist. No discovery process, no roadmap discipline, no structured way to decide what to build next. The platform was already live and serving real client firms, but growing without a clear product strategy. The challenge: build the PM function from scratch without slowing down a fast-moving team.`,
+    // Main role case studies — appear as index rows + inline articles
+    cases: [
+      {
+        num:       "001",
+        role:      "First PM, Saturn",       // shown in index row title
+        roleThin:  "First PM,",              // thin-weight prefix
+        roleStrong:"Saturn",                 // heavy-weight suffix
+        company:   "Saturn",
+        period:    "2025–26",
+        anchor:    "case-1",
+        tags:      ["FinTech", "0→1", "UK Market", "B2B"],
+        caseLabel: "Case 001 / Saturn",
+        caseMeta:  "Aug 2025–Apr 2026 · First PM",
+        // dropcap applied to first letter of problem automatically
+        problem: `Saturn is a UK fintech platform built for financial advisers. When I joined as the first PM, the product function didn't exist. No discovery process, no roadmap discipline, no structured way to decide what to build next. The platform was already live and serving real client firms, but growing without a clear product strategy.
+
+The challenge: build the PM function from scratch without slowing down a fast-moving team.`,
         approach: `Started with discovery: deeply understanding the advisers using the platform, where they were spending time, where the friction was. Established a prioritisation framework the team could actually use. Built the roadmap collaboratively so engineering and leadership were aligned before a single sprint started. Focused early effort on the workflows that consumed the most adviser time, since that was where the pain was clearest and the upside most measurable.`,
-        outcome:  `Platform now contributes £120K+ in annual recurring revenue. 2,000+ monthly active users. Adviser admin time reduced by 60% on key workflows. Serving 650+ client firms across the UK.`,
+        outcome: `Platform now contributes £120K+ in annual recurring revenue. 2,000+ monthly active users. Adviser admin time reduced by 60% on key workflows. Serving 650+ client firms across the UK.`,
         stats: [
-          { num: "£120K+", label: "Annual revenue contributed" },
-          { num: "2,000+", label: "Monthly active users" },
+          { num: "£120K+", label: "Annual recurring revenue",       red: true },
           { num: "60%",    label: "Reduction in adviser admin time" },
-          { num: "650+",   label: "Client firms" },
+          { num: "650+",   label: "Client firms served" },
         ],
+        statsLabel: "Numbers\nthat shifted",
       },
-    },
 
-    {
-      // Card
-      tags:       ["Enterprise", "B2B", "Financial Services"],
-      title:      "Product Manager, American Express",
-      desc:       "Sole PM on the co-brand partner data portal, a compliance-critical product serving airline and hotel partners across Amex's global card network. Rebuilt onboarding, automated manual workflows, and renewed Amazon's integration.",
-      metaLabel1: "Company",  metaValue1: "American Express",
-      metaLabel2: "Period",   metaValue2: "Jan 2024 – Jul 2025",
+      {
+        num:       "002",
+        role:      "Product Manager, American Express",
+        roleThin:  "PM,",
+        roleStrong:"American Express",
+        company:   "American Express",
+        period:    "2024–25",
+        anchor:    "case-2",
+        tags:      ["Enterprise", "B2B", "Financial Services", "Compliance"],
+        caseLabel: "Case 002 / American Express",
+        caseMeta:  "Jan 2024–Jul 2025 · Product Manager",
+        problem: `Amex runs co-brand credit cards with airlines, hotel chains, and other global partners. Each partner has a legitimate need to see how their card is performing: spend data, transaction volumes, cardholder behaviour tied to their brand. The portal I inherited was supposed to give them that. It didn't work well enough to be trusted.
 
-      // Modal
-      modal: {
-        problem:  `Amex runs co-brand credit cards with airlines, hotel chains, and other global partners. Each partner has a legitimate need to see how their card is performing: spend data, transaction volumes, cardholder behaviour tied to their brand. The portal I inherited was supposed to give them that. It didn't work well enough to be trusted. Two user groups with competing needs: external partners who needed clean, accurate data they could act on, and internal Amex stakeholders who needed to control precisely what left the building. Compliance wasn't a feature. It was the load-bearing wall.`,
-        approach: `First job: understand the damage. What partners had been promised, what the system was delivering, and where the gaps were creating compliance exposure. The hardest design problem was data access controls: each partner should only ever see data scoped to their co-brand relationship, never another partner's numbers or aggregate Amex data. Getting the data model right required working closely with legal, engineering, and Amex's data governance teams simultaneously. Most stakeholder work was internal: aligning people with strong opinions and real authority before a single line of partner-facing UI changed.`,
-        outcome:  `Rebuilt and automated the partner onboarding flow (previously a manual, support-heavy process) and took it from broken to reliable. Onboarded 40+ partners through it, including renewing Amazon's integration. Manual workflows reduced by 40%. Partner support requests dropped significantly as onboarding stopped generating friction that needed human intervention to resolve.`,
+Two user groups with competing needs: external partners who needed clean, accurate data they could act on, and internal Amex stakeholders who needed to control precisely what left the building. Compliance wasn't a feature. It was the load-bearing wall.`,
+        approach: `First job: understand the damage. What partners had been promised, what the system was delivering, and where the gaps were creating compliance exposure. The hardest design problem was data access controls: each partner should only ever see data scoped to their co-brand relationship, never another partner's numbers or aggregate Amex data.
+
+Getting the data model right required working closely with legal, engineering, and Amex's data governance teams simultaneously. Most stakeholder work was internal: aligning people with strong opinions and real authority before a single line of partner-facing UI changed.`,
+        outcome: `Rebuilt and automated the partner onboarding flow (previously a manual, support-heavy process) and took it from broken to reliable. Onboarded 40+ partners through it, including renewing Amazon's integration. Manual workflows reduced by 40%.`,
         stats: [
-          { num: "40%",    label: "Reduction in manual workflows" },
+          { num: "40%",    label: "Reduction in manual workflows", red: true },
           { num: "40+",    label: "Partners onboarded" },
           { num: "Amazon", label: "Integration renewed" },
-          { num: "18mo",   label: "Tenure" },
         ],
+        statsLabel: "Numbers\nthat shifted",
       },
-    },
 
-    {
-      // Card
-      tags:       ["Engineering", "Site Reliability", "American Express"],
-      title:      "Engineer & SRE, American Express",
-      desc:       "Five years building and keeping systems alive. Wrote code that processed millions of transactions, ran incident response for critical financial infrastructure, and developed the instinct for reliability that now shapes how I think about product.",
-      metaLabel1: "Company",  metaValue1: "American Express",
-      metaLabel2: "Period",   metaValue2: "Jul 2019 – Dec 2023",
-
-      // Modal — split by role progression
-      modal: {
+      {
+        num:       "003",
+        role:      "Engineer & SRE, American Express",
+        roleThin:  "Engineer & SRE,",
+        roleStrong:"Amex",
+        company:   "American Express",
+        period:    "2019–23",
+        anchor:    "case-3",
+        tags:      ["Engineering", "Site Reliability", "Payments", "5 Years"],
+        caseLabel: "Case 003 / American Express",
+        caseMeta:  "Jul 2019–Dec 2023 · Engineer & SRE",
+        // sections[] replaces problem/approach/outcome for this case
         sections: [
           {
             label: "SRE",
-            body:  `Owned monitoring and alerting across critical payment processing infrastructure: the systems that kept millions of daily transactions running. Designed the alerting architecture that reduced incident response time by 22%. Maintained 99.9% uptime on payment processing. Not as a target. An operational standard. Incident response at this level means understanding failure modes before they propagate, not reacting after the fact.`,
+            body:  `Owned monitoring and alerting across critical payment processing infrastructure: the systems that kept millions of daily transactions running. Designed the alerting architecture that reduced incident response time by 22%. Maintained 99.9% uptime on payment processing. Not as a target. An operational standard.
+
+Incident response at this level means understanding failure modes before they propagate, not reacting after the fact.`,
           },
           {
-            label: "Cloud Engineer / SRE I & II",
-            body:  `Built and maintained RESTful APIs integrating HR systems with analytics platforms for real-time data access across enterprise-scale org infrastructure. These APIs handled 10,000+ daily requests at sub-200ms response times with 99.8% reliability. Introduced to distributed systems at the level that matters: not textbook CAP theorem, but actual decisions about what degrades gracefully and what doesn't.`,
+            label: "Cloud Engineer / SRE",
+            body:  `Built and maintained RESTful APIs integrating HR systems with analytics platforms for real-time data access across enterprise-scale org infrastructure. These APIs handled 10,000+ daily requests at sub-200ms response times with 99.8% reliability. Introduced to distributed systems at the level that matters: not textbook theory, but actual decisions about what degrades gracefully and what doesn't.`,
           },
           {
             label: "Engineer III",
@@ -96,81 +124,118 @@ experiences when something goes wrong.`,
           },
         ],
         stats: [
-          { num: "22%",    label: "Reduction in incident response time" },
-          { num: "99.9%",  label: "Uptime on payment processing" },
-          { num: "10K+",   label: "Daily API requests at sub-200ms" },
-          { num: "5 yrs",  label: "Engineering tenure" },
+          { num: "22%",   label: "Reduction in incident response time", red: true },
+          { num: "99.9%", label: "Uptime on payment processing" },
+          { num: "10K+",  label: "Daily API requests at sub-200ms" },
         ],
+        statsLabel: "Numbers\nthat held",
       },
-    },
-  ],
+    ],
 
-  // ── PM EXERCISES ──────────────────────────
-  // These appear as a separate row below the main work section.
-  // Full case study PDFs available for each.
-  exercises: [
-    {
-      tags:    ["Consumer", "Mobile", "Growth"],
-      title:   "Increasing Experiences feature awareness, Airbnb",
-      desc:    "70% of 100 frequent travellers had never heard of Airbnb Experiences. 5% had ever booked one. A RICE-scored analysis of three solutions led to a single recommendation: surface location-matched Experiences on the listing page, before the booking decision.",
-      pdfUrl:  "content/Airbnb_ Increasing Experiences Feature Awareness.pdf",
-      date:    "Aug 2025",
-    },
-    {
-      tags:    ["Consumer", "Fintech", "Re-engagement"],
-      title:   "Improving product discoverability for returning users, CRED",
-      desc:    "18 of 20 users studied never bought in their first session. There was no way to re-find a product without repeating 8 steps from scratch. A passive 'Explore Again' homepage rail reduced the return journey to 2 steps.",
-      pdfUrl:  "content/CRED_ Improving Product Discoverability.pdf",
-      date:    "Aug 2025",
-    },
-  ],
+    // Practice case studies — appear as PDF rows in the work index
+    exercises: [
+      {
+        num:     "CS 01",
+        role:    "Experiences Awareness, Airbnb",
+        roleThin:  "Experiences Awareness,",
+        roleStrong:"Airbnb",
+        company: "Airbnb",
+        period:  "Aug 2025",
+        pdfUrl:  "content/Airbnb_ Increasing Experiences Feature Awareness.pdf",
+      },
+      {
+        num:     "CS 02",
+        role:    "Improving Discoverability, CRED",
+        roleThin:  "Improving Discoverability,",
+        roleStrong:"CRED",
+        company: "CRED",
+        period:  "Aug 2025",
+        pdfUrl:  "content/CRED_ Improving Product Discoverability.pdf",
+      },
+    ],
+  },
+
+  // ── MANIFESTO ─────────────────────────────
+  manifesto: {
+    // Rendered in full-bleed deep navy section
+    principles: [
+      `"Find the real problem before you solve a smaller one. Most product work is mis-naming."`,
+      `"Taste isn't decoration. It's the willingness to remove what doesn't belong."`,
+    ],
+  },
 
   // ── ABOUT ─────────────────────────────────
-  // Each string = one paragraph.
   about: {
+    // Each string = one paragraph.
+    // Wrap text in <ink-mark>…</ink-mark> for the red highlight treatment.
     paragraphs: [
       `Chhavi Chauhan. Product manager with a technical foundation spanning software engineering, site reliability, and product, most recently at Saturn and American Express.`,
-      `The arc from engineer to SRE to PM isn't a pivot. It's compounding. Five years building and keeping Amex systems alive gave me a specific kind of instinct: uptime, latency, and graceful degradation aren't ops concerns, they're product promises. Breaking those promises has costs that compound quietly until they don't. <strong>That instinct shapes every product decision I make.</strong>`,
+      `The arc from engineer to SRE to PM isn't a pivot. It's compounding. Five years building and keeping Amex systems alive gave me a specific kind of instinct: uptime, latency, and graceful degradation aren't ops concerns, they're product promises. Breaking those promises has costs that compound quietly until they don't. <ink-mark>That instinct shapes every product decision I make.</ink-mark>`,
       `At Saturn I built the product function from scratch. No playbook, no predecessor. Just a fast-moving team and real advisers with real problems. At Amex as PM, the work was translation: between what legal required, what engineering could build, and what partners actually needed to do their jobs. Neither aligned naturally. That's where the interesting work lives.`,
       `Sharp eye for fashion. Not as a hobby. As a discipline. The instinct that makes a well-cut garment work is the same instinct that makes a well-designed onboarding flow feel inevitable. Proportion, texture, context. These aren't soft skills.`,
     ],
-    sidebar: [
+
+    // Sidebar key-value blocks
+    side: [
       {
         label: "Currently",
-        items: ["Open to new roles", "FinTech · B2B · AI-first", "Bangalore, India"],
+        items: [
+          { key: "Status", value: "Open to new roles" },
+          { key: "Focus",  value: "FinTech · B2B · AI-first" },
+          { key: "Based",  value: "Bangalore, India" },
+        ],
       },
       {
         label: "Craft Areas",
-        items: ["0→1 product", "Discovery &amp; user research", "B2B platforms", "AI/ML product integration", "Activation &amp; growth"],
+        items: [
+          { key: "01", value: "0→1 product" },
+          { key: "02", value: "Discovery & user research" },
+          { key: "03", value: "B2B platforms" },
+          { key: "04", value: "AI/ML product integration" },
+          { key: "05", value: "Activation & growth" },
+        ],
       },
       {
         label: "Stack",
-        items: ["Python, SQL", "Kubernetes, GCP / AWS", "Figma", "LLM product &amp; RAG"],
+        items: [
+          { key: "Lang",   value: "Python, SQL" },
+          { key: "Infra",  value: "Kubernetes, GCP / AWS" },
+          { key: "Design", value: "Figma" },
+          { key: "AI",     value: "LLM product & RAG" },
+        ],
       },
       {
         label: "Previously At",
-        items: ["Saturn", "American Express"],
+        items: [
+          { key: "'25–26", value: "Saturn" },
+          { key: "'19–25", value: "American Express" },
+        ],
       },
     ],
   },
 
   // ── PULL QUOTE ────────────────────────────
-  // `before` + highlighted `accent` + `after` form the full quote.
+  // `before` + highlighted `accent` form the full quote.
+  // Opening " and accent colour are applied automatically.
   pullQuote: {
+    tag:    "How I think\nabout product craft",
     before: "The interface is the product. Most failures aren't engineering failures. They're ",
     accent: "clarity failures.",
-    after:  "",
-    attr:   "How I think about product craft",
+    end:    "CC\n2026",
   },
 
-  // ── WRITING ───────────────────────────────
-  // Set href to a real URL when published. Leave as "#" to open in modal.
+  // ── WRITING / BELIEFS ─────────────────────
+  // href: "#" opens the essay in a modal.
+  // href: "https://…" links out to a published piece.
   writing: [
     {
+      num:   "→ 001",
       title: "The user isn't the only one in the room",
-      date: "2025",
-      href: "#",
-      body: `Pure user-centricity is the default setting in most product teams. It's taught in courses, repeated in interviews, and treated as the moral anchor of the discipline. The user always comes first.
+      date:  "2025",
+      href:  "#",
+      tag:   "Principles",
+      lede:  "User-centricity is real. But treating it as the end of the conversation is lazy thinking.",
+      body:  `Pure user-centricity is the default setting in most product teams. It's taught in courses, repeated in interviews, and treated as the moral anchor of the discipline. The user always comes first.
 
 The problem is that "the user" is rarely the only one in the room when a product decision gets made.
 
@@ -185,10 +250,13 @@ At Amex, the hardest design problems weren't about what partners wanted to see. 
 "The user isn't the only one in the room" isn't a pessimistic statement. It's a description of the job. Pretending otherwise doesn't make you more user-centred. It makes you less useful.`,
     },
     {
+      num:   "→ 002",
       title: "Care is not a soft skill",
-      date: "2025",
-      href: "#",
-      body: `Somewhere along the way, care got filed under "soft skills," the category that means important but not really measurable, and therefore not really serious.
+      date:  "2025",
+      href:  "#",
+      tag:   "How I Work",
+      lede:  "Most skills can be hired. The thing that can't be replaced is the person who genuinely gives a damn.",
+      body:  `Somewhere along the way, care got filed under "soft skills," the category that means important but not really measurable, and therefore not really serious.
 
 This is wrong, and it matters that it's wrong.
 
@@ -201,10 +269,13 @@ The thing about care is that it compounds. Users don't experience individual fea
 Care is not soft. Care is a multiplier on every other skill you have.`,
     },
     {
+      num:   "→ 003",
       title: "Say it plainly",
-      date: "2025",
-      href: "#",
-      body: `Most communication in product teams fails for the same reason: the person writing it hasn't finished thinking about what they actually want to say.
+      date:  "2025",
+      href:  "#",
+      tag:   "Communication",
+      lede:  "Clarity is not just a communication style. It's a form of respect.",
+      body:  `Most communication in product teams fails for the same reason: the person writing it hasn't finished thinking about what they actually want to say.
 
 Jargon is one symptom. Long sentences are another. Passive voice. Hedge words. The construction that sounds decisive but commits to nothing. These aren't style choices. They're signals that the thinking isn't done.
 
@@ -217,10 +288,13 @@ Say it plainly. Write the hard thing directly. If the sentence can be cut withou
 Plain language isn't a tone of voice. It's an act of respect for the person reading: the assertion that their time matters more than your comfort.`,
     },
     {
+      num:   "→ 004",
       title: "Actions over words, always",
-      date: "2025",
-      href: "#",
-      body: `People are better at describing their intentions than predicting their behaviour. This isn't a character flaw. It's a cognitive one. When you ask someone what they would do in a hypothetical, they tell you who they'd like to be. What they actually do under real conditions, with real tradeoffs, is a different dataset entirely.
+      date:  "2025",
+      href:  "#",
+      tag:   "Principles",
+      lede:  "What people say tells you what they want you to think. What they do tells you everything else.",
+      body:  `People are better at describing their intentions than predicting their behaviour. This isn't a character flaw. It's a cognitive one. When you ask someone what they would do in a hypothetical, they tell you who they'd like to be. What they actually do under real conditions, with real tradeoffs, is a different dataset entirely.
 
 This matters for product, but it matters more generally.
 
@@ -236,18 +310,18 @@ Pay attention to what people do. Take what people say as one input, weighted acc
 
   // ── CONTACT ───────────────────────────────
   contact: {
-    email:        "chhavi0697@gmail.com",
-    availability: "Open to conversations about the right role.",
+    email: "chhavi0697@gmail.com",
     links: [
-      { label: "LinkedIn", text: "/in/chhavian",    href: "https://www.linkedin.com/in/chhavian/" },
-      { label: "Resume",   text: "Download PDF",    href: "resume.pdf" },
+      { key: "LinkedIn", value: "/in/chhavian",   href: "https://www.linkedin.com/in/chhavian/", external: true },
+      { key: "Resume",   value: "Download PDF →", href: "resume.pdf", download: "Chhavi_Chauhan_Resume.pdf" },
     ],
   },
 
   // ── FOOTER ────────────────────────────────
   footer: {
-    copy:    "© 2026 Chhavi Chauhan",
-    tagline: "Made with intention. Co-authored with Claude.",
+    copy:      "Chhavi Chauhan · Portfolio Vol. I · © 2026",
+    typefaces: "Familjen Grotesk, Instrument Serif, JetBrains Mono",
+    tagline:   "Made with intention. Co-authored with Claude.",
   },
 
 };
