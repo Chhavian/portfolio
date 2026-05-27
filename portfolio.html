@@ -907,7 +907,7 @@
               <span class="tag">Site Reliability</span>
               <span class="tag">American Express</span>
             </div>
-            <h3 class="case-title">Engineer & SRE, American Express</h3>
+            <h3 class="case-title">Engineer &amp; SRE, American Express</h3>
             <p class="case-desc">Five years building and keeping systems alive. Wrote code that processed millions of transactions, ran incident response for critical financial infrastructure, and developed the instinct for reliability that now shapes how I think about product.</p>
           </div>
           <div class="case-meta">
@@ -1219,7 +1219,6 @@
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
-          // stagger siblings
           const siblings = [...entry.target.parentElement.querySelectorAll('.reveal:not(.visible)')];
           const idx = siblings.indexOf(entry.target);
           setTimeout(() => {
@@ -1232,7 +1231,7 @@
 
     reveals.forEach(el => observer.observe(el));
 
-    // ── CASE STUDY MODAL ──
+    // ── CASE STUDY DATA ──
     const caseData = [
       {
         tags: ["FinTech", "0→1", "UK Market"],
@@ -1240,7 +1239,12 @@
         problem: `Saturn is a UK fintech platform built for financial advisers. When I joined as the first PM, the product function didn't exist. No discovery process, no roadmap discipline, no structured way to decide what to build next. The platform was already live and serving real client firms, but growing without a clear product strategy. The challenge: build the PM function from scratch without slowing down a fast-moving team.`,
         approach: `Started with discovery: deeply understanding the advisers using the platform, where they were spending time, where the friction was. Established a prioritisation framework the team could actually use. Built the roadmap collaboratively so engineering and leadership were aligned before a single sprint started. Focused early effort on the workflows that consumed the most adviser time, since that was where the pain was clearest and the upside most measurable.`,
         outcome: `Platform now contributes £120K+ in annual recurring revenue. 2,000+ monthly active users. Adviser admin time reduced by 60% on key workflows. Serving 650+ client firms across the UK.`,
-        stats: [{ num: "£120K+", label: "Annual revenue contributed" }, { num: "2,000+", label: "Monthly active users" }, { num: "60%", label: "Reduction in adviser admin time" }, { num: "650+", label: "Client firms" }]
+        stats: [
+          { num: "£120K+", label: "Annual revenue contributed" },
+          { num: "2,000+", label: "Monthly active users" },
+          { num: "60%",    label: "Reduction in adviser admin time" },
+          { num: "650+",   label: "Client firms" }
+        ]
       },
       {
         tags: ["Enterprise", "B2B", "Financial Services"],
@@ -1248,35 +1252,58 @@
         problem: `Amex runs co-brand credit cards with airlines, hotel chains, and other global partners. Each partner has a legitimate need to see how their card is performing: spend data, transaction volumes, cardholder behaviour tied to their brand. The portal I inherited was supposed to give them that. It didn't work well enough to be trusted. Two user groups with competing needs: external partners who needed clean, accurate data they could act on, and internal Amex stakeholders who needed to control precisely what left the building. Compliance wasn't a feature. It was the load-bearing wall.`,
         approach: `First job: understand the damage. What partners had been promised, what the system was delivering, and where the gaps were creating compliance exposure. The hardest design problem was data access controls: each partner should only ever see data scoped to their co-brand relationship, never another partner's numbers or aggregate Amex data. Getting the data model right required working closely with legal, engineering, and Amex's data governance teams simultaneously. Most stakeholder work was internal: aligning people with strong opinions and real authority before a single line of partner-facing UI changed.`,
         outcome: `Rebuilt and automated the partner onboarding flow (previously a manual, support-heavy process) and took it from broken to reliable. Onboarded 40+ partners through it, including renewing Amazon's integration. Manual workflows reduced by 40%. Partner support requests dropped significantly as onboarding stopped generating friction that needed human intervention to resolve.`,
-        stats: [{ num: "40%", label: "Reduction in manual workflows" }, { num: "40+", label: "Partners onboarded" }, { num: "Amazon", label: "Integration renewed" }, { num: "18mo", label: "Tenure" }]
+        stats: [
+          { num: "40%",    label: "Reduction in manual workflows" },
+          { num: "40+",    label: "Partners onboarded" },
+          { num: "Amazon", label: "Integration renewed" },
+          { num: "18mo",   label: "Tenure" }
+        ]
       },
       {
         tags: ["Engineering", "Site Reliability", "American Express"],
         title: "Engineer & SRE, American Express",
         sections: [
-          { label: "SRE", body: `Owned monitoring and alerting across critical payment processing infrastructure: the systems that kept millions of daily transactions running. Designed the alerting architecture that reduced incident response time by 22%. Maintained 99.9% uptime on payment processing. Not as a target. An operational standard. Incident response at this level means understanding failure modes before they propagate, not reacting after the fact.` },
-          { label: "Cloud Engineer / SRE I & II", body: `Built and maintained RESTful APIs integrating HR systems with analytics platforms for real-time data access across enterprise-scale org infrastructure. These APIs handled 10,000+ daily requests at sub-200ms response times with 99.8% reliability. Introduced to distributed systems at the level that matters: not textbook CAP theorem, but actual decisions about what degrades gracefully and what doesn't.` },
-          { label: "Engineer III", body: `Joined as a graduate engineer and built internal tooling from first principles. Delivered the employee onboarding system that improved user satisfaction scores by 30%. Built system health metrics into user-facing dashboards, an early version of the instinct that would later define the product work: making complexity legible to the people who depend on it.` }
+          {
+            label: "SRE",
+            body: `Owned monitoring and alerting across critical payment processing infrastructure: the systems that kept millions of daily transactions running. Designed the alerting architecture that reduced incident response time by 22%. Maintained 99.9% uptime on payment processing. Not as a target. An operational standard. Incident response at this level means understanding failure modes before they propagate, not reacting after the fact.`
+          },
+          {
+            label: "Cloud Engineer / SRE I & II",
+            body: `Built and maintained RESTful APIs integrating HR systems with analytics platforms for real-time data access across enterprise-scale org infrastructure. These APIs handled 10,000+ daily requests at sub-200ms response times with 99.8% reliability. Introduced to distributed systems at the level that matters: not textbook CAP theorem, but actual decisions about what degrades gracefully and what doesn't.`
+          },
+          {
+            label: "Engineer III",
+            body: `Joined as a graduate engineer and built internal tooling from first principles. Delivered the employee onboarding system that improved user satisfaction scores by 30%. Built system health metrics into user-facing dashboards, an early version of the instinct that would later define the product work: making complexity legible to the people who depend on it.`
+          }
         ],
-        stats: [{ num: "22%", label: "Reduction in incident response time" }, { num: "99.9%", label: "Uptime on payment processing" }, { num: "10K+", label: "Daily API requests at sub-200ms" }, { num: "5 yrs", label: "Engineering tenure" }]
+        stats: [
+          { num: "22%",   label: "Reduction in incident response time" },
+          { num: "99.9%", label: "Uptime on payment processing" },
+          { num: "10K+",  label: "Daily API requests at sub-200ms" },
+          { num: "5 yrs", label: "Engineering tenure" }
+        ]
       }
     ];
 
     const writingData = [
       {
-        title: "The user isn't the only one in the room", date: "2025",
+        title: "The user isn't the only one in the room",
+        date: "2025",
         body: `Pure user-centricity is the default setting in most product teams. It's taught in courses, repeated in interviews, and treated as the moral anchor of the discipline. The user always comes first.\n\nThe problem is that "the user" is rarely the only one in the room when a product decision gets made.\n\nLegal is in the room. Compliance is in the room. The enterprise partner who controls your distribution is in the room. The engineering team that has to live with the decision for three years is in the room. The financial model that determines whether the company exists in eighteen months is in the room.\n\nNone of this makes the user less important. But it does make product management significantly harder than "what does the user want?"\n\nThe job is to understand what the user needs, hold that clearly, and then navigate the real constraints, without using them as excuses to build the wrong thing.\n\nAt Amex, the hardest design problems weren't about what partners wanted to see. That part was easy: they wanted everything. The hard part was determining what they could legitimately see, given data governance rules that existed for real reasons. The user-centred answer and the compliant answer had to be the same answer. That required actual thinking, not a framework.\n\n"The user isn't the only one in the room" isn't a pessimistic statement. It's a description of the job. Pretending otherwise doesn't make you more user-centred. It makes you less useful.`
       },
       {
-        title: "Care is not a soft skill", date: "2025",
+        title: "Care is not a soft skill",
+        date: "2025",
         body: `Somewhere along the way, care got filed under "soft skills," the category that means important but not really measurable, and therefore not really serious.\n\nThis is wrong, and it matters that it's wrong.\n\nCare is what separates work that's technically correct from work that's actually good. A spec can be complete and still miss the point. A flow can pass usability testing and still feel like it was built by someone who never intended to use it. The gap between those two states is care.\n\nCare shows up in the things that don't have to be right. The edge case nobody will hit for six months. The error message that most users will never read. The loading state that lasts half a second. These are the places where care is optional: where time pressure and ticket count make it easy to ship the expedient version and move on.\n\nThe thing about care is that it compounds. Users don't experience individual features in isolation. They experience the accumulation of every decision, the polished ones and the ones where nobody bothered. The overall quality of a product is the average of those decisions over time, weighted toward the low end.\n\nCare is not soft. Care is a multiplier on every other skill you have.`
       },
       {
-        title: "Say it plainly", date: "2025",
+        title: "Say it plainly",
+        date: "2025",
         body: `Most communication in product teams fails for the same reason: the person writing it hasn't finished thinking about what they actually want to say.\n\nJargon is one symptom. Long sentences are another. Passive voice. Hedge words. The construction that sounds decisive but commits to nothing. These aren't style choices. They're signals that the thinking isn't done.\n\nClarity requires more work than vagueness, not less. A crisp paragraph takes longer to write than a rambling one because it requires you to decide what matters. That's the uncomfortable part. Deciding that something matters is also deciding that something else doesn't. That's a real decision with real consequences, and it's easier to leave it ambiguous.\n\nBut ambiguity doesn't resolve itself. It migrates. A vague requirement becomes a misaligned build. A hedged stakeholder update becomes a surprised executive. A meeting without a clear outcome becomes two more meetings. The fog gets distributed.\n\nSay it plainly. Write the hard thing directly. If the sentence can be cut without losing meaning, cut it.\n\nPlain language isn't a tone of voice. It's an act of respect for the person reading: the assertion that their time matters more than your comfort.`
       },
       {
-        title: "Actions over words, always", date: "2025",
+        title: "Actions over words, always",
+        date: "2025",
         body: `People are better at describing their intentions than predicting their behaviour. This isn't a character flaw. It's a cognitive one. When you ask someone what they would do in a hypothetical, they tell you who they'd like to be. What they actually do under real conditions, with real tradeoffs, is a different dataset entirely.\n\nThis matters for product, but it matters more generally.\n\nIn product research, it means that self-reported behaviour is a starting point, not evidence. The user who tells you they'd pay for a feature is not lying. They genuinely believe it. They also won't pay. The gap between stated preference and revealed preference is where most product bets go wrong.\n\nIn teams, it means that culture is what people do when no one is watching, not what gets written in the values doc. The team that says it prioritises quality ships technical debt under deadline pressure. The team that actually prioritises quality pushes back on the deadline.\n\nIn leadership, credibility is built through behaviour over time. A single inconsistency between what someone says matters and what they actually do creates a hole that takes years to fill.\n\nPay attention to what people do. Take what people say as one input, weighted accordingly. The signal is in the action.`
       }
     ];
@@ -1286,6 +1313,7 @@
       "content/CRED_ Improving Product Discoverability.pdf"
     ];
 
+    // ── MODAL ──
     function buildModal(d) {
       const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
       const body = d.sections
@@ -1301,7 +1329,7 @@
         <div class="modal-stats">${d.stats.map(s => `<div><div class="stat-num">${s.num}</div><div class="stat-label">${s.label}</div></div>`).join('')}</div>`;
     }
 
-    const overlay = document.getElementById('modal-overlay');
+    const overlay    = document.getElementById('modal-overlay');
     const modalInner = document.getElementById('modal-inner');
 
     function openModal(html) {
@@ -1314,12 +1342,10 @@
       document.body.style.overflow = '';
     }
 
-    // Work cards
     document.querySelectorAll('.case-card[data-case]').forEach((card) => {
       card.addEventListener('click', () => openModal(buildModal(caseData[parseInt(card.dataset.case)])));
     });
 
-    // Writing essays
     document.querySelectorAll('.writing-item[data-writing]').forEach((a) => {
       a.addEventListener('click', (e) => {
         e.preventDefault();
@@ -1338,10 +1364,10 @@
     overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeModal(); closePdf(); } });
 
-    // PDF viewer
-    const pdfOverlay   = document.getElementById('pdf-overlay');
-    const pdfScroll    = document.getElementById('pdf-canvas-scroll');
-    const pdfTitleEl   = document.getElementById('pdf-title');
+    // ── PDF VIEWER ──
+    const pdfOverlay  = document.getElementById('pdf-overlay');
+    const pdfScroll   = document.getElementById('pdf-canvas-scroll');
+    const pdfTitleEl  = document.getElementById('pdf-title');
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
     async function openPdf(url, title) {
