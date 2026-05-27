@@ -13,24 +13,26 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --paper: #F2EFE7;
-      --paper-2: #E9E4D8;
-      --ink: #0A1024;
-      --ink-soft: #545C75;
-      --blue: #1E40FF;
+      --paper:     #F2EFE7;
+      --paper-2:   #E9E4D8;
+      --ink:       #0A1024;
+      --ink-soft:  #545C75;
+      --rule:      #C9C3B4;
+      --blue:      #1E40FF;
       --blue-deep: #0C1E66;
-      --blue-light: #BFD4FF;
-      --red: #E8200C;
-      --yellow: #FFD000;
-      --accent: var(--blue);
+      --blue-light:#BFD4FF;
+      --red:       #E8200C;
+      --yellow:    #FFD000;
+      --accent:    var(--blue);
 
-      --grot: 'Familjen Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      --serif: 'Instrument Serif', Georgia, serif;
-      --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+      --grot:    'Familjen Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --serif:   'Instrument Serif', Georgia, serif;
+      --mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
       --display: 'Big Shoulders Display', 'Familjen Grotesk', sans-serif;
 
-      --mx: max(48px, 5vw);
-      --max-w: 1640px;
+      --mx:    max(40px, 4vw);
+      --max-w: 1680px;
+      --bar-h: 76px;
     }
 
     html { scroll-behavior: smooth; overflow-x: hidden; }
@@ -40,7 +42,7 @@
       color: var(--ink);
       font-family: var(--grot);
       font-size: 1.02rem;
-      line-height: 1.65;
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
       overflow-x: hidden;
@@ -50,334 +52,479 @@
     ::selection { background: var(--accent); color: var(--paper); }
 
     /* ──────────────────────────────────────────────────────────
-       MASTHEAD
+       STATUS BAR — 4-column spine
        ────────────────────────────────────────────────────────── */
-    .masthead {
+    .status-bar {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
       display: grid;
-      grid-template-columns: 1fr auto 1fr;
+      grid-template-columns: 1.2fr 1fr 1fr auto;
       align-items: center;
-      padding: 18px var(--mx);
+      padding: 16px var(--mx);
       background: var(--paper);
       border-bottom: 1px solid var(--ink);
-      gap: 24px;
-      transition: transform 280ms ease;
+      gap: 32px;
+      min-height: var(--bar-h);
     }
-    .masthead.hidden { transform: translateY(-100%); }
-    .masthead-right {
+    .status-cell {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+    .status-cell .k {
       font-family: var(--mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      text-align: right;
-    }
-    .masthead-mark {
-      font-family: var(--grot);
-      font-weight: 700;
-      font-size: 0.92rem;
-      letter-spacing: -0.01em;
+      font-size: 0.72rem;
+      letter-spacing: 0.01em;
       color: var(--ink);
-    }
-    .masthead-mark::before {
-      content: '●';
-      color: var(--red);
-      margin-right: 8px;
-      font-size: 0.7rem;
-      vertical-align: middle;
-    }
-
-    .nav-links {
-      display: none;
-      list-style: none;
-      gap: 28px;
+      font-weight: 500;
+      display: flex;
       align-items: center;
+      gap: 8px;
     }
-    @media (min-width: 720px) {
-      .nav-links { display: flex; justify-content: flex-end; }
-      .masthead-right { display: none; }
-    }
-    .nav-links a {
+    .status-cell .k::before {
+      content: '>';
+      color: var(--red);
       font-family: var(--mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--ink);
-      position: relative;
-      padding: 4px 0;
     }
-    .nav-links a::after {
+    .status-cell .v {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--ink-soft);
+      letter-spacing: 0.01em;
+    }
+    .status-cell .dot {
+      display: inline-block;
+      width: 7px; height: 7px;
+      background: var(--blue);
+      margin-right: 6px;
+      vertical-align: middle;
+      animation: blink 1.4s step-end infinite;
+    }
+    @keyframes blink { 50% { opacity: 0.2; } }
+
+    .status-cta {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--ink);
+      padding: 10px 18px;
+      border: 1px solid var(--ink);
+      position: relative;
+      transition: background 0ms, color 0ms, border-color 0ms;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .status-cta::before,
+    .status-cta::after {
       content: '';
       position: absolute;
-      left: 0; bottom: -2px;
-      width: 0; height: 2px;
-      background: var(--accent);
-      transition: width 180ms ease-in-out;
+      width: 8px; height: 8px;
+      border: 1px solid var(--ink-soft);
     }
-    .nav-links a:hover { color: var(--accent); transition: color 0ms; }
-    .nav-links a:hover::after { width: 100%; }
+    .status-cta::before {
+      top: -4px; left: -4px;
+      border-right: none; border-bottom: none;
+    }
+    .status-cta::after {
+      bottom: -4px; right: -4px;
+      border-left: none; border-top: none;
+    }
+    .status-cta:hover {
+      background: var(--blue);
+      color: var(--paper);
+      border-color: var(--blue);
+    }
+
+    @media (max-width: 900px) {
+      .status-bar {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px 24px;
+        padding: 14px var(--mx);
+      }
+      .status-cta {
+        grid-column: 1 / -1;
+        text-align: center;
+        order: 5;
+      }
+      :root { --bar-h: 130px; }
+    }
+    @media (max-width: 560px) {
+      :root { --mx: 20px; --bar-h: 140px; }
+    }
+
+    /* ──────────────────────────────────────────────────────────
+       SECTION SCAFFOLD
+       ────────────────────────────────────────────────────────── */
+    .section {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 96px var(--mx) 64px;
+      position: relative;
+    }
+    .section + .section {
+      border-top: 1px solid var(--rule);
+    }
+    .section-label {
+      font-family: var(--display);
+      font-weight: 500;
+      font-size: clamp(2.2rem, 4.2vw, 3.4rem);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      color: var(--ink);
+      margin-bottom: 64px;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 32px;
+    }
+    .section-label .meta {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--ink-soft);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 400;
+      line-height: 1.4;
+      text-align: right;
+      max-width: 260px;
+    }
+
+    @media (max-width: 720px) {
+      .section { padding: 64px var(--mx) 48px; }
+      .section-label { margin-bottom: 40px; flex-direction: column; gap: 12px; align-items: flex-start; }
+      .section-label .meta { text-align: left; }
+    }
 
     /* ──────────────────────────────────────────────────────────
        HERO
        ────────────────────────────────────────────────────────── */
     #hero {
-      padding-top: 80px;
       min-height: 100vh;
+      padding-top: calc(var(--bar-h) + 40px);
+      padding-bottom: 0;
       display: grid;
-      grid-template-rows: auto 1fr auto;
-      position: relative;
-    }
-    .hero-sigil {
-      position: absolute;
-      top: 60px; right: -8vw;
-      width: min(46vw, 540px);
-      height: min(46vw, 540px);
-      color: var(--blue);
-      opacity: 0.55;
-      pointer-events: none;
-      z-index: 0;
-    }
-    .hero-sigil svg { width: 100%; height: 100%; }
-
-    .hero-main {
-      padding: 88px var(--mx) 64px;
-      display: grid;
-      grid-template-columns: 1fr 280px;
-      gap: 80px;
-      align-items: end;
+      grid-template-rows: 1fr auto;
       max-width: var(--max-w);
       margin: 0 auto;
-      width: 100%;
+      padding-left: var(--mx);
+      padding-right: var(--mx);
       position: relative;
-      z-index: 1;
     }
-    @media (max-width: 900px) {
-      .hero-main { grid-template-columns: 1fr; gap: 48px; padding: 64px var(--mx) 48px; }
-      .hero-sigil { right: -25vw; opacity: 0.4; }
-    }
-
-    .hero-eyebrow {
+    .hero-corner-l, .hero-corner-r {
+      position: absolute;
+      top: calc(var(--bar-h) + 16px);
       font-family: var(--mono);
       font-size: 0.7rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
       color: var(--ink-soft);
-      margin-bottom: 28px;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
+      letter-spacing: 0.08em;
     }
-    .hero-eyebrow::before {
-      content: '';
-      display: inline-block;
-      width: 28px; height: 1px;
-      background: var(--ink);
-    }
+    .hero-corner-l { left: var(--mx); }
+    .hero-corner-r { right: var(--mx); }
 
-    .hero-name {
+    .hero-center {
+      align-self: center;
+      padding-top: 32px;
+      padding-bottom: 64px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      justify-items: start;
+    }
+    .hero-name-top {
       font-family: var(--display);
-      font-weight: 900;
-      font-size: clamp(4.5rem, 14vw, 14rem);
-      line-height: 0.84;
-      letter-spacing: -0.04em;
+      font-weight: 500;
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      line-height: 0.9;
+      letter-spacing: -0.02em;
       text-transform: uppercase;
-      margin-bottom: 32px;
     }
-    .hero-name .thin { font-weight: 500; }
-    .hero-name .accent-mark { color: var(--accent); }
+    .hero-name-top .heavy { font-weight: 900; }
 
-    .hero-line {
-      font-family: var(--grot);
-      font-weight: 400;
-      font-size: clamp(1.1rem, 1.8vw, 1.4rem);
-      line-height: 1.5;
-      max-width: 32ch;
+    .hero-tag {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(1.2rem, 2vw, 1.6rem);
+      line-height: 1.35;
       color: var(--ink);
+      max-width: 38ch;
       margin-top: 8px;
     }
+    .hero-tag .accent { color: var(--blue); }
 
-    .hero-meta {
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
-      padding-bottom: 8px;
-      padding-left: 24px;
-      position: relative;
-      z-index: 2;
-      background: linear-gradient(to right, transparent, var(--paper) 12%, var(--paper) 100%);
-    }
-    .hero-meta-block { border-top: 1px solid var(--ink); padding-top: 12px; }
-    .hero-meta-label {
-      font-family: var(--mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      margin-bottom: 6px;
-    }
-    .hero-meta-value {
-      font-family: var(--grot);
-      font-size: 0.92rem;
-      font-weight: 500;
-      line-height: 1.45;
-    }
-    .hero-meta-value .status-dot {
-      display: inline-block;
-      width: 8px; height: 8px;
-      background: var(--accent);
-      margin-right: 8px;
-      vertical-align: middle;
-      animation: blinker 1s step-end infinite;
-    }
-    @keyframes blinker { 50% { opacity: 0; } }
-
-    .hero-foot {
-      border-top: 1px solid var(--ink);
-      padding: 18px var(--mx);
+    .hero-bottom {
       display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 24px;
-      align-items: center;
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      position: relative;
-      z-index: 1;
-      background: var(--paper);
-    }
-    .hero-rule-out {
-      height: 6px;
-      width: 24vw;
-      background: var(--accent);
-      margin-top: -1px;
-    }
-
-    /* ──────────────────────────────────────────────────────────
-       SECTION CHROME
-       ────────────────────────────────────────────────────────── */
-    .section-mark {
-      display: grid;
-      grid-template-columns: 80px 1fr auto;
+      grid-template-columns: auto 1fr auto;
+      align-items: end;
       gap: 32px;
-      align-items: baseline;
-      padding: 80px var(--mx) 48px;
-      max-width: var(--max-w);
-      margin: 0 auto;
-    }
-    .section-num {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.16em;
-      color: var(--ink-soft);
-      text-transform: uppercase;
-    }
-    .section-title {
-      font-family: var(--display);
-      font-weight: 700;
-      font-size: clamp(2.2rem, 5vw, 4.2rem);
-      letter-spacing: -0.02em;
-      line-height: 1;
-      text-transform: uppercase;
-    }
-    .section-title .thin { font-weight: 500; }
-    .section-meta {
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.14em;
-      color: var(--ink-soft);
-      text-transform: uppercase;
-      text-align: right;
-      align-self: end;
-    }
-    @media (max-width: 720px) {
-      .section-mark { grid-template-columns: 1fr; gap: 16px; padding: 64px var(--mx) 32px; }
-      .section-meta { text-align: left; }
-    }
-
-    /* ──────────────────────────────────────────────────────────
-       WORK INDEX
-       ────────────────────────────────────────────────────────── */
-    .work-index {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 var(--mx) 80px;
-    }
-    .work-row {
-      display: grid;
-      grid-template-columns: 80px 1fr 200px 120px 60px;
-      gap: 32px;
-      align-items: baseline;
-      padding: 28px 0;
+      padding-bottom: 32px;
       border-bottom: 1px solid var(--ink);
-      cursor: pointer;
-      transition: padding-left 280ms ease;
-      position: relative;
-      text-decoration: none;
+    }
+    .hero-bigtitle {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: clamp(3.5rem, 12vw, 11rem);
+      letter-spacing: -0.04em;
+      line-height: 0.84;
+      text-transform: uppercase;
       color: var(--ink);
     }
-    .work-row:first-child { border-top: 1px solid var(--ink); }
-    .work-row:hover { padding-left: 16px; }
-    .work-row:hover .work-row-title { color: var(--accent); transition: color 0ms; }
-    .work-row:hover .work-row-arrow { color: var(--accent); transform: translateX(8px); }
-    .work-row::before {
+    .hero-bigtitle .alt {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-style: italic;
+      letter-spacing: -0.02em;
+      text-transform: none;
+      color: var(--blue);
+    }
+    .hero-bigtitle .red-dot { color: var(--red); }
+    .hero-corner-num {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--ink-soft);
+      letter-spacing: 0.08em;
+      align-self: end;
+      padding-bottom: 6px;
+    }
+
+    @media (max-width: 720px) {
+      #hero { min-height: auto; padding-top: calc(var(--bar-h) + 24px); padding-bottom: 24px; }
+      .hero-center { padding-top: 24px; padding-bottom: 24px; }
+      .hero-bottom { grid-template-columns: 1fr; }
+      .hero-corner-num { display: none; }
+      .hero-corner-l, .hero-corner-r { display: none; }
+    }
+
+    /* ──────────────────────────────────────────────────────────
+       ABOUT
+       ────────────────────────────────────────────────────────── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .about-prose {
+      font-size: clamp(1.2rem, 2vw, 1.55rem);
+      line-height: 1.45;
+      font-weight: 400;
+    }
+    .about-prose p + p { margin-top: 1.4em; }
+    .about-prose .accent { color: var(--blue); }
+
+    .about-side {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      align-content: start;
+      padding-top: 8px;
+    }
+    .about-side-block {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .about-side-block .label {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: var(--ink-soft);
+      text-transform: uppercase;
+    }
+    .about-side-block .value {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+    .about-side-block.span-2 { grid-column: 1 / -1; }
+
+    .about-links {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .about-link {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--ink);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      position: relative;
+      padding: 2px 0;
+    }
+    .about-link::before {
+      content: '↗';
+      color: var(--ink-soft);
+      transition: transform 180ms ease, color 0ms;
+    }
+    .about-link:hover { color: var(--blue); }
+    .about-link:hover::before { color: var(--blue); transform: translate(2px, -2px); }
+
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .about-prose { font-size: 1.2rem; }
+    }
+
+    /* ──────────────────────────────────────────────────────────
+       WORK — featured cards
+       ────────────────────────────────────────────────────────── */
+    .work-feature {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 64px;
+    }
+    .work-card {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+    }
+    .work-card-visual {
+      aspect-ratio: 16 / 11;
+      background: var(--paper-2);
+      border: 1px solid var(--rule);
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0ms;
+      display: grid;
+      place-items: center;
+      padding: 32px;
+    }
+    .work-card:hover .work-card-visual { border-color: var(--blue); }
+    .work-card-visual.v1 { background: linear-gradient(135deg, var(--paper-2) 0%, #DDD7C7 100%); }
+    .work-card-visual.v2 { background: var(--ink); }
+    .work-card-visual.v1 .gfx { color: var(--blue); }
+    .work-card-visual.v2 .gfx { color: var(--paper); }
+
+    .gfx {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
+    }
+    .gfx svg { width: 100%; height: 100%; max-width: 320px; }
+
+    .work-card-foot {
+      padding-top: 20px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: baseline;
+    }
+    .work-card-year {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--ink-soft);
+      letter-spacing: 0.06em;
+    }
+    .work-card-title {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-top: 4px;
+      grid-column: 1 / -1;
+    }
+    .work-card-title .alt {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+    }
+    .work-card-desc {
+      font-family: var(--grot);
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      line-height: 1.5;
+      margin-top: 8px;
+      grid-column: 1 / -1;
+      max-width: 50ch;
+    }
+
+    @media (max-width: 900px) {
+      .work-feature { grid-template-columns: 1fr; gap: 48px; margin-bottom: 48px; }
+    }
+
+    /* Work list table */
+    .work-list {
+      border-top: 1px solid var(--ink);
+    }
+    .work-list-row {
+      display: grid;
+      grid-template-columns: 80px 1fr 1.3fr 80px;
+      gap: 24px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--rule);
+      align-items: baseline;
+      position: relative;
+      transition: padding-left 220ms ease;
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .work-list-row:hover { padding-left: 12px; }
+    .work-list-row::before {
       content: '';
       position: absolute;
       left: 0; top: 0; bottom: 0;
       width: 0;
-      background: var(--accent);
-      transition: width 280ms ease;
+      background: var(--blue);
+      transition: width 220ms ease;
     }
-    .work-row:hover::before { width: 4px; }
-    .work-row-num { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.06em; color: var(--ink-soft); }
-    .work-row-title {
-      font-family: var(--display);
-      font-weight: 700;
-      font-size: clamp(1.4rem, 2.8vw, 2.2rem);
-      letter-spacing: -0.01em;
-      line-height: 1.05;
-      text-transform: uppercase;
-      transition: color 0ms;
-    }
-    .work-row-title .thin { font-weight: 500; }
-    .work-row-company { font-family: var(--grot); font-size: 0.9rem; font-weight: 500; }
-    .work-row-year { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--ink-soft); }
-    .work-row-arrow { font-family: var(--mono); font-size: 1rem; text-align: right; transition: transform 280ms ease, color 0ms; }
-    .work-row-divider {
-      display: grid;
-      grid-template-columns: 80px 1fr;
-      gap: 32px;
-      padding: 14px 0;
+    .work-list-row:hover::before { width: 3px; }
+    .work-list-row:hover .row-title { color: var(--blue); transition: color 0ms; }
+    .work-list-row:hover .row-action { color: var(--blue); }
+
+    .row-year {
       font-family: var(--mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
+      font-size: 0.78rem;
       color: var(--ink-soft);
-      border-bottom: 1px solid var(--ink);
-      margin-top: 8px;
-      pointer-events: none;
+      letter-spacing: 0.04em;
     }
-    @media (max-width: 900px) {
-      .work-row { grid-template-columns: 50px 1fr; grid-template-rows: auto auto; gap: 12px 20px; padding: 24px 0; }
-      .work-row-num { grid-row: 1; grid-column: 1; }
-      .work-row-title { grid-row: 1; grid-column: 2; font-size: 1.3rem; }
-      .work-row-company { grid-row: 2; grid-column: 2; font-size: 0.85rem; }
-      .work-row-year { display: none; }
-      .work-row-arrow { display: none; }
-      .work-row-divider { grid-template-columns: 50px 1fr; }
+    .row-title {
+      font-family: var(--grot);
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .row-meta {
+      font-family: var(--grot);
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+    }
+    .row-action {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+      letter-spacing: 0.04em;
+      text-align: right;
+    }
+
+    @media (max-width: 720px) {
+      .work-list-row {
+        grid-template-columns: 60px 1fr auto;
+        gap: 16px;
+        padding: 18px 0;
+      }
+      .row-meta { display: none; }
+      .row-action { font-size: 0.7rem; }
     }
 
     /* ──────────────────────────────────────────────────────────
-       CASE STUDY, inline editorial spreads
+       CASE STUDY — inline editorial
        ────────────────────────────────────────────────────────── */
     .case-study {
       max-width: var(--max-w);
       margin: 0 auto;
       padding: 96px var(--mx);
-      border-bottom: 1px solid var(--ink);
+      border-top: 1px solid var(--rule);
     }
     .case-study:nth-of-type(even) { background: var(--paper-2); }
 
@@ -390,8 +537,21 @@
       padding-bottom: 24px;
       border-bottom: 1px solid var(--ink);
     }
-    .case-head-num { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.16em; color: var(--ink-soft); text-transform: uppercase; }
-    .case-head-meta { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.14em; color: var(--ink-soft); text-transform: uppercase; text-align: right; }
+    .case-head-num {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      color: var(--ink-soft);
+      text-transform: uppercase;
+    }
+    .case-head-meta {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      color: var(--ink-soft);
+      text-transform: uppercase;
+      text-align: right;
+    }
     .case-head-meta strong { color: var(--red); font-weight: 500; }
 
     .case-title {
@@ -404,7 +564,13 @@
       margin-bottom: 48px;
     }
     .case-title .thin { font-weight: 500; }
-    .case-title .serif { font-family: var(--serif); font-weight: 400; font-style: italic; text-transform: none; letter-spacing: -0.01em; }
+    .case-title .serif {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-style: italic;
+      text-transform: none;
+      letter-spacing: -0.01em;
+    }
 
     .case-body-grid {
       display: grid;
@@ -453,7 +619,6 @@
     }
     .case-prose p + p, .case-aside p + p { margin-top: 16px; }
 
-    /* Decision blocks — "Why:" / "What got deferred:" etc. */
     .decision-block {
       margin-top: 16px;
       padding: 14px 16px;
@@ -471,12 +636,10 @@
     }
     .decision-block-text { font-size: 0.95rem; line-height: 1.65; }
 
-    /* Execution items — plain list */
     .item-list { list-style: none; margin-top: 12px; display: flex; flex-direction: column; gap: 8px; }
     .item-list li { font-size: 0.95rem; line-height: 1.6; padding-left: 16px; position: relative; }
     .item-list li::before { content: '—'; position: absolute; left: 0; color: var(--ink-soft); }
 
-    /* Labeled items — SRE work */
     .labeled-item { margin-top: 18px; }
     .labeled-item:first-child { margin-top: 0; }
     .labeled-item-label {
@@ -489,7 +652,6 @@
     }
     .labeled-item-text { font-size: 0.95rem; line-height: 1.65; }
 
-    /* Metrics list — Results section */
     .metrics-list { list-style: none; margin-top: 12px; display: flex; flex-direction: column; gap: 6px; }
     .metrics-list li {
       font-family: var(--mono);
@@ -515,7 +677,14 @@
     }
     @media (max-width: 480px) { .case-stats { grid-template-columns: 1fr; } }
 
-    .stats-label { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft); line-height: 1.6; }
+    .stats-label {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
     .stat { display: flex; flex-direction: column; gap: 6px; }
     .stat-num {
       font-family: var(--display);
@@ -523,19 +692,75 @@
       font-size: clamp(2.6rem, 5vw, 4.6rem);
       letter-spacing: -0.03em;
       line-height: 0.9;
-      color: var(--ink);
     }
     .stat-num.red { color: var(--red); }
-    .stat-label { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); max-width: 22ch; }
+    .stat-label {
+      font-family: var(--mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      max-width: 22ch;
+    }
+
+    /* ──────────────────────────────────────────────────────────
+       EXPERIENCE
+       ────────────────────────────────────────────────────────── */
+    .exp-list {
+      border-top: 1px solid var(--ink);
+    }
+    .exp-row {
+      display: grid;
+      grid-template-columns: 200px 1.2fr 2fr;
+      gap: 48px;
+      padding: 36px 0;
+      border-bottom: 1px solid var(--rule);
+      align-items: start;
+    }
+    .exp-when {
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding-top: 4px;
+    }
+    .exp-role {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .exp-role-title {
+      font-family: var(--grot);
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+    .exp-role-company {
+      font-family: var(--grot);
+      font-size: 1rem;
+      color: var(--ink-soft);
+    }
+    .exp-desc {
+      font-family: var(--grot);
+      font-size: 1rem;
+      color: var(--ink-soft);
+      line-height: 1.6;
+      max-width: 60ch;
+    }
+
+    @media (max-width: 900px) {
+      .exp-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 28px 0;
+      }
+    }
 
     /* ──────────────────────────────────────────────────────────
        HOW I WORK
        ────────────────────────────────────────────────────────── */
-    .how-i-work {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 var(--mx) 96px;
-    }
     .hiw-grid {
       display: grid;
       grid-template-columns: 80px repeat(3, 1fr);
@@ -563,148 +788,164 @@
       margin-bottom: 20px;
     }
     .hiw-body { font-size: 1rem; line-height: 1.75; color: var(--ink-soft); }
+
     @media (max-width: 900px) {
       .hiw-grid { grid-template-columns: 1fr; gap: 40px; }
       .hiw-spacer { display: none; }
     }
 
     /* ──────────────────────────────────────────────────────────
-       ABOUT
+       PRINCIPLES (Manifesto)
        ────────────────────────────────────────────────────────── */
-    #about {
-      padding: 0 var(--mx) 96px;
-      max-width: var(--max-w);
-      margin: 0 auto;
-    }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 80px 1fr 300px;
-      gap: 64px;
-    }
-    @media (max-width: 900px) {
-      .about-grid { grid-template-columns: 1fr; gap: 40px; }
-      #about { padding-bottom: 64px; }
-    }
-
-    .about-prose { font-size: 1.12rem; line-height: 1.75; }
-    .about-section { margin-bottom: 40px; }
-    .about-section:last-child { margin-bottom: 0; }
-    .about-section-title {
+    .manifesto-text {
       font-family: var(--display);
       font-weight: 700;
-      font-size: clamp(1.4rem, 2.5vw, 1.8rem);
-      letter-spacing: -0.01em;
+      font-size: clamp(2.4rem, 6.2vw, 6.4rem);
+      line-height: 0.95;
+      letter-spacing: -0.025em;
       text-transform: uppercase;
-      margin-bottom: 14px;
-      line-height: 1;
+      color: var(--ink);
+      max-width: 16ch;
     }
-    .about-section-title .thin { font-weight: 500; }
-    .about-section p { font-size: 1.08rem; line-height: 1.75; }
-
-    .about-side { display: flex; flex-direction: column; gap: 36px; }
-    .side-block-label {
-      font-family: var(--mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      margin-bottom: 12px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--ink);
+    .manifesto-text .thin { font-weight: 500; opacity: 0.5; }
+    .manifesto-text .alt {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-style: italic;
+      text-transform: none;
+      letter-spacing: -0.015em;
+      color: var(--blue);
     }
-    .side-block ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
-    .side-block li { font-family: var(--grot); font-size: 0.95rem; line-height: 1.4; }
-    .side-block li .key {
-      font-family: var(--mono);
-      font-size: 0.66rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      display: inline-block;
-      width: 100px;
+    .manifesto-text .punch {
+      background: var(--red);
+      color: var(--paper);
+      padding: 0 0.1em;
     }
 
     /* ──────────────────────────────────────────────────────────
-       CONTACT
+       CONTACT — monogram + CTA
        ────────────────────────────────────────────────────────── */
     #contact {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 var(--mx) 80px;
-      display: grid;
-      grid-template-columns: 80px 1fr 1fr;
-      gap: 64px;
+      padding-top: 80px;
+      padding-bottom: 80px;
+      position: relative;
     }
-    @media (max-width: 900px) { #contact { grid-template-columns: 1fr; gap: 32px; } }
-
-    .contact-major {
+    .contact-top {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      align-items: start;
+      margin-bottom: 80px;
+    }
+    .contact-mark {
       font-family: var(--display);
       font-weight: 900;
-      font-size: clamp(3rem, 9vw, 9rem);
-      line-height: 0.86;
-      letter-spacing: -0.04em;
+      font-size: clamp(7rem, 18vw, 18rem);
+      line-height: 0.78;
+      letter-spacing: -0.06em;
       text-transform: uppercase;
+      color: var(--ink);
     }
-    .contact-major .thin { font-weight: 500; }
-    .contact-major .serif { font-family: var(--serif); font-weight: 400; font-style: italic; text-transform: none; letter-spacing: -0.01em; }
-    .contact-major .punch { color: var(--red); }
+    .contact-mark .red-dot { color: var(--red); }
+    .contact-mark .alt {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      text-transform: none;
+      color: var(--blue);
+    }
 
-    .contact-side { display: flex; flex-direction: column; gap: 36px; padding-top: 12px; }
-    .contact-label {
+    .contact-side-info {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      max-width: 240px;
+      padding-top: 12px;
+    }
+    .contact-info-label {
       font-family: var(--mono);
-      font-size: 0.62rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: var(--ink-soft);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .contact-info-value {
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      color: var(--ink);
+    }
+
+    .contact-cta-block {
+      text-align: center;
+      padding: 80px 0;
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      margin-bottom: 48px;
+    }
+    .contact-cta-eyebrow {
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      color: var(--ink-soft);
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--ink-soft);
-      margin-bottom: 10px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--ink);
+      margin-bottom: 18px;
     }
-    .contact-subtitle {
-      font-size: 1rem;
-      line-height: 1.65;
-      color: var(--ink-soft);
-      max-width: 28ch;
-      margin-bottom: 28px;
-    }
-    .contact-email {
+    .contact-cta-link {
       font-family: var(--display);
-      font-weight: 700;
-      font-size: clamp(1.2rem, 2.2vw, 2rem);
-      letter-spacing: -0.01em;
-      line-height: 1.2;
+      font-weight: 900;
+      font-size: clamp(2.6rem, 6vw, 5.2rem);
+      letter-spacing: -0.025em;
+      line-height: 1;
       text-transform: uppercase;
+      color: var(--ink);
       position: relative;
       display: inline-block;
+      padding-bottom: 6px;
     }
-    .contact-email::after {
+    .contact-cta-link::after {
       content: '';
       position: absolute;
       left: 0; bottom: 0;
-      width: 0; height: 3px;
-      background: var(--accent);
-      transition: width 220ms ease;
+      width: 0; height: 4px;
+      background: var(--blue);
+      transition: width 280ms ease;
     }
-    .contact-email:hover { color: var(--accent); transition: color 0ms; }
-    .contact-email:hover::after { width: 100%; }
+    .contact-cta-link:hover { color: var(--blue); transition: color 0ms; }
+    .contact-cta-link:hover::after { width: 100%; }
+    .contact-cta-link .arrow {
+      display: inline-block;
+      margin-left: 18px;
+      transition: transform 240ms ease;
+    }
+    .contact-cta-link:hover .arrow { transform: translate(8px, -4px); }
 
-    .contact-links { display: flex; flex-direction: column; gap: 4px; }
-    .contact-link {
-      display: grid;
-      grid-template-columns: 100px 1fr;
-      gap: 16px;
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(10,16,36,0.15);
-      align-items: baseline;
-      text-decoration: none;
-      color: var(--ink);
+    .contact-links {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      margin-top: 24px;
     }
-    .contact-link:last-child { border-bottom: none; }
-    .contact-link .k { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft); }
-    .contact-link .v { font-family: var(--grot); font-size: 1rem; font-weight: 500; position: relative; display: inline-block; width: fit-content; }
-    .contact-link .v::after { content: ''; position: absolute; left: 0; bottom: -1px; width: 0; height: 2px; background: var(--accent); transition: width 180ms ease-in-out; }
-    .contact-link:hover .v { color: var(--accent); transition: color 0ms; }
-    .contact-link:hover .v::after { width: 100%; }
+    .contact-ext-link {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      color: var(--ink-soft);
+      text-transform: uppercase;
+      position: relative;
+      padding: 2px 0;
+    }
+    .contact-ext-link::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -2px;
+      width: 0; height: 2px;
+      background: var(--blue);
+      transition: width 180ms ease-in-out;
+    }
+    .contact-ext-link:hover { color: var(--blue); transition: color 0ms; }
+    .contact-ext-link:hover::after { width: 100%; }
 
     /* ──────────────────────────────────────────────────────────
        FOOTER
@@ -733,140 +974,200 @@
       .colophon .middle, .colophon .right { text-align: left; }
     }
 
+    @media (max-width: 900px) {
+      .contact-top { grid-template-columns: 1fr; gap: 32px; }
+    }
+
     /* ──────────────────────────────────────────────────────────
-       PDF VIEWER
+       PDF OVERLAY
        ────────────────────────────────────────────────────────── */
     @media (max-width: 480px) {
       :root { --mx: 20px; }
-      .hero-main { padding: 48px var(--mx) 32px; }
-      .hero-foot { grid-template-columns: 1fr; gap: 8px; }
-      .case-stats { margin-top: 36px; padding-top: 24px; }
-      .nav-links { gap: 16px; }
-      .nav-links a { font-size: 0.62rem; letter-spacing: 0.1em; }
     }
   </style>
 </head>
 <body>
 
-  <!-- MASTHEAD -->
-  <header class="masthead" id="masthead">
-    <a class="masthead-mark" href="#hero">Chhavi Chauhan</a>
-    <ul class="nav-links">
-      <li><a href="#work">Work</a></li>
-      <li><a href="#decision-making">How I Work</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <div class="masthead-right">PM Portfolio</div>
+  <!-- ════════════════════════════════════════════════════════
+       STATUS BAR
+       ════════════════════════════════════════════════════════ -->
+  <header class="status-bar">
+    <div class="status-cell">
+      <div class="k">Chhavi Chauhan</div>
+      <div class="v">Product Manager</div>
+    </div>
+    <div class="status-cell">
+      <div class="k">Bangalore based</div>
+      <div class="v">Working globally</div>
+    </div>
+    <div class="status-cell">
+      <div class="k">Currently</div>
+      <div class="v"><span class="dot"></span>Open to new roles</div>
+    </div>
+    <a class="status-cta" href="#contact">Get in touch</a>
   </header>
 
-  <!-- HERO -->
+  <!-- ════════════════════════════════════════════════════════
+       HERO
+       ════════════════════════════════════════════════════════ -->
   <section id="hero">
-    <div class="hero-sigil" aria-hidden="true">
-      <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <pattern id="dots" x="0" y="0" width="14" height="14" patternUnits="userSpaceOnUse">
-            <circle cx="7" cy="7" r="2.4" fill="currentColor" />
-          </pattern>
-          <mask id="fade">
-            <radialGradient id="g" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#fff" stop-opacity="1" />
-              <stop offset="55%" stop-color="#fff" stop-opacity="0.85" />
-              <stop offset="100%" stop-color="#fff" stop-opacity="0" />
-            </radialGradient>
-            <rect width="600" height="600" fill="url(#g)" />
-          </mask>
-        </defs>
-        <rect width="600" height="600" fill="url(#dots)" mask="url(#fade)" />
-      </svg>
+    <div class="hero-corner-l">V1.0 / 2026.05.27</div>
+    <div class="hero-corner-r">Portfolio / Vol. I</div>
+
+    <div class="hero-center">
+      <div class="hero-name-top">
+        <span>Chhavi</span>&nbsp;<span class="heavy">Chauhan</span>
+      </div>
+      <p class="hero-tag">
+        Product manager with an engineering and SRE foundation.
+        Working at the intersection of <span class="accent">systems thinking</span> and business precision.
+      </p>
     </div>
 
-    <div class="hero-main">
-      <div>
-        <div class="hero-eyebrow">Portfolio, Vol. I / 2026</div>
-        <h1 class="hero-name">
-          <span class="thin">Chhavi</span><br/>
-          <span class="accent-mark">Chauhan</span>
-        </h1>
-        <p class="hero-line">
-          Product Manager with engineering and SRE foundation. Based in Bangalore. Open to B2B, FinTech, AI-first roles.
-        </p>
+    <div class="hero-bottom">
+      <div class="hero-corner-num">01</div>
+      <h1 class="hero-bigtitle">
+        Product<br/>
+        <span class="alt">manager</span><span class="red-dot">.</span>
+      </h1>
+      <div class="hero-corner-num">02</div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       ABOUT
+       ════════════════════════════════════════════════════════ -->
+  <section class="section" id="about">
+    <div class="section-label">
+      About
+      <div class="meta">01 / A little about me</div>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-prose">
+        <p>I&rsquo;m a product manager with an engineering and SRE foundation. I work on the parts of products most people <span class="accent">quietly avoid</span> — the activation that bleeds users, the compliance gap that stops a deal, the infrastructure decision that becomes a product decision three months later.</p>
+        <p>Five years as an engineer and SRE at American Express before moving into product. That background means I take seriously what&rsquo;s happening inside the system: uptime, latency, graceful degradation. Users blame the product when the database is slow.</p>
+        <p>I understand how systems fail. I understand why compliance matters. I understand what moves business metrics. And I execute.</p>
+        <p>Looking for the next challenge. B2B, FinTech, or AI-first. Based in Bangalore, India.</p>
       </div>
-      <aside class="hero-meta">
-        <div class="hero-meta-block">
-          <div class="hero-meta-label">Now</div>
-          <div class="hero-meta-value">
-            <span class="status-dot"></span>Open to new roles<br/>FinTech &middot; B2B &middot; AI-first
+
+      <aside class="about-side">
+        <div class="about-side-block span-2">
+          <div class="label">Links</div>
+          <div class="about-links">
+            <a href="https://www.linkedin.com/in/chhavian/" class="about-link" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://chhavian.github.io/portfolio/resume.pdf" class="about-link" target="_blank" rel="noopener">Resume PDF</a>
           </div>
         </div>
-        <div class="hero-meta-block">
-          <div class="hero-meta-label">Recent</div>
-          <div class="hero-meta-value">First PM, Saturn<br/>Aug 2025–Apr 2026</div>
-        </div>
-        <div class="hero-meta-block">
-          <div class="hero-meta-label">Based</div>
-          <div class="hero-meta-value">Bangalore, India</div>
+        <div class="about-side-block span-2">
+          <div class="label">Technical</div>
+          <div class="value">
+            Python, SQL<br/>
+            Kubernetes, GCP, AWS<br/>
+            Figma, Miro<br/>
+            LLM product, RAG systems
+          </div>
         </div>
       </aside>
     </div>
-
-    <div class="hero-foot">
-      <div>Scroll &darr;</div>
-      <div>Three roles &middot; Two case studies</div>
-    </div>
-    <div class="hero-rule-out"></div>
   </section>
 
-  <!-- WORK INDEX -->
-  <div class="section-mark" id="work">
-    <div class="section-num">&sect; 001</div>
-    <h2 class="section-title"><span class="thin">Selected </span>Work</h2>
-    <div class="section-meta">Three roles / 2019&ndash;2026</div>
-  </div>
+  <!-- ════════════════════════════════════════════════════════
+       WORK
+       ════════════════════════════════════════════════════════ -->
+  <section class="section" id="work">
+    <div class="section-label">
+      Work
+      <div class="meta">Three roles / 2019&ndash;2026<br/>B2B &middot; FinTech &middot; Enterprise</div>
+    </div>
 
-  <nav class="work-index" aria-label="Work index">
-    <a class="work-row" href="#case-1">
-      <span class="work-row-num">001</span>
-      <span class="work-row-title"><span class="thin">First PM,</span> Saturn</span>
-      <span class="work-row-company">Saturn</span>
-      <span class="work-row-year">2025&ndash;26</span>
-      <span class="work-row-arrow">&rarr;</span>
-    </a>
-    <a class="work-row" href="#case-2">
-      <span class="work-row-num">002</span>
-      <span class="work-row-title"><span class="thin">PM,</span> American Express</span>
-      <span class="work-row-company">American Express</span>
-      <span class="work-row-year">2024&ndash;25</span>
-      <span class="work-row-arrow">&rarr;</span>
-    </a>
-    <a class="work-row" href="#case-3">
-      <span class="work-row-num">003</span>
-      <span class="work-row-title"><span class="thin">Engineer &amp; SRE,</span> Amex</span>
-      <span class="work-row-company">American Express</span>
-      <span class="work-row-year">2019&ndash;23</span>
-      <span class="work-row-arrow">&rarr;</span>
-    </a>
-    <div class="work-row-divider">
-      <span>CS</span>
-      <span>Practice Case Studies &mdash; PDF</span>
-    </div>
-    <div class="work-row" data-exercise="0">
-      <span class="work-row-num">CS 01</span>
-      <span class="work-row-title"><span class="thin">Experiences Awareness,</span> Airbnb</span>
-      <span class="work-row-company">Airbnb</span>
-      <span class="work-row-year">Aug 2025</span>
-      <span class="work-row-arrow">&#8599;</span>
-    </div>
-    <div class="work-row" data-exercise="1">
-      <span class="work-row-title"><span class="thin">Improving Discoverability,</span> CRED</span>
-      <span class="work-row-num">CS 02</span>
-      <span class="work-row-company">CRED</span>
-      <span class="work-row-year">Aug 2025</span>
-      <span class="work-row-arrow">&#8599;</span>
-    </div>
-  </nav>
+    <!-- Featured 2-up cards -->
+    <div class="work-feature">
+      <a href="#case-1" class="work-card">
+        <div class="work-card-visual v1">
+          <div class="gfx">
+            <svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+              <defs>
+                <pattern id="lines1" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
+                  <line x1="0" y1="0" x2="0" y2="4" stroke="currentColor" stroke-width="0.8" />
+                </pattern>
+              </defs>
+              <rect x="20" y="20" width="280" height="180" fill="none" stroke="currentColor" stroke-width="1.5" />
+              <rect x="30" y="30" width="120" height="80" fill="url(#lines1)" opacity="0.55" />
+              <rect x="160" y="30" width="130" height="40" fill="currentColor" />
+              <text x="167" y="56" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700" fill="#F2EFE7" letter-spacing="1">SATURN / UK</text>
+              <rect x="160" y="80" width="60" height="30" fill="none" stroke="currentColor" stroke-width="1.5" />
+              <rect x="226" y="80" width="64" height="30" fill="none" stroke="currentColor" stroke-width="1.5" />
+              <rect x="30" y="120" width="260" height="2" fill="currentColor" />
+              <text x="30" y="158" font-family="Big Shoulders Display, sans-serif" font-size="44" font-weight="900" fill="currentColor" letter-spacing="-1">30→18%</text>
+              <text x="30" y="180" font-family="JetBrains Mono, monospace" font-size="8" fill="currentColor" opacity="0.7" letter-spacing="1">MONTH-1 CHURN REDUCED</text>
+            </svg>
+          </div>
+        </div>
+        <div class="work-card-foot">
+          <span class="work-card-year">Aug 2025&ndash;Apr 2026</span>
+          <span class="work-card-year" style="text-align:right;">Saturn</span>
+          <h3 class="work-card-title">Building PM from <span class="alt">nothing</span></h3>
+          <p class="work-card-desc">No discovery, no roadmap, month-1 churn at 30%. Built the function, fixed the workflows, reversed the churn. £120K+ ARR.</p>
+        </div>
+      </a>
 
-  <!-- CASE STUDY 001 — Saturn -->
+      <a href="#case-2" class="work-card">
+        <div class="work-card-visual v2">
+          <div class="gfx">
+            <svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+              <defs>
+                <pattern id="dots2" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+                  <circle cx="4" cy="4" r="1" fill="currentColor" />
+                </pattern>
+              </defs>
+              <rect x="20" y="20" width="280" height="180" fill="url(#dots2)" opacity="0.3" />
+              <rect x="20" y="60" width="280" height="120" fill="none" stroke="currentColor" stroke-width="1.5" />
+              <line x1="20" y1="100" x2="300" y2="100" stroke="currentColor" stroke-width="1" opacity="0.4" />
+              <line x1="20" y1="140" x2="300" y2="140" stroke="currentColor" stroke-width="1" opacity="0.4" />
+              <line x1="105" y1="60" x2="105" y2="180" stroke="currentColor" stroke-width="1" opacity="0.4" />
+              <line x1="200" y1="60" x2="200" y2="180" stroke="currentColor" stroke-width="1" opacity="0.4" />
+              <rect x="105" y="100" width="95" height="40" fill="#1E40FF" />
+              <text x="112" y="124" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700" fill="#F2EFE7" letter-spacing="1">3 MONTHS</text>
+              <text x="30" y="50" font-family="Big Shoulders Display, sans-serif" font-size="20" font-weight="900" fill="currentColor" letter-spacing="-0.5">COMPLIANCE FIX</text>
+            </svg>
+          </div>
+        </div>
+        <div class="work-card-foot">
+          <span class="work-card-year">Jan 2024&ndash;Jul 2025</span>
+          <span class="work-card-year" style="text-align:right;">American Express</span>
+          <h3 class="work-card-title">A compliance fix in <span class="alt">three months</span></h3>
+          <p class="work-card-desc">Legal flagged a data access risk. Engineering estimated one year. Scoped to three months without compromising the fix. Amazon account renewed.</p>
+        </div>
+      </a>
+    </div>
+
+    <!-- All projects table -->
+    <div class="work-list">
+      <a href="#case-3" class="work-list-row">
+        <span class="row-year">2019&ndash;23</span>
+        <span class="row-title">Engineer &amp; SRE, American Express</span>
+        <span class="row-meta">American Express / Infrastructure, Site Reliability</span>
+        <span class="row-action">[ View ]</span>
+      </a>
+      <div class="work-list-row" data-exercise="0" style="cursor:pointer;">
+        <span class="row-year">Aug 2025</span>
+        <span class="row-title">Experiences Awareness, Airbnb</span>
+        <span class="row-meta">Practice case study / PDF</span>
+        <span class="row-action">[ PDF ↗ ]</span>
+      </div>
+      <div class="work-list-row" data-exercise="1" style="cursor:pointer;">
+        <span class="row-year">Aug 2025</span>
+        <span class="row-title">Improving Discoverability, CRED</span>
+        <span class="row-meta">Practice case study / PDF</span>
+        <span class="row-action">[ PDF ↗ ]</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       CASE STUDY 001 — Saturn
+       ════════════════════════════════════════════════════════ -->
   <article class="case-study" id="case-1">
     <div class="case-head">
       <div class="case-head-num">Case 001 / Saturn</div>
@@ -925,7 +1226,9 @@
     </div>
   </article>
 
-  <!-- CASE STUDY 002 — Amex PM -->
+  <!-- ════════════════════════════════════════════════════════
+       CASE STUDY 002 — Amex PM
+       ════════════════════════════════════════════════════════ -->
   <article class="case-study" id="case-2">
     <div class="case-head">
       <div class="case-head-num">Case 002 / American Express</div>
@@ -988,7 +1291,9 @@
     </div>
   </article>
 
-  <!-- CASE STUDY 003 — Amex SRE -->
+  <!-- ════════════════════════════════════════════════════════
+       CASE STUDY 003 — Amex SRE
+       ════════════════════════════════════════════════════════ -->
   <article class="case-study" id="case-3">
     <div class="case-head">
       <div class="case-head-num">Case 003 / American Express</div>
@@ -1040,13 +1345,57 @@
     </div>
   </article>
 
-  <!-- HOW I WORK -->
-  <div class="section-mark" id="decision-making">
-    <div class="section-num">&sect; 002</div>
-    <h2 class="section-title"><span class="thin">How I </span>Work</h2>
-    <div class="section-meta">Three operating principles</div>
-  </div>
-  <div class="how-i-work">
+  <!-- ════════════════════════════════════════════════════════
+       EXPERIENCE
+       ════════════════════════════════════════════════════════ -->
+  <section class="section" id="experience">
+    <div class="section-label">
+      Experience
+      <div class="meta">6+ years / Three roles<br/>B2B &middot; Enterprise &middot; Infrastructure</div>
+    </div>
+
+    <div class="exp-list">
+      <div class="exp-row">
+        <div class="exp-when">Aug 2025&ndash;Apr 2026</div>
+        <div class="exp-role">
+          <div class="exp-role-title">First Product Manager</div>
+          <div class="exp-role-company">Saturn</div>
+        </div>
+        <div class="exp-desc">
+          Built the PM function from scratch on a live fintech platform for UK financial advisers. No prior discovery process, no roadmap, no prioritization structure. Ran 15 adviser interviews in the first month. Identified three workflows consuming 60% of user time, built templating to address them, reduced month-1 churn from 30% to 18%. Platform reached 2,100+ monthly active advisers and £120K+ ARR.
+        </div>
+      </div>
+      <div class="exp-row">
+        <div class="exp-when">Jan 2024&ndash;Jul 2025</div>
+        <div class="exp-role">
+          <div class="exp-role-title">Product Manager</div>
+          <div class="exp-role-company">American Express</div>
+        </div>
+        <div class="exp-desc">
+          Partner portal for co-brand credit cards. Legal flagged a data access control risk. Engineering estimated one year to fix. Scoped the minimum architecture to eliminate the compliance exposure in three months. Partner onboarding dropped from 4&ndash;6 weeks to 2&ndash;3 days. 40+ partners through the new system. Amazon account renewed. Zero compliance incidents post-launch.
+        </div>
+      </div>
+      <div class="exp-row">
+        <div class="exp-when">Jul 2019&ndash;Dec 2023</div>
+        <div class="exp-role">
+          <div class="exp-role-title">Engineer &amp; Site Reliability Engineer</div>
+          <div class="exp-role-company">American Express</div>
+        </div>
+        <div class="exp-desc">
+          Five years across infrastructure and site reliability. Designed alerting for millions of daily payment transactions, reducing false positives by 70%. Built REST APIs handling 10,000+ daily requests at sub-200ms. Built an employee onboarding system that improved satisfaction scores by 30%. Moved into product after learning that system reliability is a product decision, not an ops one.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       HOW I WORK
+       ════════════════════════════════════════════════════════ -->
+  <section class="section" id="decision-making">
+    <div class="section-label">
+      How I Work
+      <div class="meta">Three operating principles</div>
+    </div>
     <div class="hiw-grid">
       <div class="hiw-spacer"></div>
       <div class="hiw-item">
@@ -1061,97 +1410,67 @@
       </div>
       <div class="hiw-item">
         <div class="hiw-num">03</div>
-        <div class="hiw-title">Trade&ndash;offs</div>
+        <div class="hiw-title">Trade-offs</div>
         <p class="hiw-body">Every decision is a choice to not do something else. Name it. You&rsquo;re choosing X over Y because of Z. If Z changes, everyone knows we revisit the decision.</p>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- ABOUT -->
-  <div class="section-mark">
-    <div class="section-num">&sect; 003</div>
-    <h2 class="section-title"><span class="thin">About </span>me</h2>
-    <div class="section-meta">A short biography</div>
-  </div>
-  <section id="about">
-    <div class="about-grid">
-      <div></div>
-      <div class="about-prose">
-        <div class="about-section">
-          <div class="about-section-title"><span class="thin">What I </span>Bring</div>
-          <p>I understand how systems fail. I understand why compliance matters. I understand what moves business metrics. And I execute.</p>
-        </div>
-        <div class="about-section">
-          <div class="about-section-title"><span class="thin">What I&rsquo;m </span>Looking For</div>
-          <p>Problems where the user&rsquo;s pain is clear but the solution isn&rsquo;t. Teams that disagree thoughtfully and make decisions anyway. Compensation that reflects responsibility (non-negotiable).</p>
-        </div>
+  <!-- ════════════════════════════════════════════════════════
+       PRINCIPLES
+       ════════════════════════════════════════════════════════ -->
+  <section class="section" id="manifesto">
+    <div class="section-label">
+      Principles
+      <div class="meta">A short list of held opinions</div>
+    </div>
+    <p class="manifesto-text">
+      The best products<br/>
+      <span class="alt">feel inevitable,</span><br/>
+      <span class="thin">like they could not</span><br/>
+      have been made any <span class="punch">other way</span>.
+    </p>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       CONTACT
+       ════════════════════════════════════════════════════════ -->
+  <section class="section" id="contact">
+    <div class="contact-top">
+      <div class="contact-mark">
+        C<span class="alt">.</span>C<span class="red-dot">.</span>
       </div>
-      <aside class="about-side">
-        <div class="side-block">
-          <div class="side-block-label">Currently</div>
-          <ul>
-            <li><span class="key">Status</span>Open to new roles</li>
-            <li><span class="key">Focus</span>FinTech &middot; B2B &middot; AI-first</li>
-            <li><span class="key">Based</span>Bangalore, India</li>
-          </ul>
+      <aside class="contact-side-info">
+        <div>
+          <div class="contact-info-label">Email</div>
+          <div class="contact-info-value">chhavi0697@gmail.com</div>
         </div>
-        <div class="side-block">
-          <div class="side-block-label">Technical Skills</div>
-          <ul>
-            <li><span class="key">Languages</span>Python, SQL</li>
-            <li><span class="key">Infra</span>Kubernetes, GCP, AWS</li>
-            <li><span class="key">Design</span>Figma, Miro</li>
-            <li><span class="key">AI/ML</span>LLM product, RAG systems</li>
-          </ul>
+        <div>
+          <div class="contact-info-label">Status</div>
+          <div class="contact-info-value"><span class="dot" style="display:inline-block;width:7px;height:7px;background:var(--blue);margin-right:6px;vertical-align:middle;animation:blink 1.4s step-end infinite;"></span>Open to new roles</div>
         </div>
-        <div class="side-block">
-          <div class="side-block-label">Previously At</div>
-          <ul>
-            <li><span class="key">&rsquo;25&ndash;26</span>Saturn</li>
-            <li><span class="key">&rsquo;19&ndash;25</span>American Express</li>
-          </ul>
+        <div>
+          <div class="contact-info-label">Focus</div>
+          <div class="contact-info-value">FinTech &middot; B2B &middot; AI-first</div>
         </div>
       </aside>
     </div>
-  </section>
 
-  <!-- CONTACT -->
-  <div class="section-mark">
-    <div class="section-num">&sect; 004</div>
-    <h2 class="section-title"><span class="thin">Get in </span>Touch</h2>
-    <div class="section-meta">Let&rsquo;s talk</div>
-  </div>
-  <section id="contact">
-    <div></div>
-    <div>
-      <h2 class="contact-major">
-        <span class="thin">Let&rsquo;s</span><br/>
-        <span class="serif">talk</span><span class="punch">.</span>
-      </h2>
+    <div class="contact-cta-block">
+      <div class="contact-cta-eyebrow">For roles, conversations, or product problems worth thinking through</div>
+      <a class="contact-cta-link" href="mailto:chhavi0697@gmail.com">
+        chhavi0697@gmail.com <span class="arrow">↗</span>
+      </a>
+      <div class="contact-links">
+        <a class="contact-ext-link" href="https://www.linkedin.com/in/chhavian/" target="_blank" rel="noopener">LinkedIn &nearr;</a>
+        <a class="contact-ext-link" href="https://chhavian.github.io/portfolio/resume.pdf" target="_blank" rel="noopener">Resume PDF &nearr;</a>
+      </div>
     </div>
-    <aside class="contact-side">
-      <div>
-        <p class="contact-subtitle">For roles, conversations, or if you&rsquo;re solving a product problem and want to think through it together.</p>
-        <div class="contact-label">Email</div>
-        <a class="contact-email" href="mailto:chhavi0697@gmail.com">chhavi0697@gmail.com</a>
-      </div>
-      <div>
-        <div class="contact-label">Elsewhere</div>
-        <div class="contact-links">
-          <a class="contact-link" href="https://www.linkedin.com/in/chhavian/" target="_blank" rel="noopener">
-            <span class="k">LinkedIn</span>
-            <span class="v">/in/chhavian</span>
-          </a>
-          <a class="contact-link" href="resume.pdf" download="Chhavi_Chauhan_Resume.pdf" target="_blank" rel="noopener">
-            <span class="k">Resume</span>
-            <span class="v">Download PDF &rarr;</span>
-          </a>
-        </div>
-      </div>
-    </aside>
   </section>
 
-  <!-- FOOTER -->
+  <!-- ════════════════════════════════════════════════════════
+       FOOTER
+       ════════════════════════════════════════════════════════ -->
   <footer>
     <div class="colophon">
       <div><strong>Chhavi Chauhan</strong> &middot; &copy; 2026</div>
@@ -1160,7 +1479,9 @@
     </div>
   </footer>
 
-  <!-- PDF VIEWER -->
+  <!-- ════════════════════════════════════════════════════════
+       PDF OVERLAY
+       ════════════════════════════════════════════════════════ -->
   <div id="pdf-overlay" style="position:fixed;inset:0;z-index:400;background:#141414;display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity 250ms ease;">
     <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 32px;border-bottom:1px solid rgba(255,255,255,0.1);flex-shrink:0;">
       <span id="pdf-title" style="font-family:var(--mono);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:#888;"></span>
@@ -1171,16 +1492,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 
   <script>
-    // MASTHEAD SCROLL HIDE
-    let last = 0;
-    const masthead = document.getElementById('masthead');
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      if (y > last && y > 100) masthead.classList.add('hidden');
-      else masthead.classList.remove('hidden');
-      last = y;
-    }, { passive: true });
-
     // PDF VIEWER
     const pdfOverlay = document.getElementById('pdf-overlay');
     const pdfScroll  = document.getElementById('pdf-canvas-scroll');
@@ -1213,6 +1524,7 @@
     }
 
     document.getElementById('pdf-close').addEventListener('click', closePdf);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closePdf(); });
 
     const exercisePdfs = [
       'content/Airbnb_ Increasing Experiences Feature Awareness.pdf',
@@ -1221,12 +1533,10 @@
     document.querySelectorAll('[data-exercise]').forEach(el => {
       el.addEventListener('click', () => {
         const idx = parseInt(el.dataset.exercise);
-        const titleEl = el.querySelector('.work-row-title');
+        const titleEl = el.querySelector('.row-title');
         openPdf(exercisePdfs[idx], titleEl ? titleEl.textContent.trim() : 'Case Study');
       });
     });
-
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closePdf(); });
   </script>
 </body>
 </html>
