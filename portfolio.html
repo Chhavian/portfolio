@@ -507,6 +507,19 @@
     .prior-title { font-family: var(--grot); font-size: 1.25rem; font-weight: 500; color: var(--ink); letter-spacing: -0.01em; }
     .prior-company { font-family: var(--grot); font-size: 0.95rem; color: var(--ink-soft); }
     .prior-desc { font-family: var(--grot); font-size: 1rem; color: var(--ink-soft); line-height: 1.6; max-width: 60ch; }
+    .prior-desc p + ul { margin-top: 16px; }
+    .prior-bullets { list-style: none; padding: 0; margin: 16px 0 0; max-width: 60ch; }
+    .prior-bullets li {
+      position: relative;
+      padding-left: 20px;
+      margin-top: 8px;
+      font-family: var(--grot);
+      font-size: 0.97rem;
+      color: var(--ink-soft);
+      line-height: 1.55;
+    }
+    .prior-bullets li::before { content: '–'; position: absolute; left: 0; color: var(--rule); }
+    .prior-bullets li strong { color: var(--ink); font-weight: 600; }
 
     @media (max-width: 900px) { .prior-role { grid-template-columns: 1fr; gap: 12px; } }
 
@@ -899,8 +912,18 @@
           <div class="prior-title">First PM</div>
           <div class="prior-company">Saturn &middot; FinTech, UK Market</div>
         </div>
-        <div class="prior-desc">
-          First product hire at a fintech platform for UK financial advisers. Introduced discovery, roadmap, and prioritization structure from scratch. Reduced month-1 churn from 30% to 18% in two quarters by identifying and eliminating the three highest-friction workflows. 2,100+ monthly active advisers, 650+ client firms, £120K+ ARR.
+        <div>
+          <div class="prior-desc">
+            First product hire at a fintech platform serving UK financial advisers. Saturn had a live product and real transactions but no product infrastructure — no discovery cadence, no roadmap, no prioritization framework. Built it from scratch while shipping.
+          </div>
+          <ul class="prior-bullets">
+            <li>Ran <strong>15 adviser interviews</strong> to map core workflows; found 60% of platform time concentrated in three tasks (data entry, reporting, compliance submission) — all manual, all templatable</li>
+            <li>Diagnosed month-1 churn as a workflow friction problem, not a product gap — <strong>reduced churn from 30% to 18%</strong> in two quarters without a redesign</li>
+            <li>Built and shipped a <strong>templating system</strong> covering the three highest-friction workflows, going from 0 to first release in 6 weeks</li>
+            <li>Established a <strong>weekly churn review</strong> with founders, support, and engineering — the first recurring cross-functional forum Saturn had</li>
+            <li>Instrumented the activation funnel end-to-end so prioritization decisions came from data rather than founder instinct or support noise</li>
+            <li>Grew platform to <strong>2,100+ monthly active advisers</strong>, 650+ client firms, £120K+ ARR during tenure</li>
+          </ul>
         </div>
       </div>
 
@@ -910,8 +933,18 @@
           <div class="prior-title">Product Manager</div>
           <div class="prior-company">American Express &middot; Enterprise, B2B</div>
         </div>
-        <div class="prior-desc">
-          PM on the co-brand partner portal. Legal flagged a data access control compliance risk; engineering estimated a year to fix. Scoped and shipped a targeted rebuild in three months. 40+ partners through the new system, onboarding time cut from 4&ndash;6 weeks to 2&ndash;3 days, Amazon account renewed, zero compliance incidents post-launch.
+        <div>
+          <div class="prior-desc">
+            PM for the co-brand partner portal — the system through which external partners (Amazon, Delta, Hilton, others) manage their American Express card programmes. Owned the product through a compliance-driven rebuild and subsequent partner onboarding scale-up.
+          </div>
+          <ul class="prior-bullets">
+            <li>Legal flagged a <strong>data access control risk</strong> across the portal: partners could potentially view each other's data. Engineering scoped a 12-month rebuild. I scoped a targeted fix and shipped in <strong>3 months</strong></li>
+            <li>Designed the minimum architecture that eliminated the compliance exposure: a <strong>centralized access control layer</strong> so all partner data queries routed through one auditable point — replacing distributed access rules spread across billing, reporting, and onboarding</li>
+            <li>Aligned three stakeholder groups with conflicting incentives: legal (wanted a full rebuild), engineering (wanted more time), and partners (wanted feature continuity) — all agreed on the 3-month scoped approach</li>
+            <li>Onboarded <strong>40+ partners</strong> through the new system; partner onboarding time dropped from <strong>4–6 weeks to 2–3 days</strong></li>
+            <li><strong>Amazon account renewed</strong> mid-project — partner confidence in the new architecture was the deciding factor</li>
+            <li><strong>Zero compliance incidents</strong> in the 12 months post-launch</li>
+          </ul>
         </div>
       </div>
 
@@ -921,8 +954,17 @@
           <div class="prior-title">Engineer &amp; SRE</div>
           <div class="prior-company">American Express &middot; Infrastructure, Site Reliability</div>
         </div>
-        <div class="prior-desc">
-          Five years across infrastructure and site reliability. Designed alerting for millions of daily payment transactions, reducing false positives by 70%. Built REST APIs handling 10,000+ daily requests at sub-200ms. Built an employee onboarding system that improved satisfaction scores by 30%. Moved into product after learning that system reliability is a product decision, not an ops one.
+        <div>
+          <div class="prior-desc">
+            Five years in engineering and site reliability at one of the largest card networks in the world. Worked across infrastructure, alerting systems, and internal tooling — at a scale where a poorly designed alert or a slow API is a revenue and trust problem, not just a technical one.
+          </div>
+          <ul class="prior-bullets">
+            <li>Designed the <strong>alerting system</strong> for millions of daily payment transactions — reduced false positives by 70%, giving on-call engineers signal instead of noise</li>
+            <li>Built <strong>REST APIs</strong> handling 10,000+ daily requests at sub-200ms latency; owned reliability and performance SLOs end-to-end</li>
+            <li>Built an <strong>employee onboarding system</strong> that consolidated fragmented tooling into one flow — improved onboarding satisfaction scores by 30%</li>
+            <li>Worked with <strong>Kubernetes, GCP, and AWS</strong> across infrastructure projects; built in Python and handled SQL-heavy data pipelines</li>
+            <li>Moved into product after noticing that the reliability decisions that mattered most — what to alert on, what to degrade gracefully, what to fix vs. live with — were fundamentally product decisions being made without product thinking</li>
+          </ul>
         </div>
       </div>
     </div>
